@@ -1,0 +1,17 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `TempRecent_Call`(`ID` INT(32)) RETURNS longtext CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+DECLARE F INT(32);
+DECLARE G INT(32);
+SELECT RecentTemp 
+INTO F FROM devicetemprecent 
+WHERE DeviceID = ID;
+
+SELECT RecentHumidity
+INTO G FROM devicetemprecent 
+WHERE DeviceID = ID;
+
+RETURN(JSON_OBJECT("Temp",F,"Humidity",G));
+END$$
+DELIMITER ;
