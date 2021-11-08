@@ -1,0 +1,10 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CtoF`(`Cel` INT(32)) RETURNS int(32)
+    SQL SECURITY INVOKER
+    COMMENT 'Converts between Celsius and Fahrenheit'
+BEGIN
+DECLARE F INT(32);
+SET F = (1.8 * Cel) + 32;
+RETURN(F);
+END$$
+DELIMITER ;
