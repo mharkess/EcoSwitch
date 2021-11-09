@@ -1,20 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Component, StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity } from 'react-native';
+import { Switch } from 'react-native-switch';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
 
-import logo from './assets/ecoswitch_icon_text.png';
+import logo_text from './assets/ecoswitch_icon_text.png';
+import logo from './assets/ecoswitch_icon_white.png';
 
 const Stack = createNativeStackNavigator();
-
 export default function App() {
 
   function LoginScreen({ navigation }){
     return(
       <View style={styles.container}>
-        <Image source={logo} style={styles.logo} />
-        
+        <Image source={logo_text} style={styles.logo_text} />
+
         {/* will need some functions here to access BU login */}
         <TextInput style={styles.input} placeholder="BU Login Name" />
         <TextInput style={styles.input} secureTextEntry={true} placeholder="Password" />
@@ -22,6 +23,7 @@ export default function App() {
         <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
           <Text style={styles.text}>Continue</Text>
         </Pressable>
+
       </View>
     );
   }
@@ -30,9 +32,21 @@ export default function App() {
   function MainMenu({ navigation }) {
     return(
       <View style={styles.container}>
-        <Text>Stuff goes here</Text>
+        <TouchableOpacity style={styles.logo} onPress={() => navigation.push('Credits')}>
+          <Image source={logo} style={{height:60, width:60}} />
+        </TouchableOpacity>
+        <View style={styles.displayBox}>
+        </View>
       </View>
     );
+  }
+
+  function Credits({ navigation }) {
+    return(
+      <View style={styles.container}>
+        <Text>Jiawei Liao{'\n'}Keven DeOliveira{'\n'}Michelle Thevenin{'\n'}Samarah Uriarte{'\n'}Michael Harkess</Text>
+      </View>
+    )
   }
 
   return (
@@ -40,11 +54,13 @@ export default function App() {
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="Login Screen" component={LoginScreen} />
         <Stack.Screen name="Main Menu" component={MainMenu} />
+        <Stack.Screen name="Credits" component={Credits} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+// some styles use "absolute" positioning, which might appear differently on different phones... need to test
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,13 +68,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: {
+  logo_text: {
     width: 220, 
     height: 220,
     position: 'absolute',
     bottom: 540,
     alignItems:'center',
     resizeMode: 'contain',
+  },
+  logo: {
+    width: 5, 
+    height: 5,
+    position: 'absolute',
+    top: 40,
+    right: 40,
+    padding: 10,
+    alignItems:'center',
   },
   button: {
     height: '5%',
@@ -69,7 +94,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 4,
-    elevation: 3,
     backgroundColor: '#7d947a',
   },
   text: {
@@ -88,5 +112,16 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: 'white',
     borderRadius: 8,
+  },
+  displayBox: {
+    alignItems: 'center',
+    bottom: 150,
+    width: 390,
+    height: 350,
+    margin: 8,
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: '#f4f6f3',
+    backgroundColor: '#f4f6f3',
   },
 });
