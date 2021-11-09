@@ -1,0 +1,11 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `UpdateRecentTemp`(`temp` INT(32), `humid` INT(32), `DevID` INT(32)) RETURNS int(11)
+    COMMENT 'Updates recent temp and humidity from device'
+BEGIN
+UPDATE ecoswitch.devicetemprecent
+SET RecentTemp = temp, RecentHumidity = humid
+WHERE DeviceID = DevID;
+
+RETURN(0);
+END$$
+DELIMITER ;

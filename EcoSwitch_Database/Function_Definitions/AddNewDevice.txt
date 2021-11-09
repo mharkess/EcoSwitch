@@ -1,0 +1,20 @@
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `AddNewDevice`(`ID` INT) RETURNS int(11)
+    SQL SECURITY INVOKER
+    COMMENT 'Adds new device to database given DeviceID'
+BEGIN
+INSERT INTO ecoswitch.devicetemprecent
+(DeviceID,RecentTemp,RecentHumidity,TargetTemp)
+VALUES(ID,0,0,23);
+
+INSERT INTO ecoswitch.identification
+(DeviceID,Address,RoomNum)
+VALUES(ID,'NULL','000');
+
+INSERT INTO ecoswitch.temphistory
+(DeviceID,Temps)
+VALUES(ID,'{}');
+
+RETURN(0);
+END$$
+DELIMITER ;
