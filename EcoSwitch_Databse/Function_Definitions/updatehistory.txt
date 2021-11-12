@@ -1,0 +1,19 @@
+DELIMITER $$
+CREATE DEFINER=`admin`@`%` PROCEDURE `updateHistory`(IN `ID` INT(32), IN `newTemp` FLOAT(32), IN `newHumid` FLOAT)
+BEGIN
+DECLARE Thistory longtext;
+DECLARE Hhistory longtext;
+
+SELECT Temps INTO Thistory from ecoswitch.temphistory WHERE DeviceID = ID;
+
+SELECT Humiditys INTO Hhistory from ecoswitch.temphistory WHERE DeviceID = ID;
+
+SELECT JSON_ARRAY_INSERT(Thistory, '$[0]', newTemp);
+SELECT JSON_ARRAY_INSERT(Hhistory, '$[0]', newHumid);
+
+UPDATE ecoswitch.temphistory
+SET Temps = Thistory,Humiditys = Hhistory 
+WHERE DeviceID = ID;
+
+END$$
+DELIMITER ;
