@@ -1,8 +1,0 @@
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `GenerateID`() RETURNS int(32)
-    COMMENT 'Generates brand new Device ID from 100 - 1000000'
-BEGIN
-
-RETURN(SELECT FLOOR(RAND()*(1000000-100+1))+100);
-END$$
-DELIMITER ;
