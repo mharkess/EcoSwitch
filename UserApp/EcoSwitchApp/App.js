@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Component, StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity } from 'react-native';
+import { Component, StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
 
 import mysql from 'mysql';
 import axios, * as others from 'axios';
@@ -9,26 +9,25 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
+import { BlockList } from 'net';
 
-const deviceID = 1234;
 const Stack = createNativeStackNavigator();
-
 
 export default function App() {
 
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
+  const [deviceID, setDeviceID] = useState('1234')
 
   async function updateRecentData() {
     var temp = {}
-    await axios.get('http://172.17.0.1:8081/api/get')
+    await axios.get('http://10.0.0.119:8081/api/get')
       .then((response) => {
         temp = response.data
         setRecentData(temp)
       });
-
-    setRecentData({"Temp": "fuck", "Humidity": "me"})
     setRecentData(temp)
   };
+
 
   function LoginScreen({ navigation }){
     return(
@@ -36,8 +35,18 @@ export default function App() {
         <Image source={logo_text} style={styles.logo_text} />
 
         {/* will need some functions here to access BU login */}
-        <TextInput style={styles.input} placeholder="BU Login Name" />
-        <TextInput style={styles.input} secureTextEntry={true} placeholder="Password" />
+        <TextInput 
+          style={styles.input} 
+          onBlur={Keyboard.dismiss} 
+          placeholder="BU Login Name" 
+        />
+
+        <TextInput 
+          style={styles.input} 
+          onBlur={Keyboard.dismiss} 
+          secureTextEntry={true} 
+          placeholder="Password" 
+        />
         
         <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
           <Text style={styles.text}>Continue</Text>
@@ -47,29 +56,44 @@ export default function App() {
     );
   }
 
+
   // needs a logout function to return to login page
   function MainMenu({ navigation }) {
     return(
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={() => updateRecentData()} />
+        <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Login Screen')}>
+          <Text style={styles.return_text}>Logout</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.logo} onPress={() => navigation.push('Credits')}>
           <Image source={logo} style={{height:60, width:60}} />
         </TouchableOpacity>
+
         <View style={styles.displayBox}>
           <Text>Temp: {recentData['Temp']}</Text>
           <Text>Humidity: {recentData['Humidity']}</Text>
+          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData()}>
+            <Text style={styles.update_text}>Update</Text>
+          </TouchableOpacity>
         </View>
+        
       </View>
     );
   }
 
+
   function Credits({ navigation }) {
     return(
       <View style={styles.container}>
+        <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Main Menu')}>
+          <Text style={styles.return_text}>Go Back</Text>
+        </TouchableOpacity>
+
         <Text>Jiawei Liao{'\n'}Keven DeOliveira{'\n'}Michelle Thevenin{'\n'}Samarah Uriarte{'\n'}Michael Harkess</Text>
       </View>
     )
   }
+
 
   return (
     <NavigationContainer>
@@ -81,6 +105,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
 
 // some styles use "absolute" positioning, which might appear differently on different phones... need to test
 const styles = StyleSheet.create({
@@ -118,6 +143,24 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#7d947a',
   },
+  update_button: {
+    height: '15%',
+    width: 150,
+    margin: 50,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    backgroundColor: '#7d947a',
+  },
+  return_button: {
+    height: 100,
+    width: 150,
+    position: 'absolute',
+    top: 70,
+    left: 20,
+    borderRadius: 4,
+    backgroundColor: '#d8e6d8',
+  },
   text: {
     fontSize: 16,
     lineHeight: 20,
@@ -125,6 +168,19 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     letterSpacing: .5,
     color: 'white',
+  },
+  update_text: {
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    letterSpacing: .5,
+    color: 'white',
+  },
+  return_text: {
+    color:'#7d947a', 
+    fontWeight:'bold', 
+    fontSize:24,
   },
   input: {
     width: 300,
@@ -137,6 +193,7 @@ const styles = StyleSheet.create({
   },
   displayBox: {
     alignItems: 'center',
+    justifyContent: 'center',
     bottom: 150,
     width: 390,
     height: 350,
