@@ -26,7 +26,6 @@ export default function App() {
         setRecentData(temp)
       });
 
-    setRecentData({"Temp": "fuck", "Humidity": "me"})
     setRecentData(temp)
   };
 
