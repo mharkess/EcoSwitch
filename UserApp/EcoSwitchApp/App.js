@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Component, StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
 
-import mysql from 'mysql';
 import axios, * as others from 'axios';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -9,7 +8,6 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
-import { BlockList } from 'net';
 
 const Stack = createNativeStackNavigator();
 
@@ -70,8 +68,8 @@ export default function App() {
         </TouchableOpacity>
 
         <View style={styles.displayBox}>
-          <Text>Temp: {recentData['Temp']}</Text>
-          <Text>Humidity: {recentData['Humidity']}</Text>
+          <Text>Temperature: {recentData['Temp']}°C</Text>
+          <Text>Humidity: {recentData['Humidity']}%</Text>
           <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData()}>
             <Text style={styles.update_text}>Update</Text>
           </TouchableOpacity>
