@@ -19,11 +19,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/get', (req, res) => {
-    const sqlQuery = 'SELECT TempRecent_Call(\'789067\') AS \`TempRecent_Call\`;'
+    const sqlQuery = 'SELECT TempRecent_Call(\'12345\') AS \`TempRecent_Call\`;'
     db.query(sqlQuery, (err, result) =>{
         const jsonResult = JSON.parse(result[0].TempRecent_Call)
-        console.log('Temp:', jsonResult['Temp'])
-        console.log('Humidity:', jsonResult['Humidity'])
+        //console.log('Temp:', jsonResult['Temp'])
+        //console.log('Humidity:', jsonResult['Humidity'])
+        var d = new Date();
+        console.log('Updated!', d.getHours(), ':', d.getMinutes(), ':', d.getSeconds())
         res.send(jsonResult);
     })
 });
