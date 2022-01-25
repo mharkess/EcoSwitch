@@ -54,6 +54,17 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       backgroundColor: '#d8e6d8',
     },
+    metric_button: {
+      width: 5, 
+      height: 5,
+      position: 'absolute',
+      top: 40,
+      right: 40,
+      padding: 10,
+      alignItems:'center',
+      borderRadius: 90,
+      backgroundColor: '#7d947a',
+    },
     text: {
       fontSize: 16,
       lineHeight: 20,
@@ -69,6 +80,13 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       letterSpacing: .5,
       color: 'white',
+    },
+    metric_text: {
+      fontSize: 10,
+      bottom: 4,
+      alignContent: 'center',
+      color: 'white',
+      position: 'absolute',
     },
     return_text: {
       color:'#7d947a', 
