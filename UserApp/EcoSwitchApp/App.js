@@ -14,15 +14,29 @@ export default function App() {
 
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
+  const [tempMetric, setTempMetric] = useState('C');
 
-  const url = 'http://172.20.10.14:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
+  const url = 'http://155.41.32.73:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
 
+  
   async function updateRecentData(url) { // need to add a try/catch block for error catching
     await axios.get(url) 
       .then((response) => {
         setRecentData(response.data)
       });
   };
+
+
+  function changeTempMetric() {
+    if (tempMetric == 'C') {
+      setRecentData({"Temp": (recentData['Temp'] * 9/5) + 32 , "Humidity": recentData['Humidity']})
+      setTempMetric('F');
+    }
+    else {
+      setRecentData({"Temp": (recentData['Temp'] - 32) * 5/9 , "Humidity": recentData['Humidity']})
+      setTempMetric('C');
+    }
+  }
 
 
   function LoginScreen({ navigation }){
@@ -61,7 +75,7 @@ export default function App() {
       //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
       const interval = setInterval(() => {
         updateRecentData(url)
-      }, 30000) // half-minute updates
+      }, 10000) // half-minute updates
       return () => clearInterval(interval);
     }, []);
 
@@ -76,9 +90,9 @@ export default function App() {
         </TouchableOpacity>
 
         <View style={styles.displayBox}>
-          <Text>Temperature: {recentData['Temp']}°C</Text>
+          <Text>Temperature: {recentData['Temp']}°{tempMetric}</Text>
           <Text>Humidity: {recentData['Humidity']}%</Text>
-          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url)}>
+          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url) }>
             <Text style={styles.update_text}>Update</Text>
           </TouchableOpacity>
         </View>

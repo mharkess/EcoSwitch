@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 // some styles use "absolute" positioning, which might appear differently on different phones... need to test
 const styles = StyleSheet.create({
     container: {
@@ -95,4 +97,5 @@ const styles = StyleSheet.create({
       backgroundColor: '#f4f6f3',
     },
   });
-  
+
+  export default styles;
