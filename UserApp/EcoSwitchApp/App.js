@@ -18,7 +18,7 @@ export default function App() {
 
   const url = 'http://155.41.32.73:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
 
-  
+
   async function updateRecentData(url) { // need to add a try/catch block for error catching
     await axios.get(url) 
       .then((response) => {
@@ -29,11 +29,13 @@ export default function App() {
 
   function changeTempMetric() {
     if (tempMetric == 'C') {
-      setRecentData({"Temp": (recentData['Temp'] * 9/5) + 32 , "Humidity": recentData['Humidity']})
+      var conversion = Math.round(recentData['Temp'] * 9/5 + 32)
+      setRecentData({"Temp": conversion, "Humidity": recentData['Humidity']})
       setTempMetric('F');
     }
     else {
-      setRecentData({"Temp": (recentData['Temp'] - 32) * 5/9 , "Humidity": recentData['Humidity']})
+      var conversion = Math.round((recentData['Temp'] - 32) * 5/9)
+      setRecentData({"Temp": conversion, "Humidity": recentData['Humidity']})
       setTempMetric('C');
     }
   }
@@ -94,6 +96,9 @@ export default function App() {
           <Text>Humidity: {recentData['Humidity']}%</Text>
           <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url) }>
             <Text style={styles.update_text}>Update</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
+            <Text style={styles.metric_text}>F/C</Text>
           </TouchableOpacity>
         </View>
         
