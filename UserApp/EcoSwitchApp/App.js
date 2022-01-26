@@ -33,7 +33,7 @@ export default function App() {
       setRecentData({"Temp": conversion, "Humidity": recentData['Humidity']})
       setTempMetric('F');
     }
-    else {
+    else if (tempMetric == 'F') {
       var conversion = Math.round((recentData['Temp'] - 32) * 5/9)
       setRecentData({"Temp": conversion, "Humidity": recentData['Humidity']})
       setTempMetric('C');
@@ -77,7 +77,7 @@ export default function App() {
       //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
       const interval = setInterval(() => {
         updateRecentData(url)
-      }, 10000) // half-minute updates
+      }, 30000) // half-minute updates
       return () => clearInterval(interval);
     }, []);
 
@@ -94,9 +94,11 @@ export default function App() {
         <View style={styles.displayBox}>
           <Text>Temperature: {recentData['Temp']}°{tempMetric}</Text>
           <Text>Humidity: {recentData['Humidity']}%</Text>
+
           <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url) }>
             <Text style={styles.update_text}>Update</Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
             <Text style={styles.metric_text}>F/C</Text>
           </TouchableOpacity>
