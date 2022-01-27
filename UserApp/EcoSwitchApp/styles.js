@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       width: 220, 
       height: 220,
       position: 'absolute',
-      bottom: 540,
+      bottom: 510,
       alignItems:'center',
       resizeMode: 'contain',
     },
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     button: {
       height: '5%',
       position: 'absolute',
-      bottom: 340,
-      left: 57,
+      bottom: 314,
+      left: 45,
       width: 150,
       paddingVertical: 12,
       paddingHorizontal: 32,
@@ -89,9 +89,16 @@ const styles = StyleSheet.create({
       position: 'absolute',
     },
     return_text: {
-      color:'#7d947a', 
-      fontWeight:'bold', 
-      fontSize:24,
+      color: '#7d947a', 
+      fontWeight: 'bold', 
+      fontSize: 24,
+    },
+    update_time_text: {
+      color: '#008500',
+      fontWeight: 'bold',
+      position: 'absolute',
+      bottom: 15,
+      right: 15,
     },
     input: {
       width: 300,
@@ -105,7 +112,7 @@ const styles = StyleSheet.create({
     displayBox: {
       alignItems: 'center',
       justifyContent: 'center',
-      bottom: 150,
+      bottom: 120,
       width: 390,
       height: 350,
       margin: 8,
