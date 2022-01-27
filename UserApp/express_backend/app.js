@@ -3,6 +3,7 @@ const app = express()
 const mysql = require('mysql')
 const cors = require('cors')
 
+
 const db = mysql.createPool({
     host: '96.230.29.89',
     user: 'admin',
@@ -10,13 +11,16 @@ const db = mysql.createPool({
     database: 'ecoswitch'
 })
 
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
+
 app.get('/', (req, res) => {
     res.send('home');
 });
+
 
 app.get('/api/get', (req, res) => {
     const sqlQuery = 'SELECT TempRecent_Call(\'12345\') AS \`TempRecent_Call\`;'
@@ -29,6 +33,10 @@ app.get('/api/get', (req, res) => {
         res.send(jsonResult);
     })
 });
+
+
+// app.post();
+
 
 app.listen(8081, () => {
     console.log('running on port 8081')
