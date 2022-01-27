@@ -14,16 +14,40 @@ export default function App() {
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
   const [tempMetric, setTempMetric] = useState('C');
+  const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
 
-  const url = 'http://155.41.32.73:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
+  const url = 'http://155.41.21.215:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
 
 
   async function updateRecentData(url) { // need to add a try/catch block for error catching
     await axios.get(url) 
       .then((response) => {
         setRecentData(response.data)
+        setLastUpdated(`Last Updated: ${currentTime()}`)
       });
   };
+
+
+  function currentTime() {
+    var d = new Date(),
+    n = '',
+    h = (d.getHours()<10?'0':'') + d.getHours(),
+    m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+    if (h > 12 && h < 24) {
+      h = h - 12;
+      n = 'PM';
+    }
+    else if (h == 24) {
+      h = h - 12;
+      n = 'AM';
+    }
+    else {
+      n = 'PM'
+    }
+
+    return(h + ':' + m + ' ' + n);
+  }
 
 
   function changeTempMetric() {
@@ -99,6 +123,8 @@ export default function App() {
           <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
             <Text style={styles.metric_text}>F/C</Text>
           </TouchableOpacity>
+
+          <Text style={styles.update_time_text}>{lastUpdated}</Text>
         </View>
         
       </View>
