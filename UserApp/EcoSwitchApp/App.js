@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
+import {Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
-
 import axios, * as others from 'axios';
+
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
 import styles from './styles.js'
@@ -11,7 +11,6 @@ import styles from './styles.js'
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
   const [tempMetric, setTempMetric] = useState('C');
@@ -50,7 +49,7 @@ export default function App() {
         <TextInput 
           style={styles.input} 
           onBlur={Keyboard.dismiss} 
-          placeholder="BU Login Name" 
+          placeholder="Username" 
         />
 
         <TextInput 
@@ -63,7 +62,6 @@ export default function App() {
         <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
           <Text style={styles.text}>Continue</Text>
         </Pressable>
-
       </View>
     );
   }
@@ -71,13 +69,12 @@ export default function App() {
 
   // needs a logout function to return to login page
   function MainMenu({ navigation }) { 
-
     // used to periodically refresh data
     useEffect(() => {
       //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
       const interval = setInterval(() => {
         updateRecentData(url)
-      }, 30000) // half-minute updates
+        }, 30000) // half-minute updates
       return () => clearInterval(interval);
     }, []);
 
