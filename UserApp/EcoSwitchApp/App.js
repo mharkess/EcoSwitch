@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
-import axios, * as others from 'axios';
 
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
@@ -16,16 +15,22 @@ export default function App() {
   const [tempMetric, setTempMetric] = useState('C');
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
 
-  const url = 'http://155.41.21.215:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
+  const api_url = `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=${deviceID}`
 
 
-  async function updateRecentData(url) { // need to add a try/catch block for error catching
-    await axios.get(url) 
-      .then((response) => {
-        setRecentData(response.data)
-        setLastUpdated(`Last Updated: ${currentTime()}`)
+  async function updateRecentData() {
+    try {
+      const response = await fetch(api_url, {
+        method: 'GET'
       });
-  };
+      const responseJSON = await response.json();
+      console.log(responseJSON);
+      setRecentData(responseJSON);
+      setLastUpdated(`Last Updated: ${currentTime()}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
   function currentTime() {
@@ -97,8 +102,8 @@ export default function App() {
     useEffect(() => {
       //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
       const interval = setInterval(() => {
-        updateRecentData(url)
-        }, 30000) // half-minute updates
+        updateRecentData()
+        }, 60000*5) // half-minute updates
       return () => clearInterval(interval);
     }, []);
 
@@ -116,7 +121,7 @@ export default function App() {
           <Text>Temperature: {recentData['Temp']}°{tempMetric}</Text>
           <Text>Humidity: {recentData['Humidity']}%</Text>
 
-          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url) }>
+          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
             <Text style={styles.update_text}>Update</Text>
           </TouchableOpacity>
 
