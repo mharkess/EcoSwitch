@@ -24,20 +24,20 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
   - Query Format:
     - `/device_dataUpdate.php?temperature=<temp>&humidity=<humidity>&deviceID=<id>` 
   - Example valid Query:
-    - `/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
+    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
   - **Note: Will be changed to a POST request in the future**
 - `/allRecent.php`
   - Description: Retrieves table of all users in the database (table contains the user, most recent temperature of their room and most recent humidity of their room).
   - Query Format:
     - `/allRecent.php?deviceID=<id>`
   - Example valid Query:
-    - `/allRecent.php?deviceID=12345`
+    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/allRecent.php?deviceID=12345`
 - `/tempRequest.php`
   - Description: Retrieves most recent temperature and humidity of a particular device from the database
   - Query Format:
     - `/tempRequest.php?DeviceID=<id>`
   - Example valid Query:
-    - `/tempRequest.php?DeviceID=12345`    
+    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?DeviceID=12345`    
 
 
 ### POST Requests
