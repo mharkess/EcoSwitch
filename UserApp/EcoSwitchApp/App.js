@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
-import axios, * as others from 'axios';
 
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
@@ -13,19 +12,54 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
-  const [tempMetric, setTempMetric] = useState('C');
+  const [tempMetric, setTempMetric] = useState('F');
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
+  const [desiredTemp, setDesiredTemp] = useState('25');
 
-  const url = 'http://155.41.21.215:8081/api/get'; // needs to be configured depending on location (while using independent backend server)
+  const recentData_api = `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=${deviceID}`
+  const desiredTemp_api = 'http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/desiredTemp.php'
 
 
-  async function updateRecentData(url) { // need to add a try/catch block for error catching
-    await axios.get(url) 
-      .then((response) => {
-        setRecentData(response.data)
-        setLastUpdated(`Last Updated: ${currentTime()}`)
+  async function updateRecentData() {
+    try {
+      const response = await fetch(recentData_api, {
+        method: 'GET'
       });
-  };
+
+      const responseJSON = await response.json();
+
+      if (tempMetric == 'F') {
+        var conversion = Math.round(responseJSON['Temp'] * 9/5 + 32)
+        responseJSON['Temp'] = conversion;
+      }
+
+      setRecentData(responseJSON);
+      setLastUpdated(`Last Updated: ${currentTime()}`)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+  async function sendDesiredTemp() {
+    try {
+      fetch(desiredTemp_api, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "deviceID": deviceID,
+          "desiredTemp": desiredTemp
+        })
+      })
+      //.then(response => response.json())
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
   function currentTime() {
@@ -97,8 +131,8 @@ export default function App() {
     useEffect(() => {
       //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
       const interval = setInterval(() => {
-        updateRecentData(url)
-        }, 30000) // half-minute updates
+        updateRecentData()
+        }, 60000*5) // 5 minute updates
       return () => clearInterval(interval);
     }, []);
 
@@ -113,10 +147,10 @@ export default function App() {
         </TouchableOpacity>
 
         <View style={styles.displayBox}>
-          <Text>Temperature: {recentData['Temp']}°{tempMetric}</Text>
-          <Text>Humidity: {recentData['Humidity']}%</Text>
+          <Text>Temperature: {Math.round(recentData['Temp'])}°{tempMetric}</Text>
+          <Text>Humidity: {Math.round(recentData['Humidity'])}%</Text>
 
-          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData(url) }>
+          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
             <Text style={styles.update_text}>Update</Text>
           </TouchableOpacity>
 
@@ -126,6 +160,10 @@ export default function App() {
 
           <Text style={styles.update_time_text}>{lastUpdated}</Text>
         </View>
+
+        <TouchableOpacity style={styles.update_button} onPress={() => sendDesiredTemp() }>
+            <Text style={styles.update_text}>SET</Text>
+          </TouchableOpacity>
         
       </View>
     );
