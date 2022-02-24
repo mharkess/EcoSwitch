@@ -1,0 +1,14 @@
+.tempdisplaybox {
+    width: 100%;
+    max-width: 330px;
+    padding: 25px;
+    margin: auto;
+  }
+
+.tempdisplay {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-color: #f4f4f4;
+  }

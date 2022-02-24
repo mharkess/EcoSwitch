@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import Main from "./pages/Main";
+import StudentAdd from "./pages/StudentAdd";
 import ErrorPage from "./pages/ErrorPage";
+import StudentApp from "./pages/StudentApp";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -30,11 +33,17 @@ function App() {
         <Link to="/" className="py-2 d-none d-md-inline-block"> Home </Link>
         <Link to="/signin" className="py-2 d-none d-md-inline-block"> Sign In </Link>
         <Link to="/main" className="py-2 d-none d-md-inline-block"> Main </Link>
+        <Link to="/studentadd" className="py-2 d-none d-md-inline-block"> Student Add </Link>
+        <Link to="/studentapp" className="py-2 d-none d-md-inline-block"> Student App </Link>
+        <Link to="/register" className="py-2 d-none d-md-inline-block"> Register </Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/studentadd" element={<StudentAdd />} />
+        <Route path="/studentapp" element={<StudentApp />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
