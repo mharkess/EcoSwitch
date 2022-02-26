@@ -26,8 +26,14 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
   - Example valid Query:
     - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
   - **Note: Will be changed to a POST request in the future**
+- `/allUsers.php`
+  - Description: Retrieves table of all users in the database (table contains user's email, address and room number).
+  - Query Format:
+    - `/allUsers.php?deviceID=<id>`
+  - Example of valid Query:
+    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/allUsers.php?deviceID=12345`     
 - `/allRecent.php`
-  - Description: Retrieves table of all users in the database (table contains the user, most recent temperature of their room and most recent humidity of their room).
+  - Description: Retrieves table of all devices in the database (table contains device ID, most recent temperature of their room and most recent humidity of their room).
   - Query Format:
     - `/allRecent.php?deviceID=<id>`
   - Example valid Query:
