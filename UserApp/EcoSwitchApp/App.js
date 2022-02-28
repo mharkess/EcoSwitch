@@ -17,6 +17,7 @@ export default function App() {
   const [tempMetric, setTempMetric] = useState('F');
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
   const [desiredTemp, setDesiredTemp] = useState('');
+  const [status, setStatus] = useState('');
 
   const recentData_api = `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=${deviceID}`
   const desiredTemp_api = 'http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/desiredTemp.php'
@@ -63,6 +64,7 @@ export default function App() {
     }
   }
 
+
   function currentTime() {
     var d = new Date(),
     n = '',
@@ -82,6 +84,19 @@ export default function App() {
     }
 
     return(h + ':' + m + ' ' + n);
+  }
+
+
+  function setHandler() {
+    var isEmpty = false;
+    if (desiredTemp == '') isEmpty = true;
+
+    sendDesiredTemp(); 
+    setDesiredTemp(''); 
+
+    if (!isEmpty) setStatus('Success!')
+    else setStatus('Empty field')
+    setTimeout(() => {setStatus('')}, 5000)
   }
 
 
@@ -168,14 +183,15 @@ export default function App() {
           <View>
           <TextInput 
             style={styles.set_input} 
-            onChangeText={setDesiredTemp}
+            onChangeText={text => setDesiredTemp(text)}
             value={desiredTemp}
             placeholder={'Desired Temparture (°' + tempMetric + ')'}
             keyboardType="numeric"
           />
+          <Text>{status}</Text>
           </View>
 
-          <TouchableOpacity style={styles.set_button} onPress={() => sendDesiredTemp()}>
+          <TouchableOpacity style={styles.set_button} onPress={() => setHandler()}>
               <Text style={styles.set_text}>SET</Text>
           </TouchableOpacity>
           
