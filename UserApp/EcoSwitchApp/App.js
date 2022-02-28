@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -9,12 +9,14 @@ import styles from './styles.js'
 
 const Stack = createNativeStackNavigator();
 
+const MINUTE_MS = 60000
+
 export default function App() {
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
   const [tempMetric, setTempMetric] = useState('F');
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
-  const [desiredTemp, setDesiredTemp] = useState('25');
+  const [desiredTemp, setDesiredTemp] = useState('');
 
   const recentData_api = `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=${deviceID}`
   const desiredTemp_api = 'http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/desiredTemp.php'
@@ -42,25 +44,24 @@ export default function App() {
   }
 
 
-  async function sendDesiredTemp() {
+  function sendDesiredTemp() {
     try {
-      fetch(desiredTemp_api, {
+      return fetch(desiredTemp_api, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Accept': 'application/json',
+          'content-Type': 'application/json'
         },
         body: JSON.stringify({
           "deviceID": deviceID,
-          "desiredTemp": desiredTemp
+          "desiredTemp": String(desiredTemp)
         })
       })
-      //.then(response => response.json())
+      
     } catch (error) {
       console.error(error)
     }
   }
-
 
   function currentTime() {
     var d = new Date(),
@@ -100,27 +101,29 @@ export default function App() {
 
   function LoginScreen({ navigation }){
     return(
-      <View style={styles.container}>
-        <Image source={logo_text} style={styles.logo_text} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessble={false}>
+        <View style={styles.container}>
+          <Image source={logo_text} style={styles.logo_text} />
 
-        {/* will need some functions here for Google Auth */}
-        <TextInput 
-          style={styles.input} 
-          onBlur={Keyboard.dismiss} 
-          placeholder="Username" 
-        />
+          {/* will need some functions here for Google Auth */}
+          <TextInput 
+            style={styles.input} 
+            onBlur={Keyboard.dismiss} 
+            placeholder="Username" 
+          />
 
-        <TextInput 
-          style={styles.input} 
-          onBlur={Keyboard.dismiss} 
-          secureTextEntry={true} 
-          placeholder="Password" 
-        />
-        
-        <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
-          <Text style={styles.text}>Continue</Text>
-        </Pressable>
-      </View>
+          <TextInput 
+            style={styles.input} 
+            onBlur={Keyboard.dismiss} 
+            secureTextEntry={true} 
+            placeholder="Password" 
+          />
+          
+          <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
+            <Text style={styles.text}>Continue</Text>
+          </Pressable>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 
@@ -129,43 +132,55 @@ export default function App() {
   function MainMenu({ navigation }) { 
     // used to periodically refresh data
     useEffect(() => {
-      //updateRecentData(url);  // currently updates too frequently... removing this allows 1 minute updates, but doesn't update on first render
+      //updateRecentData();  // currently updates too frequently...
       const interval = setInterval(() => {
         updateRecentData()
-        }, 60000*5) // 5 minute updates
+        }, MINUTE_MS*5) // 5 minute updates
       return () => clearInterval(interval);
     }, []);
 
     return(
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Login Screen')}>
-          <Text style={styles.return_text}>Logout</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.logo} onPress={() => navigation.push('Credits')}>
-          <Image source={logo} style={{height:60, width:60}} />
-        </TouchableOpacity>
-
-        <View style={styles.displayBox}>
-          <Text>Temperature: {Math.round(recentData['Temp'])}°{tempMetric}</Text>
-          <Text>Humidity: {Math.round(recentData['Humidity'])}%</Text>
-
-          <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
-            <Text style={styles.update_text}>Update</Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessble={false}>
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
+          <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Login Screen')}>
+            <Text style={styles.return_text}>Logout</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
-            <Text style={styles.metric_text}>F/C</Text>
+          <TouchableOpacity style={styles.logo} onPress={() => navigation.push('Credits')}>
+            <Image source={logo} style={{height:60, width:60}} />
           </TouchableOpacity>
 
-          <Text style={styles.update_time_text}>{lastUpdated}</Text>
-        </View>
+          <KeyboardAvoidingView style={styles.displayBox} behavior="padding">
+            <Text>Temperature: {Math.round(recentData['Temp'])}°{tempMetric}</Text>
+            <Text>Humidity: {Math.round(recentData['Humidity'])}%</Text>
 
-        <TouchableOpacity style={styles.update_button} onPress={() => sendDesiredTemp() }>
-            <Text style={styles.update_text}>SET</Text>
+            <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
+              <Text style={styles.update_text}>Update</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
+              <Text style={styles.metric_text}>F/C</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.update_time_text}>{lastUpdated}</Text>
+          </KeyboardAvoidingView>
+
+          <View>
+          <TextInput 
+            style={styles.set_input} 
+            onChangeText={setDesiredTemp}
+            value={desiredTemp}
+            placeholder={'Desired Temparture (°' + tempMetric + ')'}
+            keyboardType="numeric"
+          />
+          </View>
+
+          <TouchableOpacity style={styles.set_button} onPress={() => sendDesiredTemp()}>
+              <Text style={styles.set_text}>SET</Text>
           </TouchableOpacity>
-        
-      </View>
+          
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 
