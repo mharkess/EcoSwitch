@@ -297,7 +297,7 @@ void loop() {
                 USE_SERIAL.println(payload);
             }
         } else {
-            USE_SERIAL.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+            USE_SERIAL.printf("[HTTP] GET... failed, error: %s\n", https.errorToString(httpCode).c_str());
 
         https.end(); //ends HTTP connection
     }
