@@ -1,4 +1,4 @@
-//Library imports
+ //Library imports
 #include <Arduino.h>
 #include <WiFi.h>
 #include <string>
@@ -107,14 +107,16 @@ int wifi_setup(){
     USE_SERIAL.println("Wifi Network SSID: ");
      while (true){
       if (USE_SERIAL.available()>0){
-        ssid = USE_SERIAL.readString();
+        ssid = USE_SERIAL.readStringUntil('\n');
+        ssid.remove(ssid.length()-1, 1);
         break;
       }
     }
     USE_SERIAL.println("Wifi Network Password: ");
-    while (USE_SERIAL.available()){
+    while (true){
       if (USE_SERIAL.available()>0){
-        wifi_password = USE_SERIAL.readString();
+        wifi_password = USE_SERIAL.readStringUntil('\n');
+        wifi_password.remove(wifi_password.length()-1, 1);
         break;
       }
     }
