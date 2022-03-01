@@ -166,8 +166,21 @@ export default function App() {
           </TouchableOpacity>
 
           <KeyboardAvoidingView style={styles.displayBox} behavior="padding">
-            <Text>Temperature: {Math.round(recentData['Temp'])}°{tempMetric}</Text>
-            <Text>Humidity: {Math.round(recentData['Humidity'])}%</Text>
+            <Text style={styles.tempNum_text}>
+              {Math.round(recentData['Temp'])} °{tempMetric}
+            </Text>
+            <Text style={styles.temp_text}>
+              TEMPERATURE
+            </Text>
+
+            <Text style={styles.line}>────────────</Text>
+            
+            <Text style={styles.humidNum_text}>
+              {Math.round(recentData['Humidity'])}%
+            </Text>
+            <Text style={styles.humid_text}>
+              HUMIDITY
+            </Text>
 
             <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
               <Text style={styles.update_text}>Update</Text>
@@ -188,7 +201,7 @@ export default function App() {
             placeholder={'Desired Temparture (°' + tempMetric + ')'}
             keyboardType="numeric"
           />
-          <Text>{status}</Text>
+          <Text style={styles.status_text}>{status}</Text>
           </View>
 
           <TouchableOpacity style={styles.set_button} onPress={() => setHandler()}>
