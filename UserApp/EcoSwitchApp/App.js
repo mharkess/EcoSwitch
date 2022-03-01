@@ -19,8 +19,8 @@ export default function App() {
   const [desiredTemp, setDesiredTemp] = useState('');
   const [status, setStatus] = useState('');
 
-  const recentData_api = `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=${deviceID}`
-  const desiredTemp_api = 'http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/desiredTemp.php'
+  const recentData_api = `http://3.12.233.95/tempRequest.php?deviceID=${deviceID}`
+  const desiredTemp_api = 'http://3.12.233.95/desiredTemp.php'
 
 
   async function updateRecentData() {
