@@ -6,9 +6,9 @@ import styles from './main.module.css';
 
 export default class Main extends React.Component {
 		state = {
-      DeviceID: null,
-			Temp: "0", 
-			Humidity: "0"
+      DeviceID: "000000",
+			Temp: "000000", 
+			Humidity: "000000"
 		};
 
     // useEffect(() => { // have to change so it's every five minutes based on the server's clock
@@ -20,16 +20,20 @@ export default class Main extends React.Component {
     // }, []);
 
     toggleButtonState = () => {
-        var url = 'http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?deviceID=12345';
+        var url = 'https://3.12.233.95/allRecent.php?deviceID=12345';
   
         fetch(url)
-          .then(res => res.json())
+            .then((res) => {
+                return res.json();
+            })
           .then((data) => {
-              { this.setState({ 
-                DeviceID: data.DeviceID,
-                Temp: data.Temp,
-                Humidity: data.Humidity
-              }) }
+              {
+                  this.setState({
+                      DeviceID: data.map(data => data.DeviceID),
+                      Temp: data.map(data => data.Temp),
+                      Humidity: data.map(data => data.Humidity)
+                  });
+                  console.log(data.DeviceID);}
           })
     }
 
@@ -172,53 +176,53 @@ export default class Main extends React.Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[0]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[0] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[0] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[1]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[1] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[1] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[2]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[2] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[2] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[3]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[3] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[3] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[4]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[4] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[4] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[5]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[5] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[5] }%</span></td>
                                         </tr>
                                         <tr>
-                                            <td>{ this.state.DeviceID} </td>
+                                            <td>{ this.state.DeviceID[6]} </td>
                                             <td className="txt-oflo">2/23/2022</td>
                                             <td>9:29 PM</td>
-                                            <td className="text-success">{ this.state.Temp } F</td>
-                                            <td><span className="text-success">{ this.state.Humidity }%</span></td>
+                                            <td className="text-success">{ this.state.Temp[6] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[6] }%</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
