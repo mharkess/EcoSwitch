@@ -31,7 +31,7 @@ export default class Main extends React.Component {
 
     handleSubmit = (event) => {
 
-        var url = 'https://3.12.233.95/addUser.php';
+        var url = 'https://3.12.233.95/addUser.php?deviceID=12345';
 
         try {
             fetch(url, {
