@@ -14,9 +14,11 @@ This document will provide the methods to setup a MySQL database and Apache serv
 Current list of API for EcoSwitch along with examples of valid calls. This is organized by the type of request being made. All of the example JSON's are assuming that you are using 
 a JSON stringify function and a HTTP request library like fetch.  
 
-All Requests will come from this URL: `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/`.  
+All Requests will come from this URL: `http://3.12.233.95/`.  
 
-So, to use an API, it would be in the format of: `URL/API`. From the API below, an example would be: `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/addUser.php`
+So, to use an API, it would be in the format of: `URL/API`. From the API below, an example would be: `https://3.12.233.95/addUser.php?deviceId=<id>`
+
+*Note: If HTTPS is giving issues when implementing the API endpoints, an alternative is using HTTP
 
 ### GET Requests
 - `/device_dataUpdate.php`
@@ -24,26 +26,26 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
   - Query Format:
     - `/device_dataUpdate.php?temperature=<temp>&humidity=<humidity>&deviceID=<id>` 
   - Example valid Query:
-    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
+    - `https://3.12.233.95/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
   - **Note: Will be changed to a POST request in the future**
 - `/allUsers.php`
   - Description: Retrieves table of all users in the database (table contains user's email, address and room number).
   - Query Format:
     - `/allUsers.php?deviceID=<id>`
   - Example of valid Query:
-    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/allUsers.php?deviceID=12345`     
+    - `https://3.12.233.95/allUsers.php?deviceID=12345`     
 - `/allRecent.php`
   - Description: Retrieves table of all devices in the database (table contains device ID, most recent temperature of their room and most recent humidity of their room).
   - Query Format:
     - `/allRecent.php?deviceID=<id>`
   - Example valid Query:
-    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/allRecent.php?deviceID=12345`
+    - `https://3.12.233.95/allRecent.php?deviceID=12345`
 - `/tempRequest.php`
   - Description: Retrieves most recent temperature and humidity of a particular device from the database
   - Query Format:
     - `/tempRequest.php?DeviceID=<id>`
   - Example valid Query:
-    - `http://ec2-3-135-202-255.us-east-2.compute.amazonaws.com/tempRequest.php?DeviceID=12345`    
+    - `https://3.12.233.95/tempRequest.php?DeviceID=12345`    
 
 
 ### POST Requests
