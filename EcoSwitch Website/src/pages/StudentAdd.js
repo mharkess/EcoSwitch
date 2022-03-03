@@ -31,7 +31,7 @@ export default class Main extends React.Component {
 
     handleSubmit = (event) => {
 
-        var url = 'https://3.12.233.95/addUser.php?deviceID=12345';
+        var url = 'https://3.12.233.95/addUser.php';
 
         try {
             fetch(url, {
@@ -40,7 +40,7 @@ export default class Main extends React.Component {
                     'Accept': 'application/json',
                     'content-Type': 'application/json'
                 },
-                body: JSON.stringify(this.state)
+                body: JSON.stringify({Location:this.state.Location, Email:this.state.Email, RoomNumber:this.state.RoomNumber})
             })
         } catch (error) {
             this.resp.response = error;
