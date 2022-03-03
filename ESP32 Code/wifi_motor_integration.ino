@@ -24,7 +24,7 @@ Preferences saved_data;
 //Initialization for DHT sensor
 DHT dht(DHTPin, DHTTYPE);
 
-const int stepsPerRevolution = 2048;
+const int stepsPerRevolution = 100;
 
 // Motor Driver Pins
 #define IN1 27
@@ -225,7 +225,7 @@ void factory_reset(){ //clears all saved data and restarts ESP32
 void setup() {
   USE_SERIAL.begin(115200);
   // set the speed at 5 rpm
-  myStepper.setSpeed(5);
+  myStepper.setSpeed(stepsPerRevolution);
   delay(10);
   //intiates process to save important data to flash memory
   saved_data.begin("Ecoswitch_data",false);
