@@ -35,21 +35,22 @@ export default class StudentAdd extends React.Component {
 
         try {
             fetch(url, {
-              method: 'POST',
-              headers: {
-                'Accept': 'application/json',
-                'content-Type': 'application/json'
-              },
-              body: JSON.stringify(this.state)
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify({Location:this.state.Location, Email:this.state.Email, RoomNumber:this.state.RoomNumber})
             })
-          } catch (error) {
+        } catch (error) {
             this.resp.response = error;
             this.forceUpdate();
-          }
+        }
     }
 
     render() {
       return (
+<<<<<<< HEAD
         <React.Fragment> 
             <head>
                 <meta charset="utf-8"/>
@@ -75,6 +76,33 @@ export default class StudentAdd extends React.Component {
                 data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
                 <header className="topbar" data-navbarbg="skin5" style={{background: "rgb(29, 51, 35)"}}>
                 <nav className="navbar top-navbar navbar-expand-md navbar-dark">
+=======
+        <React.Fragment>
+            <head>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta name="keywords"
+                        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template"/>
+                    <meta name="description"
+                        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework"/>
+                    <meta name="robots" content="noindex,nofollow"/>
+                    <title>Ample Admin Lite Template by WrapPixel</title>
+                    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/"/>
+                    
+                    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
+                    
+                    <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet"/>
+                    <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css"/>
+                    
+                    <link href="css/main.min.css" rel="stylesheet"/>
+            </head>
+            <body style={{background: "rgb(243, 249, 245)", height: 600}}>
+            <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+                data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+            <header className="topbar" data-navbarbg="skin5" style={{background: "rgb(29, 51, 35)"}}>
+            <nav className="navbar top-navbar navbar-expand-md navbar-dark">
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
                     <div className="navbar-header" data-logobg="skin6">
                         <a className="navbar-brand" href="home">
                             <b className="logo-icon">
@@ -97,14 +125,24 @@ export default class StudentAdd extends React.Component {
                                 </form>
                             </li>
                             <li>
+<<<<<<< HEAD
                                 <a className="profile-pic" href="profile">
+=======
+                                <a className="profile-pic" href="#">
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
                                         className="img-circle"/><span className="text-white font-medium">Steve</span></a>
                             </li>
                                     </ul>
+<<<<<<< HEAD
                     </div>
                     </nav>
                 </header>
+=======
+                                </div>
+                            </nav>
+                        </header>
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
 
                 <aside className="left-sidebar" data-sidebarbg="skin6">
                 <div className="scroll-sidebar">
@@ -118,7 +156,11 @@ export default class StudentAdd extends React.Component {
                                 </a>
                             </li>
                             <li className="sidebar-item">
+<<<<<<< HEAD
                                 <a className="sidebar-link waves-effect waves-dark sidebar-link" href="DeviceAdjust"
+=======
+                                <a className="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
                                     aria-expanded="false">
                                     <i className="fa fa-user" aria-hidden="true"></i>
                                     <span className="hide-menu">Device Adjustment</span>
@@ -138,6 +180,7 @@ export default class StudentAdd extends React.Component {
                                     <span className="hide-menu">Sign Out</span>
                                 </a>
                             </li>
+<<<<<<< HEAD
                             <li className="text-center p-20 upgrade-btn" style={{width: 150, marginLeft: 43, marginTop: 20}}>
                                 <a nohref onClick={ this.toggleButtonState }
                                     className="btn d-grid btn-success text-white" target="_blank" >
@@ -205,3 +248,55 @@ export default class StudentAdd extends React.Component {
       );
     }
 } 
+=======
+                        </ul>
+                        </nav>
+                    </div>
+            </aside>
+            <div className="page-wrapper" style={{background: "rgb(243, 249, 245)"}}>
+                    <div className="page-breadcrumb bg-white">
+                        <div className="row align-items-center">
+                            <div className="col-lg-3 col-md-4 col-lg-4 col-lg-12">
+                                <h4 className="page-title">Assign Student to EcoSwitch Device</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                <div style={{marginTop: 20}}></div>
+                <center style={{marginLeft: 200}}>
+                <form onSubmit={this.handleSubmit}>
+                <p>Add a student to a dorm and allow them to access that EcoSwitch device by filling out the following information.</p>
+                <div class="form-group">
+                    <label class="col-md-3 text-left">Location</label>
+                    <input for="location" type="location" class="col-md-3 form-control" id="location" aria-describedby="locationHelp" onChange={this.handleChangeLocation}/>
+                    <small id="locationHelp" class="form-text text-muted">Example: 79 Bay State Road</small>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 text-left">Room Number</label>
+                    <input for="roomnumber" type="roomnumber" class="col-md-3 form-control" id="roomnumber"  onChange={this.handleChangeNumber}/>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 text-left">Student Email</label>
+                    <input for="studentemail" type="email" class="col-md-3 form-control" id="studentemail" onChange={this.handleChangeEmail}/>
+                </div>
+                <button type="submit" class="btn btn-success text-white">Submit</button>
+                </form>
+                <br/>
+                </center>
+            </div>
+            <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+            <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="js/app-style-switcher.js"></script>
+            <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+            <script src="js/waves.js"></script>
+            <script src="js/sidebarmenu.js"></script>
+            <script src="js/custom.js"></script>
+            <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+            <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+            <script src="js/pages/dashboards/dashboard1.js"></script>
+            </body>
+        </React.Fragment>
+      );
+      }
+}
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5

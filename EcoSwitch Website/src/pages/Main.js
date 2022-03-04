@@ -1,6 +1,7 @@
 import React, { Component, setState, useEffect } from 'react';
 
 export default class Main extends React.Component {
+<<<<<<< HEAD
     state = {
         DeviceID: [],
         Temp: [],
@@ -8,6 +9,13 @@ export default class Main extends React.Component {
         Address: [],
         RoomNum: []
     };
+=======
+		state = {
+      DeviceID: "000000",
+			Temp: "000000", 
+			Humidity: "000000"
+		};
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
 
     // useEffect(() => { // have to change so it's every five minutes based on the server's clock
     //   const intervalId = setInterval(() => {
@@ -21,8 +29,11 @@ export default class Main extends React.Component {
         var url = 'https://3.12.233.95/allRecent.php?deviceID=12345';
   
         fetch(url)
-          .then(res => res.json())
+            .then((res) => {
+                return res.json();
+            })
           .then((data) => {
+<<<<<<< HEAD
             { 
                 const getProp = prop => obj => obj[prop];
                 const getID = getProp('DeviceID');
@@ -40,6 +51,16 @@ export default class Main extends React.Component {
                 }) 
             }
         })
+=======
+              {
+                  this.setState({
+                      DeviceID: data.map(data => data.DeviceID),
+                      Temp: data.map(data => data.Temp),
+                      Humidity: data.map(data => data.Humidity)
+                  });
+                  console.log(data.DeviceID);}
+          })
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
     }
 
     render() {
@@ -149,12 +170,78 @@ export default class Main extends React.Component {
                             <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                 <h4 className="page-title">Dashboard</h4>
                             </div>
+<<<<<<< HEAD
                             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                                 <div className="d-md-flex">
                                     <ol className="breadcrumb ms-auto" style={{marginTop: -2}}>
                                         <li><a href="#" className="fw-normal">Last Update: 4:35 PM EST</a></li>
                                     </ol>
                                 </div>
+=======
+                            <div className="table-responsive">
+                                <table className="table no-wrap">
+                                    <thead>
+                                        <tr>
+                                            <th className="border-top-0">ID</th>
+                                            <th className="border-top-0">Date</th>
+                                            <th className="border-top-0">Time</th>
+                                            <th className="border-top-0">Temperature</th>
+                                            <th className="border-top-0">Humidity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[0]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[0] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[0] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[1]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[1] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[1] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[2]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[2] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[2] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[3]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[3] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[3] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[4]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[4] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[4] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[5]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[5] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[5] }%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{ this.state.DeviceID[6]} </td>
+                                            <td className="txt-oflo">2/23/2022</td>
+                                            <td>9:29 PM</td>
+                                            <td className="text-success">{ this.state.Temp[6] } F</td>
+                                            <td><span className="text-success">{ this.state.Humidity[6] }%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+>>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
                             </div>
                         </div>
                     </div>
