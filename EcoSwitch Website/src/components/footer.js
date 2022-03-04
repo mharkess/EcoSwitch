@@ -66,7 +66,7 @@ function Footer() {
                     <h3>About EcoSwitch</h3>
                     <p>This product was brought to life by Boston University students in the College of Engineering.</p>
                     <div className="social-links mt-3">
-                    <a href="https://github.com/samarahu/EcoSwitch" className="twitter"><i className="bx bxl-github"></i></a>
+                    <a href="https://github.com/mharkess/EcoSwitch" className="twitter"><i className="bx bxl-github"></i></a>
                     </div>
                 </div>
 

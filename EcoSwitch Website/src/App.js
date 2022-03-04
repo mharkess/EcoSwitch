@@ -7,40 +7,25 @@ import StudentAdd from "./pages/StudentAdd";
 import ErrorPage from "./pages/ErrorPage";
 import StudentApp from "./pages/StudentApp";
 import Register from "./pages/Register";
+import SignUp from "./pages/SignUp";
+import About from "./pages/About";
+import ComponentReplace from "./pages/ComponentReplace";
+import Profile from "./pages/Profile";
+import DeviceAdjust from "./pages/DeviceAdjust";
 
 function App() {
   return (
     <Router>
-      <nav class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#" aria-label="Product">
-          <svg xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            fill="none" 
-            stroke="currentColor" 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            class="d-block mx-auto" 
-            role="img" 
-            viewBox="0 0 24 24">
-              <title>Product</title>
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
-          </svg>
-        </a>
-
-        <Link to="/" className="py-2 d-none d-md-inline-block"> Home </Link>
-        <Link to="/signin" className="py-2 d-none d-md-inline-block"> Sign In </Link>
-        <Link to="/main" className="py-2 d-none d-md-inline-block"> Main </Link>
-        <Link to="/studentadd" className="py-2 d-none d-md-inline-block"> Student Add </Link>
-        <Link to="/studentapp" className="py-2 d-none d-md-inline-block"> Student App </Link>
-        <Link to="/register" className="py-2 d-none d-md-inline-block"> Register </Link>
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/componentreplace" element={<ComponentReplace />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/deviceadjust" element={<DeviceAdjust />} />
         <Route path="/studentadd" element={<StudentAdd />} />
         <Route path="/studentapp" element={<StudentApp />} />
         <Route path="/register" element={<Register />} />

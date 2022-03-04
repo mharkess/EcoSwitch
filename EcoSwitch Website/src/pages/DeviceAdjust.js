@@ -1,10 +1,8 @@
-import React, { Component, setState } from 'react';
+import React from "react";
 
-export default class StudentAdd extends React.Component {
-	state = {
-        Location: null,
-		Email: null,
-        RoomNumber: null
+export default class DeviceAdjust extends React.Component {
+    state = {
+        Location: null
 	};
 
     resp = {
@@ -17,21 +15,9 @@ export default class StudentAdd extends React.Component {
         })
     }
 
-    handleChangeNumber = (event) => {
-        this.setState({ 
-            RoomNumber: event.target.value
-        })
-    }
-
-    handleChangeEmail = (event) => {
-        this.setState({ 
-            Email: event.target.value
-        })
-    }
-
     handleSubmit = (event) => {
 
-        var url = 'https://3.12.233.95/addUser.php';
+        var url = 'https://3.12.233.95/addUser.php'; // change url
 
         try {
             fetch(url, {
@@ -49,8 +35,8 @@ export default class StudentAdd extends React.Component {
     }
 
     render() {
-      return (
-        <React.Fragment> 
+        return (
+            <React.Fragment>
             <head>
                 <meta charset="utf-8"/>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -121,14 +107,14 @@ export default class StudentAdd extends React.Component {
                                 <a className="sidebar-link waves-effect waves-dark sidebar-link" href="DeviceAdjust"
                                     aria-expanded="false">
                                     <i className="fa fa-user" aria-hidden="true"></i>
-                                    <span className="hide-menu">Device Adjustment</span>
+                                    <span className="hide-menu" style={{fontWeight: "bold"}}>Device Adjustment</span>
                                 </a>
                             </li>
                             <li className="sidebar-item">
                                 <a className="sidebar-link waves-effect waves-dark sidebar-link" href="studentadd"
                                     aria-expanded="false">
                                     <i className="fa fa-plus" aria-hidden="true"></i>
-                                    <span className="hide-menu" style={{fontWeight: "bold"}}>Add a Student</span>
+                                    <span className="hide-menu">Add a Student</span>
                                 </a>
                             </li>
                             <li className="sidebar-item">
@@ -137,11 +123,6 @@ export default class StudentAdd extends React.Component {
                                     <i className="fa fa-sign-out-alt" aria-hidden="true"></i>
                                     <span className="hide-menu">Sign Out</span>
                                 </a>
-                            </li>
-                            <li className="text-center p-20 upgrade-btn" style={{width: 150, marginLeft: 43, marginTop: 20}}>
-                                <a nohref onClick={ this.toggleButtonState }
-                                    className="btn d-grid btn-success text-white" target="_blank" >
-                                        Get Data</a>
                             </li>
                         </ul>
 
@@ -152,7 +133,7 @@ export default class StudentAdd extends React.Component {
                     <div className="page-breadcrumb bg-white">
                         <div className="row align-items-center">
                             <div className="col-lg-3 col-lg-4 col-lg-4 col-lg-12">
-                                <h4 className="page-title">Assign a Student to an EcoSwitch Device</h4>
+                                <h4 className="page-title">Device Adjustment</h4>
                             </div>
                         </div>
                     </div>
@@ -162,21 +143,13 @@ export default class StudentAdd extends React.Component {
                             <div className="white-box">
                                 <div className="d-md-flex mb-3">
                                     <br/>
-                                    <center style={{marginLeft: 110}}>
+                                    <center style={{marginLeft: 325}}>
                                     <form onSubmit={this.handleSubmit}>
-                                    <p>Add a student to a dorm and allow them to access that EcoSwitch device by filling out the following information.</p>
+                                    <p>Choose a location to switch off all the devices in.</p>
                                     <div class="form-group">
-                                        <label class="col-md-3 text-center">Location</label>
-                                        <input for="location" type="location" class="col-md-3 form-control" id="location" aria-describedby="locationHelp" onChange={this.handleChangeLocation}/>
+                                        <label class="col-md-5 text-center">Location</label>
+                                        <input for="location" type="location" class="col-md-10 form-control" id="location" aria-describedby="locationHelp" onChange={this.handleChangeLocation}/>
                                         <small id="locationHelp" class="form-text text-muted">Example: 79 Bay State Road</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 text-center">Room Number</label>
-                                        <input for="roomnumber" type="roomnumber" class="col-md-3 form-control" id="roomnumber"  onChange={this.handleChangeNumber}/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 text-center">Student Email</label>
-                                        <input for="studentemail" type="email" class="col-md-3 form-control" id="studentemail" onChange={this.handleChangeEmail}/>
                                     </div>
                                     <button type="submit" class="btn btn-success text-white">Submit</button>
                                     </form>
@@ -186,10 +159,9 @@ export default class StudentAdd extends React.Component {
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
                 </div>
-                
+                </div>
                 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
                 <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
                 <script src="js/app-style-switcher.js"></script>
@@ -201,7 +173,7 @@ export default class StudentAdd extends React.Component {
                 <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
                 <script src="js/pages/dashboards/dashboard1.js"></script>
             </body>
-        </React.Fragment>
-      );
+            </React.Fragment>
+        );
     }
-} 
+}

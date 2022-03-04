@@ -34,16 +34,16 @@ function Header() {
                     <a href=""><img src="images/ecoswitchicon.png" alt="" class="img-fluid"/></a>
                 </div>
 
-                <nav id="navbar" className="navbar">
+                <nav id="navbar" className="navbar" style={{marginTop: 20}}>
                     <ul>
                     <li><a className="active" href="home">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="about">About</a></li>
                     <li className="dropdown"><a href="#"><span>Set Up</span> <i className="bi bi-chevron-down"></i></a>
                         <ul>
                         <li><a href="register">Device Registration</a></li>
                         <li><a href="studentapp">Student Mobile App</a></li>
                         <li><a href="signin">Administrator Website</a></li>
-                        <li><a href="#">Component Replacement</a></li>
+                        <li><a href="componentreplace">Component Replacement</a></li>
                         </ul>
                     </li>
                     </ul>
