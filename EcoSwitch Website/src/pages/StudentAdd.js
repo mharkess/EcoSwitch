@@ -48,7 +48,7 @@ export default class StudentAdd extends React.Component {
             this.resp.response = error;
             this.forceUpdate();
         }
-        window.location.reload();
+        //window.location.reload();
     }
     
     render() {
