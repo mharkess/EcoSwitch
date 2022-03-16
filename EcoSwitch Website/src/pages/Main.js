@@ -20,7 +20,7 @@ export default class Main extends React.Component {
     // }, []);
 
 toggleButtonState = () => {
-    var url = 'http://3.12.233.95/allRecent.php?deviceID=12345';
+    var url = 'https://3.12.233.95/allRecent.php?deviceID=12345';
 
     fetch(url)
         .then((res) => {
