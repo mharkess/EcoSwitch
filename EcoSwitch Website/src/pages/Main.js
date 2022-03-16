@@ -1,7 +1,7 @@
 import React, { Component, setState, useEffect } from 'react';
+import { render } from 'react-dom';
 
 export default class Main extends React.Component {
-<<<<<<< HEAD
     state = {
         DeviceID: [],
         Temp: [],
@@ -9,13 +9,7 @@ export default class Main extends React.Component {
         Address: [],
         RoomNum: []
     };
-=======
-		state = {
-      DeviceID: "000000",
-			Temp: "000000", 
-			Humidity: "000000"
-		};
->>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
+
 
     // useEffect(() => { // have to change so it's every five minutes based on the server's clock
     //   const intervalId = setInterval(() => {
@@ -25,16 +19,15 @@ export default class Main extends React.Component {
     //   return () => clearInterval(intervalId);
     // }, []);
 
-    toggleButtonState = () => {
-        var url = 'https://3.12.233.95/allRecent.php?deviceID=12345';
-  
-        fetch(url)
-            .then((res) => {
-                return res.json();
-            })
-          .then((data) => {
-<<<<<<< HEAD
-            { 
+toggleButtonState = () => {
+    var url = 'https://3.12.233.95/allRecent.php?deviceID=12345';
+
+    fetch(url)
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            {
                 const getProp = prop => obj => obj[prop];
                 const getID = getProp('DeviceID');
                 const getTemp = getProp('Temp');
@@ -42,28 +35,18 @@ export default class Main extends React.Component {
                 const getAddress = getProp('Address');
                 const getRoomNum = getProp('RoomNum');
 
-                this.setState({ 
+                this.setState({
                     DeviceID: data.map(getID),
                     Temp: data.map(getTemp),
                     Humidity: data.map(getHumidity),
                     Address: data.map(getAddress),
                     RoomNum: data.map(getRoomNum)
-                }) 
-            }
+                })
+                console.log(data.map(getID));}
         })
-=======
-              {
-                  this.setState({
-                      DeviceID: data.map(data => data.DeviceID),
-                      Temp: data.map(data => data.Temp),
-                      Humidity: data.map(data => data.Humidity)
-                  });
-                  console.log(data.DeviceID);}
-          })
->>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
-    }
+}
 
-    render() {
+render() {
         return (
             <React.Fragment>
                 <head>
@@ -170,14 +153,14 @@ export default class Main extends React.Component {
                             <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                 <h4 className="page-title">Dashboard</h4>
                             </div>
-<<<<<<< HEAD
+
                             <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                                 <div className="d-md-flex">
                                     <ol className="breadcrumb ms-auto" style={{marginTop: -2}}>
                                         <li><a href="#" className="fw-normal">Last Update: 4:35 PM EST</a></li>
                                     </ol>
                                 </div>
-=======
+
                             <div className="table-responsive">
                                 <table className="table no-wrap">
                                     <thead>
@@ -241,7 +224,7 @@ export default class Main extends React.Component {
                                         </tr>
                                     </tbody>
                                 </table>
->>>>>>> 31e180e4927964170b54cf8943419435c88dfcc5
+
                             </div>
                         </div>
                     </div>
@@ -365,7 +348,8 @@ export default class Main extends React.Component {
                 <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
                 <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
                 <script src="js/pages/dashboards/dashboard1.js"></script>
-                </body>
+                </div>
+                        </body>
             </React.Fragment>
         );
     }
