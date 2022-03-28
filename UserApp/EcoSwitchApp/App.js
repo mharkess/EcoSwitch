@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, ScrollView, FlatList } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -11,6 +11,8 @@ const Stack = createNativeStackNavigator();
 
 const MINUTE_MS = 60000
 
+var firstRender = true;
+
 export default function App() {
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
   const [deviceID, setDeviceID] = useState('12345');
@@ -18,10 +20,10 @@ export default function App() {
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
   const [desiredTemp, setDesiredTemp] = useState('');
   const [status, setStatus] = useState('');
+  const [handle, setHandle] = useState(false);
 
   const recentData_api = `http://3.12.233.95/tempRequest.php?deviceID=${deviceID}`
   const desiredTemp_api = 'http://3.12.233.95/desiredTemp.php'
-
 
   async function updateRecentData() {
     try {
@@ -37,7 +39,7 @@ export default function App() {
       }
 
       setRecentData(responseJSON);
-      setLastUpdated(`Last Updated: ${currentTime()}`)
+      setLastUpdated(`Last Updated: ${currentTime()}`);
 
     } catch (error) {
       console.error(error)
@@ -46,6 +48,7 @@ export default function App() {
 
 
   function sendDesiredTemp() {
+    if (!desiredTemp || desiredTemp == '') return;
     try {
       return fetch(desiredTemp_api, {
         method: 'POST',
@@ -57,6 +60,14 @@ export default function App() {
           "deviceID": deviceID,
           "desiredTemp": String(desiredTemp)
         })
+      })
+      .then(response => {
+        return response.status;
+      })
+      .then(res => {
+        if (res == 200 && desiredTemp) setStatus("Success!")
+        else if (res != 200) setStatus("Connection Error. Please try again.")
+        setTimeout(() => {setStatus('')}, 7000)
       })
       
     } catch (error) {
@@ -84,19 +95,6 @@ export default function App() {
     }
 
     return(h + ':' + m + ' ' + n);
-  }
-
-
-  function setHandler() {
-    var isEmpty = false;
-    if (desiredTemp == '') isEmpty = true;
-
-    sendDesiredTemp(); 
-    setDesiredTemp(''); 
-
-    if (!isEmpty) setStatus('Success!')
-    else setStatus('Empty field')
-    setTimeout(() => {setStatus('')}, 5000)
   }
 
 
@@ -145,18 +143,34 @@ export default function App() {
 
   // needs a logout function to return to login page
   function MainMenu({ navigation }) { 
+    const [enabled, setEnabled] = useState("");
+
+    function setHandler() {
+      setDesiredTemp(enabled);
+      setHandle(!handle)
+    }
+
+    // wait for setHandler to finish
+    useEffect(() => {
+      sendDesiredTemp(); 
+      setDesiredTemp(''); 
+    }, [handle])
+
     // used to periodically refresh data
     useEffect(() => {
-      //updateRecentData();  // currently updates too frequently...
+      if (firstRender) {
+        firstRender = false;
+        updateRecentData()
+      }
       const interval = setInterval(() => {
         updateRecentData()
-        }, MINUTE_MS*5) // 5 minute updates
+        }, MINUTE_MS/12)
       return () => clearInterval(interval);
-    }, []);
+    }, [recentData]);
 
     return(
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessble={false}>
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <TouchableWithoutFeedback keyboardShouldPersistTaps='handled' onPress={Keyboard.dismiss} accessble={false}>
+        <KeyboardAvoidingView keyboardShouldPersistTaps='handled' style={styles.container} behavior="padding">
           <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Login Screen')}>
             <Text style={styles.return_text}>Logout</Text>
           </TouchableOpacity>
@@ -165,7 +179,7 @@ export default function App() {
             <Image source={logo} style={{height:60, width:60}} />
           </TouchableOpacity>
 
-          <KeyboardAvoidingView style={styles.displayBox} behavior="padding">
+          <KeyboardAvoidingView keyboardShouldPersistTaps='handled' style={styles.displayBox} behavior="padding">
             <Text style={styles.tempNum_text}>
               {Math.round(recentData['Temp'])} °{tempMetric}
             </Text>
@@ -182,29 +196,25 @@ export default function App() {
               HUMIDITY
             </Text>
 
-            <TouchableOpacity style={styles.update_button} onPress={() => updateRecentData() }>
-              <Text style={styles.update_text}>Update</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.metric_button} onPress={() => changeTempMetric() }>
-              <Text style={styles.metric_text}>F/C</Text>
+            <TouchableOpacity style={styles.metric_button} onPress={changeTempMetric}>
+              <Text style={styles.metric_text}>°{tempMetric}</Text>
             </TouchableOpacity>
 
             <Text style={styles.update_time_text}>{lastUpdated}</Text>
           </KeyboardAvoidingView>
 
-          <View>
+          <View keyboardShouldPersistTaps='handled'>
           <TextInput 
             style={styles.set_input} 
-            onChangeText={text => setDesiredTemp(text)}
-            value={desiredTemp}
+            value={enabled}
+            onChangeText={(val) => setEnabled(val)}
             placeholder={'Desired Temparture (°' + tempMetric + ')'}
             keyboardType="numeric"
           />
           <Text style={styles.status_text}>{status}</Text>
           </View>
 
-          <TouchableOpacity style={styles.set_button} onPress={() => setHandler()}>
+          <TouchableOpacity style={styles.set_button} onPress={setHandler}>
               <Text style={styles.set_text}>SET</Text>
           </TouchableOpacity>
           

@@ -36,17 +36,6 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       backgroundColor: '#7d947a',
     },
-    update_button: {
-      height: '15%',
-      width: 150,
-      margin: 50,
-      top: 0,
-      left: 100,
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      borderRadius: 4,
-      backgroundColor: '#7d947a',
-    },
     set_button: {
       bottom: -30,
       height: 50,
@@ -85,14 +74,6 @@ const styles = StyleSheet.create({
       letterSpacing: .5,
       color: 'white',
     },
-    update_text: {
-      fontSize: 20,
-      lineHeight: 28,
-      fontWeight: 'bold',
-      alignSelf: 'center',
-      letterSpacing: .5,
-      color: 'white',
-    },
     set_text: {
       fontSize: 20,
       lineHeight: 35,
@@ -103,6 +84,7 @@ const styles = StyleSheet.create({
     },
     metric_text: {
       fontSize: 20,
+      left: 13,
       bottom: 13,
       alignContent: 'center',
       color: 'white',
