@@ -146,6 +146,13 @@ export default function App() {
     const [enabled, setEnabled] = useState("");
 
     function setHandler() {
+      if (tempMetric == 'F') {
+        var conversion = Math.round((enabled - 32) * 5/9)
+        setDesiredTemp(conversion)
+        setHandle(!handle)
+        return
+      }
+
       setDesiredTemp(enabled);
       setHandle(!handle)
     }
