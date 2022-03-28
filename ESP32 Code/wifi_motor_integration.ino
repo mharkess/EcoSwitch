@@ -90,7 +90,8 @@ int wifi_setup(){
     esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)wifi_username.c_str(), strlen(wifi_username.c_str())); //provide identity
     esp_wifi_sta_wpa2_ent_set_username((uint8_t *)wifi_username.c_str(), strlen(wifi_username.c_str())); //provide username --> identity and username is same
     esp_wifi_sta_wpa2_ent_set_password((uint8_t *)wifi_password.c_str(), strlen(wifi_password.c_str())); //provide password
-    esp_wifi_sta_wpa2_ent_enable();
+    esp_wpa2_config_t config = WPA2_CONFIG_INIT_DEFAULT();
+    esp_wifi_sta_wpa2_ent_enable(&config);
     WiFi.begin(ssid.c_str()); //starts process to connect to wifi
 
      //save wifi credentials to memory
@@ -196,7 +197,8 @@ void wifi_quickstart(){ //skips setup process and connects to wifi with saved da
     esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)username.c_str(), strlen(username.c_str())); //provide identity
     esp_wifi_sta_wpa2_ent_set_username((uint8_t *)username.c_str(), strlen(username.c_str())); //provide username --> identity and username is same
     esp_wifi_sta_wpa2_ent_set_password((uint8_t *)password.c_str(), strlen(password.c_str())); //provide password
-    esp_wifi_sta_wpa2_ent_enable();
+    esp_wpa2_config_t config = WPA2_CONFIG_INIT_DEFAULT();
+    esp_wifi_sta_wpa2_ent_enable(&config);
     WiFi.begin(ssid.c_str()); //starts process to connect to wifi
   }
   while (WiFi.status() != WL_CONNECTED) { //Retry connection if failed to connect to wifi

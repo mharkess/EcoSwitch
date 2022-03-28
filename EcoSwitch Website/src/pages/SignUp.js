@@ -1,12 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-//import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../firebase"; not working
-import { useAuthState } from "react-firebase-hooks/auth";
 import Header from '../components/header';
 
-// https://blog.logrocket.com/user-authentication-firebase-react-apps/
-
-class SignIn extends Component {
+class SignUp extends Component {
 
     render() {
         return (
@@ -15,7 +10,7 @@ class SignIn extends Component {
 				<meta charset="utf-8"/>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<meta name="viewport" content="width=device-width, initial-scale=1"/>
-				<title>EcoSwitch Sign In</title>
+				<title>EcoSwitch Sign Up</title>
 				
 				<link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
 				
@@ -30,16 +25,23 @@ class SignIn extends Component {
                 <main>
                 <div className="login-block">
                     <img src="images/ecoswitchicon.png" alt="EcoSwitch Icon" style={{height: 70}}/>
-                    <h1>Log into your account</h1>
+                    <h1>Sign up for an account</h1>
 
                     <form action="#">
+
+                    <div className="form-group">
+                        <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user ti-user"></i></span>
+                        <input type="text" className="form-control" placeholder="Your name"/>
+                        </div>
+                    </div>
                     
                     <hr className="hr-xs"/>
 
                     <div className="form-group">
                         <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-envelope ti-email"></i></span>
-                        <input type="text" className="form-control" placeholder="Email address"/>
+                        <input type="text" className="form-control" placeholder="Your email address"/>
                         </div>
                     </div>
                     
@@ -48,14 +50,14 @@ class SignIn extends Component {
                     <div className="form-group">
                         <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-lock ti-unlock"></i></span>
-                        <input type="password" className="form-control" placeholder="Password"/>
+                        <input type="password" className="form-control" placeholder="Choose a password"/>
                         </div>
                     </div>
 
-                    <button className="btn btn-success btn-block" type="submit">Sign in</button>
+                    <button className="btn btn-success btn-block" type="submit">Sign up</button>
 
                     <div className="login-footer">
-                        <h6>Or sign in with</h6>
+                        <h6>Or register with</h6>
                         <ul className="social-icons">
                         <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
                         <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
@@ -67,7 +69,7 @@ class SignIn extends Component {
                 </div>
 
                 <div className="login-links">
-                    <p className="text-center">Don't have an account? <a className="txt-brand" href="signup">Sign Up</a></p>
+                    <p className="text-center">Already have an account? <a className="txt-brand" href="signin">Sign In</a></p>
                 </div>
 
                 </main>
@@ -77,4 +79,4 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+export default SignUp;

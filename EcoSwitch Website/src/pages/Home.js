@@ -1,4 +1,5 @@
 import React from "react";
+import Header from '../components/header';
 
 function Home() {
     return (
@@ -27,31 +28,7 @@ function Home() {
             </head>
 
             <body>
-            <header id="header" className="d-flex align-items-center">
-                <div className="container d-flex justify-content-between align-items-center">
-
-                <div className="logo">
-                    <a href=""><img src="images/ecoswitchicon.png" alt="" class="img-fluid"/></a>
-                </div>
-
-                <nav id="navbar" className="navbar">
-                    <ul>
-                    <li><a className="active" href="home">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li className="dropdown"><a href="#"><span>Set Up</span> <i className="bi bi-chevron-down"></i></a>
-                        <ul>
-                        <li><a href="register">Device Registration</a></li>
-                        <li><a href="studentapp">Student Mobile App</a></li>
-                        <li><a href="signin">Administrator Website</a></li>
-                        <li><a href="#">Component Replacement</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-                    <i className="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-
-                </div>
-            </header>
+            <Header />
 
             <section id="hero">
             <div className="hero-container">

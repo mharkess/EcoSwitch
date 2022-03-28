@@ -9607,14 +9607,15 @@ Notify
         padding: 0 10px 0 10px;
         background: #fff; }
         .topbar .top-navbar .navbar-header .navbar-brand .logo-icon {
-          margin-right: 5px; }
+          margin-right: 5px;
+          margin-bottom: 10px }
     .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
       padding: 0px 15px;
       font-size: 0.875rem;
       line-height: 64px;
       height: 64px; }
     .topbar .top-navbar .navbar-nav > .nav-item:hover {
-      background: rgba(0, 0, 0, 0.05); }
+      background: rgba(34, 117, 49, 0.05); }
   .topbar .user-dd, .topbar .mailbox {
     min-width: 280px; }
   .topbar .nav-toggler, .topbar .topbartoggler {
@@ -9625,8 +9626,8 @@ Notify
   z-index: 110;
   width: 100%;
   top: -1px;
-  -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
-  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 1px 0px 20px rgba(34, 117, 49, 0.08);
+  box-shadow: 1px 0px 20px rgba(34, 117, 49, 0.08);
   display: none;
   left: 0px; }
   .search-box .app-search .form-control {
