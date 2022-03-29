@@ -33,7 +33,7 @@ export default class StudentAdd extends React.Component {
     handleSubmit = (event) => {
 
         event.preventDefault();
-        var url = 'https://3.12.233.95/addUser.php';
+        var url = 'https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/addUser';
 
         try {
             fetch(url, {
