@@ -14,9 +14,9 @@ This document will provide the methods to setup a MySQL database and Apache serv
 Current list of API for EcoSwitch along with examples of valid calls. This is organized by the type of request being made. All of the example JSON's are assuming that you are using 
 a JSON stringify function and a HTTP request library like fetch.  
 
-All Requests will come from this URL: `http://3.12.233.95/`.  
+All Requests will come from this URL: `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/`.  
 
-So, to use an API, it would be in the format of: `URL/API`. From the API below, an example would be: `https://3.12.233.95/addUser.php?deviceId=<id>`
+So, to use an API, it would be in the format of: `URL/API`. From the API below, an example would be: `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/addUser?deviceId=<id>`
 
 *Note: If HTTPS is giving issues when implementing the API endpoints, an alternative is using HTTP
 
@@ -28,38 +28,51 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
   - Example valid Query:
     - `https://3.12.233.95/device_dataUpdate.php?temperature=22.4&humidity=6.5&deviceID=12345`
   - **Note: Will be changed to a POST request in the future**
-- `/allUsers.php`
+- `/allUsers`
   - Description: Retrieves table of all users in the database (table contains user's email, address and room number).
   - Query Format:
-    - `/allUsers.php?deviceID=<id>`
+    - `/allUsers?deviceID=<id>`
   - Example of valid Query:
-    - `https://3.12.233.95/allUsers.php?deviceID=12345`     
-- `/allRecent.php`
+    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/allUsers?deviceID=12345`     
+- `/allRecent`
   - Description: Retrieves table of all devices in the database (table contains device ID, most recent temperature of their room and most recent humidity of their room).
   - Query Format:
-    - `/allRecent.php?deviceID=<id>`
+    - `/allRecent?deviceID=<id>`
   - Example valid Query:
-    - `https://3.12.233.95/allRecent.php?deviceID=12345`
-- `/tempRequest.php`
+    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/allRecent?deviceID=12345`
+- `/tempRequest`
   - Description: Retrieves most recent temperature and humidity of a particular device from the database
   - Query Format:
     - `/tempRequest.php?DeviceID=<id>`
   - Example valid Query:
-    - `https://3.12.233.95/tempRequest.php?DeviceID=12345`    
+    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/tempRequest?DeviceID=12345`    
 
 
 ### POST Requests
-- `/addUser.php`
+- `/addUser`
   - Description: Adds users to a table relating users to the room and address that they are currently residing.
-  - Example valid JSON to send:
-    - {"Email": "example@gmail.com", "Location": "123 Washington St", "RoomNum": "1234"} 
-- `/adminTempRange.php`
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/addUser`
+  - Example valid JSON to send in body:
+    - {"Email": "example@gmail.com", "Location": "123 Washington St", "RoomNumber": "1234"} 
+- `/adminTempRange`
   - Description: Changes the acceptable temperature range of a room in database and changes them in groups (rooms are grouped by address). Can change min, max or both per call.
-  - Example valid JSON to send: 
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/adminTempRange`
+  - Example valid JSON to send in body: 
     - {"Location": "123 Washington St", "mintemp": "5", "maxtemp": "25"} 
     - {"Location": "123 Washington St", "mintemp": "5"}
     - {"Location": "123 Washington St", "maxtemp": "25"}
-- `/desiredTemp.php`
+- `/desiredTemp`
   - Description: Changes the user's desired temperature of the room in the database
-  - Example valid JSON to send:
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/desiredTemp`
+  - Example valid JSON to send in body:
     - {"DeviceID": "12345", "desiredTemp": "10"}
+- `/changeState`
+  - Description: Locks all devices in a location to a setting of the admin's choosing
+    - Note: States are defined as: -1,0,1,2,3. Any value greater than -1 will lock devices to a particular setting. State -1 allows state to be changed by student input. 
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/changeState`
+  - Example valid JSON to send in body:
+    - {"Location": "25 Bay State Road", "State": "0"}
