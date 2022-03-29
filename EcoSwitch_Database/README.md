@@ -76,3 +76,9 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
     -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/changeState`
   - Example valid JSON to send in body:
     - {"Location": "25 Bay State Road", "State": "0"}
+- `/removeUser`
+  - Description: Removes User from database, user will no longer to be able to control a device
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/removeUser`
+  - Example valid JSON to send in body:
+    - {"Location": "TEST", "Email": "TEST@bu.edu", "RoomNumber": "101"}
