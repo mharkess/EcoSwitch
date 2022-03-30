@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import DeviceAdjust from "./pages/DeviceAdjust";
 
 function App() {
+
   return (
     <Router>
       <Routes>

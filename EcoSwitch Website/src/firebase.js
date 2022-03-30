@@ -1,22 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-    GoogleAuthProvider,
-    getAuth,
-    signInWithPopup,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    sendPasswordResetEmail,
-    signOut,
-} from "firebase/auth";
-import {
-    getFirestore,
-    query,
-    getDocs,
-    collection,
-    where,
-    addDoc,
-} from "firebase/firestore";
+import firebase from "firebase/compat/app";
+import 'firebase/compat/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC5Ih6gZI--d9e52hdAr9Jo4ttxR_yi9jw",
@@ -28,79 +11,12 @@ const firebaseConfig = {
     measurementId: "G-N938QZ6DRT"
 };
 
-const analytics = getAnalytics(app);
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+// Initialize Firebase 
+firebase.initializeApp(firebaseConfig);
 
-const googleProvider = new GoogleAuthProvider();
+export const auth = firebase.auth();
 
-const signInWithGoogle = async () => {
-  try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
-        email: user.email,
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
 
-const logInWithEmailAndPassword = async (email, password) => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-};
-
-const registerWithEmailAndPassword = async (name, email, password) => {
-    try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      const user = res.user;
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name,
-        authProvider: "local",
-        email,
-      });
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-};
-
-const sendPasswordReset = async (email) => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      alert("Password reset link sent!");
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-};
-
-const logout = () => {
-    signOut(auth);
-};
-
-export {
-    auth,
-    db,
-    signInWithGoogle,
-    logInWithEmailAndPassword,
-    registerWithEmailAndPassword,
-    sendPasswordReset,
-    logout,
-    signInWithEmailAndPassword
-};
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
