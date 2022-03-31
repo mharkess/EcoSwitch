@@ -43,9 +43,17 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
 - `/tempRequest`
   - Description: Retrieves most recent temperature and humidity of a particular device from the database
   - Query Format:
-    - `/tempRequest.php?DeviceID=<id>`
+    - `/tempRequest?DeviceID=<id>`
   - Example valid Query:
-    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/tempRequest?DeviceID=12345`    
+    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/tempRequest?DeviceID=12345` 
+- `/getUser`
+  - Description: Retrieves all information related to queried user (Email, Address, Room Number and DeviceID)
+  - Query Format:
+    - `/getUser?email=<email>`
+  - Example valid Query:
+    - `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/getUser?email=bob@bu.edu`
+  - Return Value Format:
+    - {"Student": "TEST@bu.edu", "Address": "101 Bay State Rd", "RoomNumber": "101", "DeviceID": "12345"}    
 
 
 ### POST Requests
