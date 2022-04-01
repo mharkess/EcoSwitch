@@ -47,10 +47,10 @@ export default function App() {
   }
 
 
-  function sendDesiredTemp() {
+  async function sendDesiredTemp() {
     if (!desiredTemp || desiredTemp == '') return;
     try {
-      return fetch(desiredTemp_api, {
+      return await fetch(desiredTemp_api, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -67,7 +67,7 @@ export default function App() {
       .then(res => {
         if (res == 200 && desiredTemp) setStatus("Success!")
         else if (res != 200) setStatus("Connection Error. Please try again.")
-        setTimeout(() => {setStatus('')}, 7000)
+        setTimeout(() => {setStatus('')}, 6000)
       })
       
     } catch (error) {
@@ -171,7 +171,7 @@ export default function App() {
       }
       const interval = setInterval(() => {
         updateRecentData()
-        }, MINUTE_MS/12)
+        }, MINUTE_MS/6)
       return () => clearInterval(interval);
     }, [recentData]);
 
