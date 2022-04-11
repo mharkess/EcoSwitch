@@ -157,7 +157,8 @@ export default function App() {
         const googleUser = await fetchUserGoogleInfo(access_token);
         var googleEmail = googleUser.email;
 
-        // if (!String(googleEmail).includes('@bu.edu')) {
+        // can set to accept bu emails only
+        // if (googleUser.hd != "bu.edu") {
         //   return;
         // }
 
