@@ -11,10 +11,9 @@ const styles = StyleSheet.create({
     logo_text: {
       width: 220, 
       height: 220,
-      position: 'absolute',
-      bottom: 510,
-      alignItems:'center',
       resizeMode: 'contain',
+      alignSelf: 'center',
+      bottom: 50,
     },
     logo: {
       width: 5, 
@@ -27,13 +26,11 @@ const styles = StyleSheet.create({
     },
     button: {
       height: '5%',
-      position: 'absolute',
-      bottom: 314,
-      left: 45,
-      width: 150,
+      width: 252,
       paddingVertical: 12,
       paddingHorizontal: 32,
       borderRadius: 4,
+      alignSelf: 'center',
       backgroundColor: '#7d947a',
     },
     set_button: {
