@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, TextInput, Pressable, Image, TouchableOpacity, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, ScrollView, FlatList } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native';
+import * as Google from 'expo-auth-session/providers/google'
 
 import logo_text from './assets/ecoswitch_icon_text.png';
 import logo from './assets/ecoswitch_icon_white.png';
@@ -15,12 +16,16 @@ var firstRender = true;
 
 export default function App() {
   const [recentData, setRecentData] = useState( {"Temp": "0", "Humidity": "0"} );
-  const [deviceID, setDeviceID] = useState('12345');
+  const [deviceID, setDeviceID] = useState('');
   const [tempMetric, setTempMetric] = useState('F');
   const [lastUpdated, setLastUpdated] = useState('Last Updated: ---');
   const [desiredTemp, setDesiredTemp] = useState('');
   const [status, setStatus] = useState('');
   const [handle, setHandle] = useState(false);
+
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    expoClientId: '912777404682-574ej0sp9ctnll50hjctsvlb101aegb2.apps.googleusercontent.com',
+  });
 
   const recentData_api = `http://3.12.233.95/tempRequest.php?deviceID=${deviceID}`
   const desiredTemp_api = 'http://3.12.233.95/desiredTemp.php'
@@ -113,27 +118,73 @@ export default function App() {
 
 
   function LoginScreen({ navigation }){
+    var access_token;
+
+    async function fetchUserGoogleInfo(token) {
+      try {
+        const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+        });
+      
+        return await response.json();
+    } catch(error) {
+      console.error(error)
+    }
+    }
+
+    async function retrieveUserInfo(token) {
+      try {
+        const response = await fetch(`https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/getUser?email=${token}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+        });
+      
+        return await response.json();
+    } catch(error) {
+      console.error(error)
+    }
+    }
+
+    async function retrieveDeviceID(){
+      try {
+        const googleUser = await fetchUserGoogleInfo(access_token);
+        var googleEmail = googleUser.email;
+
+        // if (!String(googleEmail).includes('@bu.edu')) {
+        //   return;
+        // }
+
+        var userInfo = await retrieveUserInfo(googleEmail)
+        setDeviceID(String(userInfo.DeviceID))
+
+        if (deviceID && deviceID != '') {
+          navigation.navigate('Main Menu')
+        }
+      } catch(error) {
+        console.error(error)
+      }
+    }
+
+    useEffect(() => {
+      if (response?.type === 'success') {
+        access_token = response.authentication.accessToken;
+        retrieveDeviceID();
+      }
+    }, [response]);
+
     return(
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessble={false}>
         <View style={styles.container}>
           <Image source={logo_text} style={styles.logo_text} />
-
-          {/* will need some functions here for Google Auth */}
-          <TextInput 
-            style={styles.input} 
-            onBlur={Keyboard.dismiss} 
-            placeholder="Username" 
-          />
-
-          <TextInput 
-            style={styles.input} 
-            onBlur={Keyboard.dismiss} 
-            secureTextEntry={true} 
-            placeholder="Password" 
-          />
-          
-          <Pressable style={styles.button} onPress={() => navigation.push('Main Menu')}>
-            <Text style={styles.text}>Continue</Text>
+          <Pressable style={styles.button} onPress={() => promptAsync()}>
+            <Text style={styles.text}>Sign in with Google</Text>
           </Pressable>
         </View>
       </TouchableWithoutFeedback>
@@ -144,6 +195,10 @@ export default function App() {
   // needs a logout function to return to login page
   function MainMenu({ navigation }) { 
     const [enabled, setEnabled] = useState("");
+
+    function handleLogOut() {
+      navigation.navigate('Login Screen')
+    }
 
     function setHandler() {
       if (tempMetric == 'F') {
@@ -178,7 +233,7 @@ export default function App() {
     return(
       <TouchableWithoutFeedback keyboardShouldPersistTaps='handled' onPress={Keyboard.dismiss} accessble={false}>
         <KeyboardAvoidingView keyboardShouldPersistTaps='handled' style={styles.container} behavior="padding">
-          <TouchableOpacity style={styles.return_button} onPress={() => navigation.push('Login Screen')}>
+          <TouchableOpacity style={styles.return_button} onPress={() => handleLogOut()}>
             <Text style={styles.return_text}>Logout</Text>
           </TouchableOpacity>
 

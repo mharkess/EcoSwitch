@@ -3,6 +3,7 @@
     "name": "EcoSwitchApp",
     "slug": "EcoSwitchApp",
     "version": "1.0.0",
+    "scheme": "testing",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
