@@ -25,6 +25,8 @@ int rounds = 0;
 float Tf;
 float Ti;
 float Td;
+int serverLock;
+bool lock;
 
 char* webssid = "EcoSwitch";
 char* webpassword = "12345678";
@@ -458,7 +460,7 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
       return;
     }
     if(state < 3 && ((Tf+ temp_slope) > Td)){
-      myStepper.step(stepsPerRevolution);
+      myStepper.step(-stepsPerRevolution);
       state++;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(saved_data.getInt("DialState")));
@@ -466,7 +468,7 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
     }
     if (state == 3 && ((Tf+ temp_slope) > Td)){ //if on lowest setting: State 3, will move to State 0 to turn off
       for (int i = state; i > 0; i--){
-        myStepper.step(-stepsPerRevolution);
+        myStepper.step(stepsPerRevolution);
         Serial.println("Current Dial State: " + String(i-1));
       }
       saved_data.putInt("DialState", 0);
@@ -476,7 +478,7 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
   if(Td > Tf){
     //Decrease Dial Position (Increase Temp)
     if(state > 1 && (Tf+ temp_slope < Td)){ //predicts temp for the next minute
-      myStepper.step(-stepsPerRevolution);
+      myStepper.step(stepsPerRevolution);
       state--;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(state));
@@ -484,7 +486,7 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
     }
     if (state == 0 && ((Tf+ temp_slope) < Td)){ //if off: State 0, will move to State 3 to turn on
       for (int i = state; i < 3; i++){
-        myStepper.step(stepsPerRevolution);
+        myStepper.step(-stepsPerRevolution);
         Serial.println("Current Dial State: " + String(i+1));
       }
       saved_data.putInt("DialState", 3);
@@ -499,7 +501,7 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
 void setup() {
   USE_SERIAL.begin(115200);
   // set the speed at 5 rpm
-  myStepper.setSpeed(stepsPerRevolution);
+  myStepper.setSpeed(250);
   delay(10);
   //intiates process to save important data to flash memory
   saved_data.begin("Ecoswitch_data",false);
@@ -561,8 +563,17 @@ void loop() {
             // file found at server
             if(httpCode == HTTP_CODE_OK) {
                 String payload = https.getString(); //gets string message server sends back
+                int seperator = payload.indexOf(" ");
                 Serial.println("Desired Temp is: " + String(payload.toFloat()) +" C");
-                Td = payload.toFloat();
+                Td = payload.substring(0,seperator).toFloat();
+                serverLock = payload.substring(seperator + 1, payload.length() - 1).toInt();
+                if (serverLock == 0){
+                  lock = true;
+                }
+                else{
+                  lock = false;
+                }
+                
             }
         } else {
             USE_SERIAL.printf("[HTTP] GET... failed, error: %s\n", https.errorToString(httpCode).c_str());
@@ -574,7 +585,7 @@ void loop() {
     }
     if (rounds >= 2){ //executes every ~1 min
       Tf = t;
-      dialAlgorithm(Ti,Tf,Td,rounds,false);
+      dialAlgorithm(Ti,Tf,Td,rounds,lock);
       rounds = 0;
     }else{
       rounds += 1;
