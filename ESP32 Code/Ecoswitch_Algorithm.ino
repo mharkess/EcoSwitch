@@ -437,12 +437,12 @@ void factory_reset(){ //clears all saved data and restarts ESP32
 }
 //---------------------------------------------------------------------------------
 void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
-  if (saved_data.getString("DialState", "") == ""){ //assumes dials inital state is 0 (off)
+  if (saved_data.getInt("DialState", -1) == -1){ //assumes dials inital state is 0 (off)
     saved_data.putInt("DialState", 0);
   }
+  int state = saved_data.getInt("DialState");
   float temp_slope = (rounds/10) *(Tf - Ti); //Linear approximation of temp change over 5 min 
   if (lock){ //locks device in off position
-    int state = saved_data.getInt("DialState");
     for (int i = state; i > 0; i--){
       myStepper.step(-stepsPerRevolution);
     }
@@ -450,26 +450,44 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
     Serial.println("DEVICE IS LOCKED! Contact Administrator for details.");
     return;
   }
-  if (Td > Tf){
-    //Increase Dial Position
-    int state = saved_data.getInt("DialState");
+  if (Td < Tf){
+    //Increase Dial Position (Decrease Temp)
     Serial.println("Predicted Temp: " + String(Tf + temp_slope));
-    if(state < 3 && ((Tf+ temp_slope) < Td)){
+    if (state == 0){
+      Serial.println("Current Dial State: " + String(state));
+      return;
+    }
+    if(state < 3 && ((Tf+ temp_slope) > Td)){
       myStepper.step(stepsPerRevolution);
-      state = state + 1;
+      state++;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(saved_data.getInt("DialState")));
       return;
     }
+    if (state == 3 && ((Tf+ temp_slope) > Td)){ //if on lowest setting: State 3, will move to State 0 to turn off
+      for (int i = state; i > 0; i--){
+        myStepper.step(-stepsPerRevolution);
+        Serial.println("Current Dial State: " + String(i-1));
+      }
+      saved_data.putInt("DialState", 0);
+      return;
+    }
   }
-  if(Td < Tf){
-    //Decreasae Dial Position
-     int state = saved_data.getInt("DialState");
-    if(state > 0 && (Tf+ temp_slope > Td)){ //predicts temp for the next minute
+  if(Td > Tf){
+    //Decrease Dial Position (Increase Temp)
+    if(state > 1 && (Tf+ temp_slope < Td)){ //predicts temp for the next minute
       myStepper.step(-stepsPerRevolution);
-      state = state - 1;
+      state--;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(state));
+      return;
+    }
+    if (state == 0 && ((Tf+ temp_slope) < Td)){ //if off: State 0, will move to State 3 to turn on
+      for (int i = state; i < 3; i++){
+        myStepper.step(stepsPerRevolution);
+        Serial.println("Current Dial State: " + String(i+1));
+      }
+      saved_data.putInt("DialState", 3);
       return;
     }
   }
@@ -511,6 +529,8 @@ void loop() {
           // Check if any reads failed and exit early (to try again).
         if (isnan(h) || isnan(t)) {
           Serial.println(F("Failed to read from DHT sensor!"));
+          t = 0;
+          h = 0;
         }
         USE_SERIAL.print("Current Humidity is: "+ String(h) + "%");
         USE_SERIAL.print("\n");
@@ -560,5 +580,6 @@ void loop() {
       rounds += 1;
     }
 
+    Serial.println("--------------------------------------------------------------------------------------------------------");
     delay(6000); //Time between measurements (6 seconds)
 }
