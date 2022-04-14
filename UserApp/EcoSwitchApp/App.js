@@ -180,11 +180,19 @@ export default function App() {
       }
     }, [response]);
 
+    /*
+    Sign in button currently uses expo.io as proxy to use Google AuthSession
+    To directly use google.com, pass useProxy: false to promptAsync()
+    However, there is a known bug that this leads to failure using the current version
+    of expo-auth-session/providers/google.
+
+    For now
+    */
     return(
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessble={false}>
         <View style={styles.container}>
           <Image source={logo_text} style={styles.logo_text} />
-          <Pressable style={styles.button} onPress={() => promptAsync()}>
+          <Pressable style={styles.button} onPress={() => promptAsync()}> 
             <Text style={styles.text}>Sign in with Google</Text>
           </Pressable>
         </View>
@@ -227,7 +235,7 @@ export default function App() {
       }
       const interval = setInterval(() => {
         updateRecentData()
-        }, MINUTE_MS/6)
+        }, MINUTE_MS/12)
       return () => clearInterval(interval);
     }, [recentData]);
 
