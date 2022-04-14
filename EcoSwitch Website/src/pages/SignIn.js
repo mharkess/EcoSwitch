@@ -1,13 +1,26 @@
-import React, { Component, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { signInWithGoogle } from '../firebase';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth, signInWithGoogle } from '../components/firebase/firebase';
 import Header from '../components/header';
 
-// https://blog.logrocket.com/user-authentication-firebase-react-apps/
+function SignIn () {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPass, setLoginPass] = useState("");
 
-class SignIn extends Component {
-  render() {
+  const navigate = useNavigate();
+
+  const login = async (e) => {
+    try {
+      e.preventDefault();
+      const user = await signInWithEmailAndPassword(auth, loginEmail, loginPass);
+      navigate('/main')
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
     return (
       <React.Fragment>
         <head>
@@ -34,20 +47,20 @@ class SignIn extends Component {
                 <div className="form-group">
                   <div className="input-group">
                     <span className="input-group-addon"><i className="fa fa-envelope ti-email"></i></span>
-                    <input type="text" className="form-control" placeholder="Email address"/>
+                    <input type="text" className="form-control" placeholder="Email address"  onChange={(event) => {setLoginEmail(event.target.value)}}/>
                   </div>
                 </div>
                 <hr className="hr-xs"/>
                 <div className="form-group">
                   <div className="input-group">
                     <span className="input-group-addon"><i className="fa fa-lock ti-unlock"></i></span>
-                    <input type="password" className="form-control" placeholder="Password"/>
+                    <input type="password" className="form-control" placeholder="Password"  onChange={(event) => {setLoginPass(event.target.value)}}/>
                   </div>
                 </div>
-                <button className="btn btn-success btn-block" type="submit">Sign in</button>
+                <button className="btn btn-success btn-block" type="submit" onClick={ login }>Sign in</button>
                 <div className="login-footer">
                   <h6>Or</h6>
-                  <button className="button" onClick={ signInWithGoogle } style={{ padding: 10 }}><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
+                  <button className="button" style={{ padding: 10 }} onClick={ signInWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
                 </div>
               </form>
             </div>
@@ -57,8 +70,7 @@ class SignIn extends Component {
           </main>
         </body>
     </React.Fragment>
-    );
-  }
+  );
 }
 
 export default SignIn;
