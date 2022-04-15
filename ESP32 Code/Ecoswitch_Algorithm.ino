@@ -9,6 +9,9 @@
 #include <stdio.h>
 #include <Stepper.h>
 #include <WebServer.h>
+#include "EcoswitchClient.h"
+#include "EcoswitchMain.h"
+#include "EcoswitchAdmin.h"
 
 //DHT sensor
 uint8_t DHTPin = 13;
@@ -27,6 +30,8 @@ float Ti;
 float Td;
 int serverLock;
 bool lock;
+int stepsize = 15;
+bool runserver = false;
 
 char* webssid = "EcoSwitch";
 char* webpassword = "12345678";
@@ -38,11 +43,13 @@ String winame;
 String pass;
 String user;
 bool continueSetup = false;
+bool desiredLocal = false;
+WiFiClient clien;
 
 //Initialization for DHT sensor
 DHT dht(DHTPin, DHTTYPE);
 
-const int stepsPerRevolution = 200;
+const int stepsPerRevolution = 100;
 
 // Motor Driver Pins
 #define IN1 27
@@ -51,7 +58,7 @@ const int stepsPerRevolution = 200;
 #define IN4 33
 #define DCMOTORDRIVERL298_PIN_ENA  32
 // initialize the stepper library
-Stepper myStepper(stepsPerRevolution, IN1, IN3, IN2, IN4);
+Stepper myStepper(stepsPerRevolution, 27, 26, 25, 33);
 
 //Webserver Pages and Handlers
 
@@ -78,234 +85,55 @@ void handleSave() {
   }
   webserver.send(200, "text/plain", str.c_str());
 }
-//---------------------------------------------------------
-static const char PROGMEM EXAMPLE_HTML[] = R"rawliteral(
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                color: #434343;
-                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-                font-size: 14px;
-                line-height: 1.42857142857143;
-                padding: 20px;
-            }
-            .container {
-                margin: 0 auto;
-                max-width: 400px;
-            }
-            form .field-group {
-                box-sizing: border-box;
-                clear: both;
-                padding: 4px 0;
-                position: relative;
-                margin: 1px 0;
-                width: 100%;
-            }
-            form .field-group > label {
-                color: #757575;
-                display: block;
-                margin: 0 0 5px 0;
-                padding: 5px 0 0;
-                position: relative;
-                word-wrap: break-word;
-            }
-            input[type=text] {
-                background: #fff;
-                border: 1px solid #d0d0d0;
-                border-radius: 2px;
-                box-sizing: border-box;
-                color: #434343;
-                font-family: inherit;
-                font-size: inherit;
-                height: 2.14285714em;
-                line-height: 1.4285714285714;
-                padding: 4px 5px;
-                margin: 0;
-                width: 100%;
-            }
-            input[type=text]:focus {
-                border-color: #4C669F;
-                outline: 0;
-            }
-            .button-container {
-                box-sizing: border-box;
-                clear: both;
-                margin: 1px 0 0;
-                padding: 4px 0;
-                position: relative;
-                width: 100%;
-            }
-            button[type=submit] {
-                box-sizing: border-box;
-                background: #f5f5f5;
-                border: 1px solid #bdbdbd;
-                border-radius: 2px;
-                color: #434343;
-                cursor: pointer;
-                display: inline-block;
-                font-family: inherit;
-                font-size: 14px;
-                font-variant: normal;
-                font-weight: 400;
-                height: 2.14285714em;
-                line-height: 1.42857143;
-                margin: 0;
-                padding: 4px 10px;
-                text-decoration: none;
-                vertical-align: baseline;
-                white-space: nowrap;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1 style="text-align: center;">EcoSwitch Wifi Details</h1>
-            <form method="post" action="/save">
-                <div class="field-group">
-                    <label>SSID</label>
-                    <input name="ssid" type="text" length=32>
-                </div>
-                <div class="field-group">
-                    <label>Password</label>
-                    <input name="password" type="text" length=64>
-                </div>
-                <div class="button-container">
-                    <button type="submit">Save</button
-                </div>
-            </form>
-              <form action="/enterprise">
-             <div class="button-container">
-                    <button type="submit">Go To Enterprise Setup</button
-                </div>
-                </form>
-        </div>
-    </body>
-</html>
-)rawliteral";
 
 //---------------------------------------------------------
 void handleExample() {
   webserver.send(200, "text/html", EXAMPLE_HTML);
 }
 
-//---------------------------------------------------------
-static const char PROGMEM ENTERPRISE_HTML[] = R"rawliteral(
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                color: #434343;
-                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-                font-size: 14px;
-                line-height: 1.42857142857143;
-                padding: 20px;
-            }
-            .container {
-                margin: 0 auto;
-                max-width: 400px;
-            }
-            form .field-group {
-                box-sizing: border-box;
-                clear: both;
-                padding: 4px 0;
-                position: relative;
-                margin: 1px 0;
-                width: 100%;
-            }
-            form .field-group > label {
-                color: #757575;
-                display: block;
-                margin: 0 0 5px 0;
-                padding: 5px 0 0;
-                position: relative;
-                word-wrap: break-word;
-            }
-            input[type=text] {
-                background: #fff;
-                border: 1px solid #d0d0d0;
-                border-radius: 2px;
-                box-sizing: border-box;
-                color: #434343;
-                font-family: inherit;
-                font-size: inherit;
-                height: 2.14285714em;
-                line-height: 1.4285714285714;
-                padding: 4px 5px;
-                margin: 0;
-                width: 100%;
-            }
-            input[type=text]:focus {
-                border-color: #4C669F;
-                outline: 0;
-            }
-            .button-container {
-                box-sizing: border-box;
-                clear: both;
-                margin: 1px 0 0;
-                padding: 4px 0;
-                position: relative;
-                width: 100%;
-            }
-            button[type=submit] {
-                box-sizing: border-box;
-                background: #f5f5f5;
-                border: 1px solid #bdbdbd;
-                border-radius: 2px;
-                color: #434343;
-                cursor: pointer;
-                display: inline-block;
-                font-family: inherit;
-                font-size: 14px;
-                font-variant: normal;
-                font-weight: 400;
-                height: 2.14285714em;
-                line-height: 1.42857143;
-                margin: 0;
-                padding: 4px 10px;
-                text-decoration: none;
-                vertical-align: baseline;
-                white-space: nowrap;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1 style="text-align: center;">EcoSwitch Enterprise Wifi Details</h1>
-            <form method="post" action="/save">
-                <div class="field-group">
-                    <label>SSID</label>
-                    <input name="ssid" type="text" length=32>
-                </div>
-                <div class="field-group">
-                    <label>Username</label>
-                    <input name="username" type="text" length=64>
-                </div>
-                <div class="field-group">
-                    <label>Password</label>
-                    <input name="password" type="text" length=64>
-                </div>
-                <div class="button-container">
-                    <button type="submit">Save</button
-                </div>
-            </form>
-             <form action="/">
-             <div class="button-container">
-                    <button type="submit">Go To Consumer Setup</button
-                </div>
-                </form>
-        </div>
-    </body>
-</html>
-)rawliteral";
 
 //---------------------------------------------------------
 void handleEnterprise() {
   webserver.send(200, "text/html", ENTERPRISE_HTML);
+}
+
+//---------------------------------------------------------
+void handleReset() {
+  String str = "Factory Reset Initiated...\r\n";
+
+  webserver.send(200, "text/plain", str.c_str());
+  factory_reset();
+}
+
+//---------------------------------------------------------
+void handleMain() {
+  webserver.send(200, "text/html", MAIN_HTML);
+}
+
+//---------------------------------------------------------
+void handleTemp() {
+   // Read temperature as Celsius (the default)
+   String t = String(dht.readTemperature());
+  webserver.send(200, "text/plane", t);
+}
+
+//---------------------------------------------------------
+void handleHumidity() {
+   String h = String(dht.readHumidity());
+  webserver.send(200, "text/plane", h);
+}
+
+//---------------------------------------------------------
+void handleAdmin() {
+  webserver.send(200, "text/html", ADMIN_HTML);
+}
+
+//---------------------------------------------------------
+void handleChangeTemp() {
+ String str = "Settings Saved\r\n";
+  Td  = webserver.arg(0).toFloat();
+  desiredLocal = true;
+  webserver.send(200, "text/plain", str.c_str());
 }
 
 
@@ -330,6 +158,7 @@ int wifi_setup(){
   while (true){
     webserver.handleClient();
     if (continueSetup){
+      webserver.close();
       break;
     }
   }
@@ -374,7 +203,7 @@ int wifi_setup(){
   return 0;
     
 }
-
+//-----------------------------------------------------------------------------------------------------------------------
 void wifi_quickstart(){ //skips setup process and connects to wifi with saved data
   
   //Lets the user reset device to original state
@@ -406,7 +235,7 @@ void wifi_quickstart(){ //skips setup process and connects to wifi with saved da
     WiFi.begin(ssid.c_str(),password.c_str());
   }
   else{
-    WiFi.mode(WIFI_STA); //init wifi mode
+    WiFi.mode(WIFI_AP_STA); //init wifi mode
     USE_SERIAL.println("Enterprise Wifi Quickstart...");
     String username = saved_data.getString("WifiUsername");
     esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)username.c_str(), strlen(username.c_str())); //provide identity
@@ -431,22 +260,30 @@ void wifi_quickstart(){ //skips setup process and connects to wifi with saved da
 
 }
 
-//---------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+void UserConnected(WiFiEvent_t event, WiFiEventInfo_t info){
+  runserver = true;
+}
+void UserDisconnected(WiFiEvent_t event, WiFiEventInfo_t info){
+  runserver = false;
+}
+//----------------------------------------------------------------------------------------------------
 void factory_reset(){ //clears all saved data and restarts ESP32
   USE_SERIAL.print("Factory Reset Initiated...");
   saved_data.clear();
   ESP.restart();
 }
-//---------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
   if (saved_data.getInt("DialState", -1) == -1){ //assumes dials inital state is 0 (off)
     saved_data.putInt("DialState", 0);
   }
   int state = saved_data.getInt("DialState");
-  float temp_slope = (rounds/10) *(Tf - Ti); //Linear approximation of temp change over 5 min 
+  float temp_slope = (rounds*5) *(Tf - Ti); //Linear approximation of temp change over 1 min 
   if (lock){ //locks device in off position
     for (int i = state; i > 0; i--){
-      myStepper.step(-stepsPerRevolution);
+      myStepper.step(-stepsize);
+      delay(1000);
     }
     saved_data.putInt("DialState", 0);
     Serial.println("DEVICE IS LOCKED! Contact Administrator for details.");
@@ -454,22 +291,24 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
   }
   if (Td < Tf){
     //Increase Dial Position (Decrease Temp)
-    Serial.println("Predicted Temp: " + String(Tf + temp_slope));
+    Serial.println("Predicted Temp: " + String(Tf + (5 *temp_slope)));
     if (state == 0){
       Serial.println("Current Dial State: " + String(state));
       return;
     }
-    if(state < 3 && ((Tf+ temp_slope) > Td)){
-      myStepper.step(-stepsPerRevolution);
+    if(state < 3 && ((Tf+ (5 *temp_slope)) > Td)){
+      myStepper.step(stepsize);
+      delay(1000);
       state++;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(saved_data.getInt("DialState")));
       return;
     }
-    if (state == 3 && ((Tf+ temp_slope) > Td)){ //if on lowest setting: State 3, will move to State 0 to turn off
+    if (state == 3 && ((Tf+ (5*temp_slope)) > Td)){ //if on lowest setting: State 3, will move to State 0 to turn off
       for (int i = state; i > 0; i--){
-        myStepper.step(stepsPerRevolution);
+        myStepper.step(-stepsize);
         Serial.println("Current Dial State: " + String(i-1));
+        delay(1000);
       }
       saved_data.putInt("DialState", 0);
       return;
@@ -477,17 +316,19 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
   }
   if(Td > Tf){
     //Decrease Dial Position (Increase Temp)
-    if(state > 1 && (Tf+ temp_slope < Td)){ //predicts temp for the next minute
-      myStepper.step(stepsPerRevolution);
+    if(state > 1 && (Tf+ (5*temp_slope) < Td)){ //predicts temp for the next minute
+      myStepper.step(-stepsize);
+      delay(1000);
       state--;
       saved_data.putInt("DialState", state);
       Serial.println("Current Dial State: " + String(state));
       return;
     }
-    if (state == 0 && ((Tf+ temp_slope) < Td)){ //if off: State 0, will move to State 3 to turn on
+    if (state == 0 && ((Tf+ (5*temp_slope)) < Td)){ //if off: State 0, will move to State 3 to turn on
       for (int i = state; i < 3; i++){
-        myStepper.step(-stepsPerRevolution);
+        myStepper.step(stepsize);
         Serial.println("Current Dial State: " + String(i+1));
+        delay(1000);
       }
       saved_data.putInt("DialState", 3);
       return;
@@ -497,11 +338,11 @@ void dialAlgorithm(float Ti, float Tf, float Td, int rounds, bool lock) {
   return;
 }
 
-//---------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void setup() {
   USE_SERIAL.begin(115200);
   // set the speed at 5 rpm
-  myStepper.setSpeed(250);
+  myStepper.setSpeed(30);
   delay(10);
   //intiates process to save important data to flash memory
   saved_data.begin("Ecoswitch_data",false);
@@ -516,13 +357,51 @@ void loop() {
          //Wifi Setup (doesn't work in setup() function, so must be added here
          while (wifi_success > 1){
           if (saved_data.getString("SSID", "NA") == "NA"){
-           wifi_success = wifi_setup();
+           wifi_success = wifi_setup(); 
+           WiFi.softAP(webssid, webpassword);
+           Serial.println("");
+            WiFi.softAPConfig(local_ip, gateway, subnet);
+
+            
+            webserver.onNotFound(handleNotFound);
+            webserver.on("/admin", handleAdmin);
+            webserver.on("/readTemp", handleTemp);
+            webserver.on("/readHumidity", handleHumidity);
+            webserver.on("/reset", handleReset);
+            webserver.on("/", handleMain);
+            webserver.on("/changeTemp", handleChangeTemp);
+            webserver.begin();
+            Serial.println("Web server has Restarted");
            }
           else{
             wifi_quickstart();
             wifi_success = 0;
+            WiFi.softAP(webssid, webpassword);
+            Serial.println("");
+            WiFi.softAPConfig(local_ip, gateway, subnet);
+
+            
+            
+            webserver.onNotFound(handleNotFound);
+            webserver.on("/", handleMain);
+            webserver.on("/admin", handleAdmin);
+            webserver.on("/readTemp", handleTemp);
+            webserver.on("/readHumidity", handleHumidity);
+            webserver.on("/reset", handleReset);
+            webserver.on("/changeTemp", handleChangeTemp);
+            webserver.begin();
+            Serial.println("Web server has Restarted");
    }
   }
+          WiFi.onEvent(UserConnected, SYSTEM_EVENT_STA_CONNECTED);
+          while (runserver){
+            webserver.handleClient();
+            WiFi.onEvent(UserDisconnected,SYSTEM_EVENT_STA_DISCONNECTED);
+            //if(!clien.available()){
+              //break;
+            //}
+          }
+          
          // Reading temperature or humidity takes about 250 milliseconds!
         // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
         float h = dht.readHumidity();
@@ -564,8 +443,16 @@ void loop() {
             if(httpCode == HTTP_CODE_OK) {
                 String payload = https.getString(); //gets string message server sends back
                 int seperator = payload.indexOf(" ");
+                if (saved_data.getFloat("serverDesired",-99.9) != payload.substring(0,seperator).toFloat()){
+                  desiredLocal = false;
+                }
+                if (!desiredLocal){
                 Serial.println("Desired Temp is: " + String(payload.toFloat()) +" C");
                 Td = payload.substring(0,seperator).toFloat();
+                saved_data.putFloat("serverDesired", Td);
+                }else{
+                  Serial.println("Desired Temp is: " + String(Td) +" C");
+                }
                 serverLock = payload.substring(seperator + 1, payload.length() - 1).toInt();
                 if (serverLock == 0){
                   lock = true;
@@ -592,5 +479,5 @@ void loop() {
     }
 
     Serial.println("--------------------------------------------------------------------------------------------------------");
-    delay(6000); //Time between measurements (6 seconds)
+    delay(3000); //Time between measurements (6 seconds)
 }
