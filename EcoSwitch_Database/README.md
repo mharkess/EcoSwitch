@@ -90,3 +90,9 @@ So, to use an API, it would be in the format of: `URL/API`. From the API below, 
     -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/removeUser`
   - Example valid JSON to send in body:
     - {"Location": "TEST", "Email": "TEST@bu.edu", "RoomNumber": "101"}
+- `/addDevice`
+  - Description: Adds devices to a table relating devices to the room and address of the device's location.
+  - URL Query:
+    -  `https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/addDevice`
+  - Example valid JSON to send in body:
+    - {"DeviceID": "46826", "Location": "972 Washington St", "RoomNumber": "10348"}  
