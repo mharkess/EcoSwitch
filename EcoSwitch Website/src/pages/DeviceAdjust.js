@@ -3,11 +3,8 @@ import React from "react";
 export default class DeviceAdjust extends React.Component {
   state = {
     Location: null,
+    showResults: true
 	};
-
-  resp = {
-    response: null
-  };
 
   handleChangeLocation = (event) => {
     this.setState({ 
@@ -15,7 +12,7 @@ export default class DeviceAdjust extends React.Component {
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmitLock = (event) => {
     event.preventDefault();
     var url = 'https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/changeState';
 
@@ -32,12 +29,41 @@ export default class DeviceAdjust extends React.Component {
         })
       })
       } catch (error) {
+        console.log(error)
+      }
+
+      window.location.reload();
+  }
+
+  handleSubmitUnlock = (event) => {
+    event.preventDefault();
+    var url = 'https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/changeState';
+
+    try {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          Location: this.state.Location, 
+          State: -1
+        })
+      })
+      } catch (error) {
         this.resp.response = error;
         this.forceUpdate();
       }
 
       window.location.reload();
   }
+
+  onClick = e => {
+    this.setState({
+      showResults: false
+    });
+  };
 
   render() {
     return (
@@ -52,8 +78,9 @@ export default class DeviceAdjust extends React.Component {
             content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework"/>
           <meta name="robots" content="noindex,nofollow"/>
 
-          <title>Student Add</title>
+          <title>Device Adjust</title>
 
+          <link rel="stylesheet" href="css/nicepage.css" media="screen"></link>
           <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/"/>
           <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>   
           <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet"/>
@@ -81,7 +108,7 @@ export default class DeviceAdjust extends React.Component {
                     <ul className="navbar-nav ms-auto d-flex align-items-center">
                       <li>
                         <a className="profile-pic" href="profile">
-                          <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" className="img-circle"/>
+                          <img src="images/vecteezy_profile-icon-design-vector_5544770.jpg" alt="https://www.vecteezy.com/free-vector/profile-icon" width="36" className="img-circle"/>
                           <span className="text-white font-medium">Steve</span>
                         </a>
                       </li>
@@ -136,25 +163,57 @@ export default class DeviceAdjust extends React.Component {
               </div>
 
               <div className="container-fluid">
-                <div className="row">
-                  <div className="col-md-12 col-lg-12 col-sm-12">
-                    <div className="white-box">
-                      <div className="d-md-flex mb-3">
-                        <br/>
-                        <center style={{ marginLeft: 325 }}>
-                          <form onSubmit={ this.handleSubmit }>
-                            <p>Choose a location to switch off all the devices in.</p>
-                            <div class="form-group">
-                              <label class="col-md-5 text-center">Location</label>
-                              <input for="location" type="location" class="col-md-10 form-control" id="location" aria-describedby="locationHelp" onChange={ this.handleChangeLocation }/>
-                              <small id="locationHelp" class="form-text text-muted">Please only enter brownstone locations on campus.</small>
+              <div className="row">
+                <div className="col-md-12 col-lg-12 col-sm-12">
+                    <div className="d-md-flex mb-3">
+                      <div className="wrapper" style={{ marginTop: -40 }}>
+                        <div className="tabs" style={{ height: 'auto' }}>
+                          <div className="tab">
+                            <input type="radio" name="css-tabs" id="tab-1" className="tab-switch" onClick={ this.onClick }/>
+                            <label for="tab-1" className="tab-label">Lock</label>
+                            <div className="tab-content" id="content-1">
+                              <center>
+                              <p>Choose a location to switch off all the FCUs in. This locks the location, preventing students from changing any devices within the building.</p>
+                              <form onSubmit={ this.handleSubmitLock }>
+                                <div class="form-group">
+                                  <label class="col-md-5 text-center">Location</label>
+                                  <input for="location" type="location" class="col-md-3 form-control" id="location" aria-describedby="locationHelp" onChange={ this.handleChangeLocation }/>
+                                  <small id="locationHelp" class="form-text text-muted">Format: ## Bay State Rd</small>
+                                </div>
+                                <button type="submit" class="btn btn-success text-white">Submit</button>
+                              </form>
+                              </center>
                             </div>
-                            <button type="submit" class="btn btn-success text-white">Submit</button>
-                          </form>
-                        </center>
-                        <br/>
+                          </div>
+                          <div className="tab">
+                            <input type="radio" name="css-tabs" id="tab-2" className="tab-switch" onClick={ this.onClick }/>
+                            <label for="tab-2" className="tab-label">Unlock</label>
+                            <div className="tab-content">
+                              <center>
+                              <p>Choose a location to unlock all the devices in. This will return the devices to the state their assigned students have originally set them to be.</p>
+                              <form onSubmit={ this.handleSubmitUnlock }>
+                                <div class="form-group">
+                                  <label class="col-md-5 text-center">Location</label>
+                                  <input for="location" type="location" class="col-md-3 form-control" id="location" aria-describedby="locationHelp" onChange={ this.handleChangeLocation }/>
+                                  <small id="locationHelp" class="form-text text-muted">Format: ## Bay State Rd</small>
+                                </div>
+                                <button type="submit" class="btn btn-success text-white">Submit</button>
+                              </form>
+                              </center>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    
+                    <center>
+                      <div className="white-box" style={{ width: 800, marginTop: -80, height: 260 }}>
+                        <div nameClass="showName" style={{ display: this.state.showResults ? "block" : "none" }}>
+                          <h4 style={{ height: 250, marginTop: 30 }}>Click on one of the tabs above to get started.</h4>
+                          <img src="images/2546_R0lVIERBTiA1NjAtMDM.jpg" style={{ height: 150, marginTop: -325 }} alt="https://www.vecteezy.com/free-vector/building"/>
+                        </div>
+                      </div>
+                    </center>
                   </div>
                 </div>
               </div>

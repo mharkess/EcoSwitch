@@ -36,7 +36,7 @@ function SignUp() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-        <title>EcoSwitch Sign Up</title>
+        <title>Sign Up</title>
         
         <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
         <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet"/>

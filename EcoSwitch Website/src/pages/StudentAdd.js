@@ -9,12 +9,7 @@ export default class StudentAdd extends React.Component {
     Location: null,
     Email: null,
     RoomNumber: null,
-    showHideComp1: true,
     showResults: true
-  };
-
-  resp = {
-    response: null
   };
 
   handleChangeLocation = (event) => {
@@ -53,8 +48,7 @@ export default class StudentAdd extends React.Component {
         })
       })
     } catch (error) {
-      this.resp.response = error;
-      this.forceUpdate();
+      console.log(error)
     }
 
     window.location.reload();
@@ -78,8 +72,7 @@ export default class StudentAdd extends React.Component {
         })
       })
     } catch (error) {
-      this.resp.response = error;
-      this.forceUpdate();
+      console.log(error)
     }
 
     window.location.reload();
@@ -107,7 +100,7 @@ export default class StudentAdd extends React.Component {
             content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework" />
           <meta name="robots" content="noindex,nofollow" />
 
-          <title>Dashboard</title>
+          <title>Student Add</title>
 
           <link rel="stylesheet" href="css/nicepage.css" media="screen"></link>
           <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
@@ -137,7 +130,7 @@ export default class StudentAdd extends React.Component {
                   <ul className="navbar-nav ms-auto d-flex align-items-center">
                     <li>
                       <a className="profile-pic" href="profile">
-                        <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" className="img-circle" />
+                        <img src="images/vecteezy_profile-icon-design-vector_5544770.jpg" alt="https://www.vecteezy.com/free-vector/profile-icon" width="36" className="img-circle" />
                         <span className="text-white font-medium">Steve</span>
                       </a>
                     </li>
@@ -194,6 +187,7 @@ export default class StudentAdd extends React.Component {
                 </div>
               </div>
             </div>
+
             <div className="container-fluid">
               <div className="row">
                 <div className="col-md-12 col-lg-12 col-sm-12">
@@ -264,7 +258,7 @@ export default class StudentAdd extends React.Component {
                       <div className="white-box" style={{ width: 800, marginTop: -80, height: 390 }}>
                         <div nameClass="showName" style={{ display: this.state.showResults ? "block" : "none" }}>
                           <h4 style={{ height: 250, marginTop: 30 }}>Click on one of the tabs above to get started.</h4>
-                          <img src="images/vecteezy_a-woman-working-using-laptop-flat-design_6434618.jpg" style={{ height: 250, marginTop: -210 }} alt="https://www.vecteezy.com/free-vector/person-using-computer"/>
+                          <img src="images/vecteezy_two-students-interacting-each-other_5371778.jpg" style={{ height: 300, marginTop: -230 }} alt="https://www.vecteezy.com/free-vector/student"/>
                         </div>
                       </div>
                     </center>

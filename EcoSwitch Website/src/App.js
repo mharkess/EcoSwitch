@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import Main from "./pages/Main";
@@ -14,7 +14,6 @@ import Profile from "./pages/Profile";
 import DeviceAdjust from "./pages/DeviceAdjust";
 
 function App() {
-
   return (
     <Router>
       <Routes>

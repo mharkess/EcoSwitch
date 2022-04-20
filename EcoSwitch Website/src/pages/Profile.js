@@ -41,7 +41,7 @@ export default class Profile extends React.Component {
                     <ul className="navbar-nav ms-auto d-flex align-items-center">
                       <li>
                         <a className="profile-pic" href="profile">
-                          <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                          <img src="images/vecteezy_profile-icon-design-vector_5544770.jpg" alt="https://www.vecteezy.com/free-vector/profile-icon" width="36"
                             className="img-circle"/><span className="text-white font-medium">Steve</span>
                         </a>
                     </li>
