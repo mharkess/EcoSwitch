@@ -21,6 +21,17 @@ function SignIn () {
     }
   }
 
+  const loginWithGoogle = async (e) => {
+    try {
+      e.preventDefault();
+      const user = await signInWithGoogle();
+      navigate('/main')
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
     return (
       <React.Fragment>
         <head>
@@ -60,7 +71,7 @@ function SignIn () {
                 <button className="btn btn-success btn-block" type="submit" onClick={ login }>Sign in</button>
                 <div className="login-footer">
                   <h6>Or</h6>
-                  <button className="button" style={{ padding: 10 }} onClick={ signInWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
+                  <button className="button" style={{ padding: 10 }} onClick={ loginWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
                 </div>
               </form>
             </div>

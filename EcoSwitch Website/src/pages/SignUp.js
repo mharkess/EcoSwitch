@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from '../components/header';
-import { auth, analytics } from "../components/firebase/firebase";
+import { auth, signInWithGoogle } from "../components/firebase/firebase";
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { setUserProperties } from "firebase/analytics";
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,17 @@ function SignUp() {
       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPass);
       setUserProperties(analytics, { name: registerName });
       navigate('/signin')
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  const signUpWithGoogle = async (e) => {
+    try {
+      e.preventDefault();
+      const user = await signInWithGoogle();
+      navigate('/main')
       console.log(user);
     } catch (error) {
       console.log(error.message);
@@ -80,6 +91,10 @@ function SignUp() {
                 </div>
               </div>
               <button className="btn btn-success btn-block" type="submit" onClick={ register }>Sign Up</button>
+              <div className="login-footer">
+                <h6>Or</h6>
+                <button className="button" style={{ padding: 10 }} onClick={ signUpWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
+              </div>
             </form>
           </div>
           <div className="login-links">

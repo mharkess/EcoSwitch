@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import { auth } from '../components/firebase/firebase';
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import makeData from "../components/makeData";
 import Graph from "../components/Graph";
 
 // https://wsvincent.com/javascript-remove-duplicates-array/#:~:text=There%20are%20multiple%20ways%20to,automatically%20remove%20duplicates%20for%20us.&text=Another%20option%20is%20to%20use%20filter().
-function removeDups(addresses) {
-  let unique = {};
-  addresses.forEach(function(i) {
-    if(!unique[i]) {
-      unique[i] = true;
-    }
-  });
+// function removeDups(addresses) {
+//   let unique = {};
+//   addresses.forEach(function(i) {
+//     if(!unique[i]) {
+//       unique[i] = true;
+//     }
+//   });
 
-  return Object.keys(unique);
-}
+//   return Object.keys(unique);
+// }
 
-function findDups(addresses) {
-  const toFindDuplicates = addresses => addresses.filter((item, index) => addresses.indexOf(item) !== index);
-  const duplicateElements = toFindDuplicates(addresses);
+// function findDups(addresses) {
+//   const toFindDuplicates = addresses => addresses.filter((item, index) => addresses.indexOf(item) !== index);
+//   const duplicateElements = toFindDuplicates(addresses);
   
-  return duplicateElements;
-}
-
+//   return duplicateElements;
+// }
 function ObjectRowCels(props) {
   var temps = (props.state.Temp[props.deviceNum] - 32) * (5/9);
 
@@ -73,7 +72,7 @@ export default class Main extends React.Component {
   
   //   return () => clearInterval(intervalId);
   // }, []);
-
+  
   componentDidMount() {
     var url = 'https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/allRecent?deviceID=12345';
     let temps = [];
@@ -198,7 +197,7 @@ export default class Main extends React.Component {
   //     backgroundColor: 'rgb(255, 99, 132)'
   //   }]
   // });
-
+  
   return (
     <React.Fragment>
       <head>
@@ -206,9 +205,9 @@ export default class Main extends React.Component {
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="keywords"
-            content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template"/>
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template"/>
         <meta name="description"
-            content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework"/>
+          content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework"/>
         <meta name="robots" content="noindex,nofollow"/>
         <title>Dashboard</title>
 
@@ -221,116 +220,100 @@ export default class Main extends React.Component {
       </head>
 
       <body>
-        <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-            data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-          <header className="topbar" data-navbarbg="skin5" style={{ background: "rgb(29, 51, 35)" }}>
-            <nav className="navbar top-navbar navbar-expand-md navbar-dark">
-              <div className="navbar-header" data-logobg="skin6">
-                <a className="navbar-brand" href="home">
-                  <b className="logo-icon">
-                    <img src="images/ecoswitchicon.png" alt="homepage" style={{ height: 50, marginLeft: 80, marginBottom: 7, marginTop: 20 }}/>
-                  </b>
-                </a>
-                <a className="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
-                    href="javascript:void(0)"><i className="ti-menu ti-close"></i></a>
-              </div>
-              <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style={{ background: "rgb(29, 51, 35)", marginBottom:20 }}>
-                <ul className="navbar-nav ms-auto d-flex align-items-center">
-                  <li>
-                    <a className="profile-pic" href="profile">
-                      <img src="images/vecteezy_profile-icon-design-vector_5544770.jpg" alt="https://www.vecteezy.com/free-vector/profile-icon" width="36" className="img-circle"/>
-                      <span className="text-white font-medium">Steve</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </header>
-
-          <aside className="left-sidebar" data-sidebarbg="skin6">
-            <div className="scroll-sidebar">
-              <nav className="sidebar-nav">
-                <ul id="sidebarnav">
-                  <li className="sidebar-item pt-2"  style={{ marginTop: 15 }}>
-                    <a className="sidebar-link waves-effect waves-dark sidebar-link" href="main"
-                      aria-expanded="false">
-                      <i className="far fa-clock" aria-hidden="true"></i>
-                      <span className="hide-menu" style={{ fontWeight: "bold" }}>Dashboard</span>
-                    </a>
-                  </li>
-                  <li className="sidebar-item">
-                    <a className="sidebar-link waves-effect waves-dark sidebar-link" href="DeviceAdjust"
-                      aria-expanded="false">
-                      <i className="fa fa-user" aria-hidden="true"></i>
-                      <span className="hide-menu">Device Adjustment</span>
-                    </a>
-                  </li>
-                  <li className="sidebar-item">
-                    <a className="sidebar-link waves-effect waves-dark sidebar-link" href="studentadd"
-                      aria-expanded="false">
-                      <i className="fa fa-plus" aria-hidden="true"></i>
-                      <span className="hide-menu">Add a Student</span>
-                    </a>
-                  </li>
-                  <li className="sidebar-item">
-                    <a className="sidebar-link waves-effect waves-dark sidebar-link" href="signin"
-                      aria-expanded="false">
-                      <i className="fa fa-sign-out-alt" aria-hidden="true"></i>
-                      <span className="hide-menu">Sign Out</span>
-                    </a>
-                  </li>
-                  <li className="text-center p-20 upgrade-btn" style={{ width: 150, marginLeft: 43, marginTop: 20 }}>
-                    <a nohref onClick={ this.toggleButtonState } className="btn d-grid btn-success text-white" target="_blank" >Get New Data</a>
-                  </li>
-                </ul>
+        {/* <div style={{ display: this.user != null ? "block" : "none" }}> */}
+          <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+            <header className="topbar" data-navbarbg="skin5" style={{ background: "rgb(29, 51, 35)" }}>
+              <nav className="navbar top-navbar navbar-expand-md navbar-dark">
+                <div className="navbar-header" data-logobg="skin6">
+                  <a className="navbar-brand" href="home">
+                    <b className="logo-icon">
+                      <img src="images/ecoswitchicon.png" alt="homepage" style={{ height: 50, marginLeft: 80, marginBottom: 7, marginTop: 20 }}/>
+                    </b>
+                  </a>
+                  <a className="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                      href="javascript:void(0)"><i className="ti-menu ti-close"></i></a>
+                </div>
+                <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style={{ background: "rgb(29, 51, 35)", marginBottom:20 }}>
+                  <ul className="navbar-nav ms-auto d-flex align-items-center">
+                    <li>
+                      <a className="profile-pic" href="profile">
+                        <img src="images/vecteezy_profile-icon-design-vector_5544770.jpg" alt="https://www.vecteezy.com/free-vector/profile-icon" width="36" className="img-circle"/>
+                        <span className="text-white font-medium">Steve</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </nav>
-            </div>
-          </aside>
-            <div className="page-wrapper" style={{ background: "rgb(243, 249, 245)" }}>
-              <div className="page-breadcrumb bg-white">
-                <div className="row align-items-center">
-                  <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h4 className="page-title">Dashboard</h4>
-                  </div>
-                  <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <div className="d-md-flex">
-                      <ol className="breadcrumb ms-auto" style={{ marginTop: -2 }}>
-                        <li><a href="#" className="fw-normal">Last Update: 2:35 PM EST</a></li>
-                      </ol>
+            </header>
+
+            <aside className="left-sidebar" data-sidebarbg="skin6">
+              <div className="scroll-sidebar">
+                <nav className="sidebar-nav">
+                  <ul id="sidebarnav">
+                    <li className="sidebar-item pt-2"  style={{ marginTop: 15 }}>
+                      <a className="sidebar-link waves-effect waves-dark sidebar-link" href="main"
+                        aria-expanded="false">
+                        <i className="far fa-clock" aria-hidden="true"></i>
+                        <span className="hide-menu" style={{ fontWeight: "bold" }}>Dashboard</span>
+                      </a>
+                    </li>
+                    <li className="sidebar-item">
+                      <a className="sidebar-link waves-effect waves-dark sidebar-link" href="DeviceAdjust"
+                        aria-expanded="false">
+                        <i className="fa fa-user" aria-hidden="true"></i>
+                        <span className="hide-menu">Device Adjustment</span>
+                      </a>
+                    </li>
+                    <li className="sidebar-item">
+                      <a className="sidebar-link waves-effect waves-dark sidebar-link" href="studentadd"
+                        aria-expanded="false">
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                        <span className="hide-menu">Add a Student</span>
+                      </a>
+                    </li>
+                    <li className="sidebar-item">
+                      <a className="sidebar-link waves-effect waves-dark sidebar-link" href="signin"
+                        aria-expanded="false">
+                        <i className="fa fa-sign-out-alt" aria-hidden="true"></i>
+                        <span className="hide-menu">Sign Out</span>
+                      </a>
+                    </li>
+                    <li className="text-center p-20 upgrade-btn" style={{ width: 150, marginLeft: 43, marginTop: 20 }}>
+                      <a nohref onClick={ this.toggleButtonState } className="btn d-grid btn-success text-white" target="_blank" >Get New Data</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </aside>
+              <div className="page-wrapper" style={{ background: "rgb(243, 249, 245)" }}>
+                <div className="page-breadcrumb bg-white">
+                  <div className="row align-items-center">
+                    <div className="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                      <h4 className="page-title">Dashboard</h4>
+                    </div>
+                    <div className="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                      <div className="d-md-flex">
+                        <ol className="breadcrumb ms-auto" style={{ marginTop: -2 }}>
+                          <li><a href="#" className="fw-normal">Last Update: 2:35 PM EST</a></li>
+                        </ol>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-md-12 col-lg-12 col-sm-12">
-                    <div className="white-box">
-                      <div className="d-md-flex mb-3">
-                        <h3 className="box-title mb-0">All Locations</h3>
-                        <div className="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                          <label className="toggle" style={{ marginLeft: 130 }}>
-                            <input type="checkbox" onClick={ this.toggleSliderState }/>
-                            <span className="labels" data-on="F" data-off="C"></span>
-                          </label>
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-md-12 col-lg-12 col-sm-12">
+                      <div className="white-box">
+                        <div className="d-md-flex mb-3">
+                          <h3 className="box-title mb-0">All Locations</h3>
+                          <div className="col-md-3 col-sm-4 col-xs-6 ms-auto">
+                            <label className="toggle" style={{ marginLeft: 130 }}>
+                              <input type="checkbox" onClick={ this.toggleSliderState }/>
+                              <span className="labels" data-on="F" data-off="C"></span>
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                      {/* <div className="table-responsive" style={{ display: this.unit.clicked ? "none" : "block" }}>
-                        <table className="table no-wrap">
-                          <thead>
-                            <tr>
-                              <th className="border-top-0">ID</th>
-                              <th className="border-top-0">Address</th>
-                              <th className="border-top-0">Room Number</th>
-                              <th className="border-top-0">Temperature</th>
-                              <th className="border-top-0">Humidity</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            { rowsCels }
-                          </tbody>
-                        </table>
-                      </div>
-                      <div style={{ display: this.unit.clicked ? "block" : "none" }}> */}
                         <div className="table-responsive" style={{ display: this.unit.cels ? "block" : "none" }}>
                           <table className="table no-wrap">
                             <thead>
@@ -362,49 +345,49 @@ export default class Main extends React.Component {
                               { rowsFahr }
                             </tbody>
                           </table>
-                        {/* </div> */}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                  <div className="white-box">
-                    <h3 className="box-title">Temperature and Humidity Levels Over Time Interval</h3>
-                    <div className="d-md-flex">
-                      <ul className="list-inline d-flex ms-auto">
-                        <li className="ps-3">
-                          <h5><i className="fa fa-circle me-1" style={{ color: "#355f39" }}></i>Temperature</h5>
-                        </li>
-                        <li className="ps-3">
-                          <h5><i className="fa fa-circle me-1" style={{ color: "#9dc9a1" }}></i>Humidity</h5>
-                        </li>
-                      </ul>
-                    </div>
-                    <div id="ct-visits" style={{ height: 405 }}>
-                      <div className="chartist-tooltip" style={{ top: -17, left: -12 }}>
-                        <span className="chartist-tooltip-value">6</span>
+                <div className="row">
+                  <div className="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div className="white-box">
+                      <h3 className="box-title">Temperature and Humidity Levels Over Time Interval</h3>
+                      <div className="d-md-flex">
+                        <ul className="list-inline d-flex ms-auto">
+                          <li className="ps-3">
+                            <h5><i className="fa fa-circle me-1" style={{ color: "#355f39" }}></i>Temperature</h5>
+                          </li>
+                          <li className="ps-3">
+                            <h5><i className="fa fa-circle me-1" style={{ color: "#9dc9a1" }}></i>Humidity</h5>
+                          </li>
+                        </ul>
                       </div>
+                      <div id="ct-visits" style={{ height: 405 }}>
+                        <div className="chartist-tooltip" style={{ top: -17, left: -12 }}>
+                          <span className="chartist-tooltip-value">6</span>
+                        </div>
+                      </div>
+                      {/* {dataGraph} */}
+                      {/* <Graph chartData={ userData }/> */}
                     </div>
-                    {/* {dataGraph} */}
-                    {/* <Graph chartData={ userData }/> */}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-          <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-          <script src="js/app-style-switcher.js"></script>
-          <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-          <script src="js/waves.js"></script>
-          <script src="js/sidebarmenu.js"></script>
-          <script src="js/custom.js"></script>
-          <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-          <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-          <script src="js/pages/dashboards/dashboard1.js"></script>
+            <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+            <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="js/app-style-switcher.js"></script>
+            <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+            <script src="js/waves.js"></script>
+            <script src="js/sidebarmenu.js"></script>
+            <script src="js/custom.js"></script>
+            <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+            <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+            <script src="js/pages/dashboards/dashboard1.js"></script>
+          {/* </div> */}
         </body>
       </React.Fragment>
     );
