@@ -107,6 +107,7 @@ export default class Main extends React.Component {
 
   toggleButtonState = () => {
     var url = 'https://tyd5faaoq0.execute-api.us-east-2.amazonaws.com/Test/allRecent?deviceID=12345';
+    let temps = [];
 
     fetch(url)
       .then(res => res.json())
@@ -119,9 +120,15 @@ export default class Main extends React.Component {
         const getAddress = getProp('Address');
         const getRoomNum = getProp('RoomNum');
 
-        this.setState({
+        temps = data.map(getTemp);
+
+        temps.forEach((element, i) => {
+          temps[i] = (element * (9/5)) + 32;
+        });
+
+        this.setState({ 
           DeviceID: data.map(getID),
-          Temp: data.map(getTemp),
+          Temp: temps,
           Humidity: data.map(getHumidity),
           Address: data.map(getAddress),
           RoomNum: data.map(getRoomNum)
@@ -274,7 +281,7 @@ export default class Main extends React.Component {
                     </li>
                     <li className="sidebar-item">
                       <a className="sidebar-link waves-effect waves-dark sidebar-link" href="signin"
-                        aria-expanded="false">
+                        aria-expanded="false" onClick={ logout }>
                         <i className="fa fa-sign-out-alt" aria-hidden="true"></i>
                         <span className="hide-menu">Sign Out</span>
                       </a>

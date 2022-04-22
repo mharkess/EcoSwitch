@@ -93,7 +93,7 @@ function SignUp() {
               <button className="btn btn-success btn-block" type="submit" onClick={ register }>Sign Up</button>
               <div className="login-footer">
                 <h6>Or</h6>
-                <button className="button" style={{ padding: 10 }} onClick={ signUpWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign in with Google</button>
+                <button style={{ padding: 10, borderRadius: 5, width: 250, borderColor: "white", backgroundColor: "rgba(0, 0, 0, 0.05)"}} onClick={ signUpWithGoogle }><i className="fab fa-google" style={{ padding: 10, marginLeft: -10 }}></i>Sign up with Google</button>
               </div>
             </form>
           </div>
