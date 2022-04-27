@@ -41,13 +41,13 @@
 ### App.js
 The driving module for the mobile application. Developed using the React Native Framework and Javascript. This module includes three screens for the user to navigate through, each detailed below. Images of each screen are linked as well.
 
-#### [Login Screen]()
+#### [Login Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/login-screen.PNG)
 <p align="justify"> This is where users will sign in with their given BU email account, using Google Authentication to secure the interaction. The app prevents any emails outside of the proper domain (@bu.edu) from signing into the application. This feature was implemented as an extra authentication step since only BU students should be using the application. </p>
 
-#### [Main Screen]()
+#### [Main Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/main-screen.PNG)
 <p align="justify"> This screen displays the current temperature and humidity reported by the user's assigned device. The information is fetched from our backend database based off of the user login. The values presented to the user refreshes every 10 seconds in the development build, but will be changed to every 5 minutes for production. Users can also set a desired temperature for their room, which the device will adapt to accordingly. </p>
 
-#### [Credits Screen]()
+#### [Credits Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/credits-screen.PNG)
 <p align="justify"> A simple screen displaying the names of the project contributors. Accessed through tapping the logo in the upper-right corner. </p>
 
 ### styles.js
