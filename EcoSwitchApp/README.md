@@ -68,7 +68,7 @@ The driving module for the mobile application. Developed using the React Native 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Development and Build Information
-All installed dependencies for the project can be found within the [package.json](https://github.com/mharkess/EcoSwitch/blob/main/UserApp/EcoSwitchApp/package.json) and [package-lock.json](https://github.com/mharkess/EcoSwitch/blob/main/UserApp/EcoSwitchApp/package-lock.json) files found within this directory.
+All installed dependencies for the project can be found within the [package.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/package.json) and [package-lock.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/package-lock.json) files found within this directory.
 
 Developed and built using the following programs and versions:
 
