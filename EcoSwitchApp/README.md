@@ -39,16 +39,28 @@
 <p align="justify"> Currently, the application has one main module that contains all functionality. While this is bad practice, it was Keven's first time using React Native for a large scale project and due to time constraints he could not reorganize the code. </p>
 
 ### App.js
-The driving module for the mobile application. Developed using the React Native Framework and Javascript. This module includes three screens for the user to navigate through, each detailed below. Images of each screen are linked as well.
+The driving module for the mobile application. Developed using the React Native Framework and Javascript. This module includes three screens for the user to navigate through, each detailed below.
 
-#### [Login Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/login-screen.PNG)
+#### Login Screen
 <p align="justify"> This is where users will sign in with their given BU email account, using Google Authentication to secure the interaction. The app prevents any emails outside of the proper domain (@bu.edu) from signing into the application. This feature was implemented as an extra authentication step since only BU students should be using the application. </p>
 
-#### [Main Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/main-screen.PNG)
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/login-screen.PNG" width="200" height="400"/>
+</div>
+
+#### Main Screen
 <p align="justify"> This screen displays the current temperature and humidity reported by the user's assigned device. The information is fetched from our backend database based off of the user login. The values presented to the user refreshes every 10 seconds in the development build, but will be changed to every 5 minutes for production. Users can also set a desired temperature for their room, which the device will adapt to accordingly. </p>
 
-#### [Credits Screen](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/credits-screen.PNG)
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/main-screen.PNG" width="200" height="400"/>
+</div>
+
+#### Credits Screen
 <p align="justify"> A simple screen displaying the names of the project contributors. Accessed through tapping the logo in the upper-right corner. </p>
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/credits-screen.PNG" width="200" height="400"/>
+</div>
 
 ### styles.js
 <p align="justify"> A separate JavaScript file that contains all the formatting for different elements in each screen render. </p>
