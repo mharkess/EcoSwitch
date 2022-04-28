@@ -1,60 +1,96 @@
-# Getting Started with Create React App
+# <div id="top">EcoSwitch Administrator Website</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#software-module-overview">Software Module Overview</a>
+      <ul>
+        <li><a href="#appjs">App.js</a></li>
+        <li><a href="#stylesjs">styles.js</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#dependencies-between-modules">Dependencies Between Modules</a>
+    </li>
+    <li>
+      <a href="#development-and-build-information">Development and Build Information</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites-installation">Prerequisites Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
+      </ul>
+    </li>
+  <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ol>
 
-## Available Scripts
+## About The Project
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Software Module Overview
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dependencies Between Modules
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Learn More
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development and Build Information
+All installed dependencies for the project can be found within the [package.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/package.json) and [package-lock.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/package-lock.json) files found within this directory.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Developed and built using the following programs and versions:
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Getting Started
 
-### Making a Progressive Web App
+### Prerequisites Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install the software mentioned above in the [Development and Build Information](#development-and-build-information) section. This varies per system and operating system. Please refer to the respective websites for further installation information.
 
-### Advanced Configuration
+Once the repository is cloned, navigate to this directory (.../EcoSwitch/EcoSwitch Website) and run the following code to automatically build the project and install its dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+npm install
+```
 
-### Deployment
+### Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For development mode, npm can be used as well.
+1. In the project directory, start the session with the following command:
 
-### `npm run build` fails to minify
+```sh
+npm start
+```
+  This will start the development server and the project can be accessed through localhost port 3000 ([http://localhost:3000](http://localhost:3000)).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**OR**
+
+1. Access the project's pre-production build, hosted using Amplify. 
+    - [LINK](https://main.d3enog0k6n6e1t.amplifyapp.com/)
+    - Please note that this build is not currently representative of the website's most recent development status.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contact
+
+If there are any further questions about the application project, please contact the lead developer via email.
+- samcu@bu.edu
+- samarah.cu@gmail.com
+
+<p align="right">(<a href="#top">back to top</a>)</p>
