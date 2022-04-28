@@ -21,7 +21,7 @@ function SignUp() {
     try {
       e.preventDefault();
       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPass);
-      setUserProperties(analytics, { name: registerName });
+      //setUserProperties(analytics, { name: registerName });
       navigate('/signin')
       console.log(user);
     } catch (error) {
