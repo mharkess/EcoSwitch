@@ -85,6 +85,7 @@ npm start
 
 1. Access the project's pre-production build, hosted using Amplify. 
     - [Deployed Version](https://main.d3enog0k6n6e1t.amplifyapp.com/)
+    - Please note that popups may be blocked, so the best way to create an account and subsequently log in is by entering your email and choosing a password through the sign-up page.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
