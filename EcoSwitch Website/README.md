@@ -31,8 +31,9 @@
   </ol>
 
 ## About The Project
-
-
+<p align="justify">
+  The EcoSwitch website was designed to provide housing administrators and faculty with a way to register and install new devices, as well as monitor and control currently existing ones. The original problem statement required the EcoSwitch system to be tamper-proof, so the administration website was conceptualized and developed to meet that feature.
+</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
