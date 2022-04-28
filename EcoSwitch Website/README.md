@@ -8,8 +8,8 @@
     <li>
       <a href="#software-module-overview">Software Module Overview</a>
       <ul>
-        <li><a href="#pages"></a></li>
-        <li><a href="#main-functionalities"></a></li>
+        <li><a href="#pages">Pages</a></li>
+        <li><a href="#main-functionalities">Main Functionalities</a></li>
       </ul>
     </li>
     <li>
@@ -57,6 +57,8 @@
 
 ### Main Functionalities
 <p align="justify">A high-level description of all the website's main features are provided in this section, respective to the list of pages provided in the "Pages" section.</p>
+
+#### Clean and Easy to Navigate Interface
 
 #### Device Registration
 <p align="justify"></p>
