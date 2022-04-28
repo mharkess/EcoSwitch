@@ -82,8 +82,7 @@ npm start
 **OR**
 
 1. Access the project's pre-production build, hosted using Amplify. 
-    - [LINK](https://main.d3enog0k6n6e1t.amplifyapp.com/)
-    - Please note that this build is not currently representative of the website's most recent development status.
+    - [Deployed Version](https://main.d3enog0k6n6e1t.amplifyapp.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
