@@ -41,13 +41,21 @@
 <p align="justify">There are several pages that currently make up the EcoSwitch website. While some of them are simple in their functions and exist to provide information about the website and overall system, others have more significant purposes and provide access to the main features that are described in detail below.</p>
 
 ### Pages
-<p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the `App.js` file location in the `src` folder of this directory.</p>
+<p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the App.js file location in the src folder of this directory.</p>
 
 #### Home, ComponentReplace, StudentApp, and ErrorPage
 <p align="justify"></p>
 
 #### Register
-<p align="justify"></p>
+<p align="justify">This page is directly accessible from the website's home page and does not require users to be logged in for usage. It is important to the system's initial installation, as it allows individuals to register new EcoSwitch devices. It consists of a simple form that requests for the user to input the device ID, installation building location, installation room number. Additionally, we have designed a QR code that links to this page and would be placed within the device's packaging so users can easily scan it to set it up.</p>
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" width="200" height="400"/>
+</div>
+
+<div align="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" width="200" height="400"/>
+</div>
 
 #### SignUp and SignIn
 <p align="justify"></p>
@@ -61,7 +69,7 @@
 #### Clean and Easy to Navigate Interface
 
 #### Device Registration
-<p align="justify"></p>
+<p align="justify">As mentioned in the "Register" section, the EcoSwitch website offers the ability for users to register new EcoSwitch devices. This effectively adds them to the database and allows them to start communicating with the rest of the system. It is meant to be accessible and easy to use so the facility workers who would be setting up the devices in the dormitories would be able to do so without any difficulties. At the moment, the submission form does not have any error checking that guarantees the location and EcoSwitch ID is valid; however, this would be necessary to establish before product deployment.</p>
 
 #### Account Creation
 <p align="justify"></p>
