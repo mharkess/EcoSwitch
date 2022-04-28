@@ -51,9 +51,10 @@
 ## Development and Build Information
 All installed dependencies for the project can be found within the [package.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/package.json) and [package-lock.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/package-lock.json) files found within this directory.
 
-Developed and built using the following programs and versions:
+This project was developed and built using the following programs and versions:
 
-
+- [NodeJS v14.17.6](https://nodejs.org/en/download/)
+- NPM v8.6.0
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
