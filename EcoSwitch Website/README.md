@@ -8,8 +8,8 @@
     <li>
       <a href="#software-module-overview">Software Module Overview</a>
       <ul>
-        <li><a href="#">/a></li>
-        <li><a href="#"></a></li>
+        <li><a href="#pages"></a></li>
+        <li><a href="#main-functionalities"></a></li>
       </ul>
     </li>
     <li>
@@ -38,8 +38,34 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Software Module Overview
+<p align="justify">There are several pages that currently make up the EcoSwitch website. While some of them are simple in their functions and exist to provide information about the website and overall system, others have more significant purposes and provide access to the main features that are described in detail below.</p>
 
+### Pages
+<p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the `App.js` file location in the `src` folder of this directory.</p>
 
+#### Home, ComponentReplace, StudentApp, and ErrorPage
+<p align="justify"></p>
+
+#### Register
+<p align="justify"></p>
+
+#### SignUp and SignIn
+<p align="justify"></p>
+
+#### Main, DeviceAdjust, StudentAdd, and Profile
+<p align="justify"></p>
+
+### Main Functionalities
+<p align="justify">A high-level description of all the website's main features are provided in this section, respective to the list of pages provided in the "Pages" section.</p>
+
+#### Device Registration
+<p align="justify"></p>
+
+#### Account Creation
+<p align="justify"></p>
+
+#### Data Querying and Posting
+<p align="justify"></p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
