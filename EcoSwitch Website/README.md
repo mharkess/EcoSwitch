@@ -77,7 +77,7 @@ For development mode, npm can be used as well.
 ```sh
 npm start
 ```
-   This will start the development server and the project can be accessed through localhost port 3000 ([http://localhost:3000](http://localhost:3000)).
+&nbsp;&nbsp;&nbsp;This will start the development server and the project can be accessed through localhost port 3000 ([http://localhost:3000](http://localhost:3000)).
 
 **OR**
 
