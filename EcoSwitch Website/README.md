@@ -51,9 +51,6 @@
 
 <div align="center">
 <img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" height="400"/>
-</div>
-
-<div align="center">
 <img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png" width="200"/>
 </div>
 
