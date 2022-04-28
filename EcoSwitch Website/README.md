@@ -50,11 +50,11 @@
 <p align="justify">This page is directly accessible from the website's home page and does not require users to be logged in for usage. It is important to the system's initial installation, as it allows individuals to register new EcoSwitch devices. It consists of a simple form that requests for the user to input the device ID, installation building location, installation room number. Additionally, we have designed a QR code that links to this page and would be placed within the device's packaging so users can easily scan it to set it up.</p>
 
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" width="200" height="400"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" height="400"/>
 </div>
 
-<div align="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/register.png" width="200" height="400"/>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png" width="200"/>
 </div>
 
 #### SignUp and SignIn
