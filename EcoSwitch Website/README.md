@@ -8,8 +8,8 @@
     <li>
       <a href="#software-module-overview">Software Module Overview</a>
       <ul>
-        <li><a href="#appjs">App.js</a></li>
-        <li><a href="#stylesjs">styles.js</a></li>
+        <li><a href="#">/a></li>
+        <li><a href="#"></a></li>
       </ul>
     </li>
     <li>
