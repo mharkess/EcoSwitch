@@ -54,7 +54,7 @@
 </div>
 </br>
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png" height="400"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/qr-code.png" width="200"/>
 </div>
 
 #### SignUp and SignIn
