@@ -1,4 +1,5 @@
 # <div id="top">EcoSwitch</div>
+EcoSwitch is an automated, energy-saving system for brownstone fan coil units (FCUs). It provides a BU-specific solution for maintaining comfortable dorm temperatures. Our product is simple, cost-effective, and meets the needs of BU's students and employees alike.
 
 ## Table of Contents
   <ol>
