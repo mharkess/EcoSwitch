@@ -34,7 +34,9 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 <p align="justify"></p>
 
 #### Backend and Databases
-<p align="justify"></p>
+<p align="justify">
+  All relevant details about the EC2 server and MySQL database is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/README_Software_Backend.md">backend README</a>. Everything that is needed to create instances in AWS and populate those instances with the necessary files documented there.
+</p>
 
 #### Mobile Application
 <p align="justify">
@@ -66,7 +68,7 @@ Next steps for the website:
 
 ## Software Reports
 
-- [Backend and Databases]()
+- [Backend and Databases](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/README_Software_Backend.md)
 - [Mobile Application](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/README_Software_MobileApp.md)
 - [Website](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/README_Software_Website.md)
 
