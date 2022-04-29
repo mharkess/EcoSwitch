@@ -110,7 +110,9 @@ So, to use the API, it would be in the format of: `URL/API`. From the API below,
     - {"DeviceID": "46826", "Location": "972 Washington St", "RoomNumber": "10348"}  
 ## Dependencies Between Modules
 This section provides a flowchart showing the generic movement of data from the client (via the mobile appplication or administrator website) to the database. Note that any API that is listed above can go into the second box as shown below.
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="600"/>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+  </div>
 
 ## Development and Build Information
 This project was built with the following programs, versions and hardware:
