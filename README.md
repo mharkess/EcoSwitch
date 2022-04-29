@@ -47,7 +47,7 @@ All relevant details on the website's current status can be found in its corresp
 
 Next steps for the website:
 - authentication checking to ensure the user is logged in before being able to access the dashboard and its other linked pages
-- an interactive graph that plotted the average temperatures and humidity levels for each location
+- an interactive graph that plots the average temperatures and humidity levels for each location
 - error checking for the various inputs that are allowed
   - location-related inputs: ensure the building is a valid BU brownstone location
   - room number-related inputs: ensure the room exists in the specified location
