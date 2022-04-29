@@ -30,6 +30,11 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 ### Hardware
 <p align="justify"></p>
 
+#### Circuit
+<p align="justify">
+  All relevant details about the circuit diagram is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md">circuit README</a>. All the electronics specifications and circuit diagram explainations are listed in there.
+</p>
+
 ### Software
 <p align="justify"></p>
 
