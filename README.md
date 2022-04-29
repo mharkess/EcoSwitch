@@ -46,7 +46,9 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 </p>
 
 #### Website
-All relevant details on the website's current status can be found in its corresponding [software report](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/README_Software_Website.md).
+<p align="justify">
+  All relevant details on the website's current status can be found in its corresponding <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/README_Software_Website.md">website README</a>.
+</p>
 
 Next steps for the website:
 - authentication checking to ensure the user is logged in before being able to access the dashboard and its other linked pages
