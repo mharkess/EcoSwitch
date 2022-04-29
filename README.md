@@ -43,7 +43,7 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 
 #### Installation and casing
 <p align="justify">
-  All relevant description for the device casing and installation is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation">installation README</a>. It contains 3D models for the casing and instructions for installation.
+  All relevant description for the device casing and installation is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation.md">installation README</a>. It contains 3D models for the casing and instructions for installation.
 </p>
 
 
