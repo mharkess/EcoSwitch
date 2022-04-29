@@ -84,7 +84,21 @@
 </div>
 
 #### Main, DeviceAdjust, StudentAdd, and Profile
-<p align="justify"></p>
+<p align="justify">The dashboard contains all the information for every EcoSwitch device that currently exists in the database. It is shown in a dynamic table that is bound to the database's entries. The empty space below was meant to hold a graph that provides a visual for the temperature and humidity levels for each building; however, this was not implemented due to a lack of time.</p>
+
+<p align="justify">In addition to this page, there are the DeviceAdjust and StudentAdd pages that can be accessed through the sidebar. Both pages have a similar format that presents two tabs for the user to click on. Each tab brings up a separate form that does the opposite action of the other tab. For the DeviceAdjust page, there is a lock and unlock tab that allows admin to either prevent student input for a certain location and shut down all its FCUs or unlock the location and provide students with access to the devices in it again. For the StudentAdd page, one tab provides a form for registering students to a specific EcoSwitch device and the other provides a form for removing a student from a device's user list.</p>
+
+<p align="justify">Finally, the profile page is another placeholder that has been designed to eventually display user information, such as one's name and email. Since this page does not contain any content, it has been emitted from the image set below.</p>
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/dashboard.PNG" width="400"/>
+</div>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/lock.PNG" width="400"/>
+</div>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/student.PNG" width="400"/>
+</div>
 
 ### Main Functionalities
 <p align="justify">A high-level description of all the website's main features are provided in this section, respective to the list of pages provided in the "Pages" section.</p>
