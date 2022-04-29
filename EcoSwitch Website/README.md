@@ -82,7 +82,7 @@
 <p align="justify">A high-level description of all the website's main features are provided in this section, respective to the list of pages provided in the "Pages" section.</p>
 
 #### Clean and Easy to Navigate Interface
-<p align="justify">The UI and UX of the website's main pages have been designed to be friendly to users and provide content that helps them easily find their way around. The colors have also been chosen to reflect EcoSwitch's logo and general aesthetic. This is immediately evident upon the arrival of the home page, as it provides a navigation bar and large buttons that redirect users to the sign in page and device registration form.</p>
+<p align="justify">The UI and UX of the website's main pages have been designed to be user-friendly and provide content that helps them easily find their way around. The colors have also been chosen to reflect EcoSwitch's logo and general aesthetic. This is immediately evident upon the arrival of the home page, as it provides a navigation bar and large buttons that redirect users to the sign in page and device registration form.</p>
 
 #### Device Registration
 <p align="justify">As mentioned in the "Register" section, the EcoSwitch website offers the ability for users to register new EcoSwitch devices. This effectively adds them to the database and allows them to start communicating with the rest of the system. It is meant to be accessible and easy to use so the facility workers who would be setting up the devices in the dormitories would be able to do so without any difficulties. At the moment, the submission form does not have any error checking that guarantees the location and EcoSwitch ID is valid; however, this would be necessary to establish before product deployment.</p>
