@@ -112,14 +112,13 @@
 #### Account Creation
 <p align="justify">Users are able to create an account with their email and a chosen password or through Google sign in. Upon a successful sign in request, they will be redirected to the dashboard page and their activity will be documented in the corresponding Firebase project. Currently, any individual can achieve this, though we would like there to be greater restrictions to those who can view all the EcoSwitch data and interact with the devices. However, we are unable to use Kerberos due to the security risks that would introduce. As a result, the dashboard does not require user authenitcation and the login feature has been implemented for concept development with the integration of Firebase.</p>
 
-#### Data Querying and Posting
-<p align="justify"></p>
+#### Data Querying
+<p align="justify">A significant capability of the website is to communicate with the back end and its various databases through API calls. This is achieved with the JavaScript fetch function with the endpoint being chosen based on whether a GET or POST request is being made and from which database the information is being queried. API calls are used to register new devices, assign and remove students to and from EcoSwitch devices, attain all the information stored by each device, and lock and unlock specified locations.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Dependencies Between Modules
-
-
+ 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
