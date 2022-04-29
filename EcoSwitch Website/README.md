@@ -41,7 +41,7 @@
 <p align="justify">There are several pages that currently make up the EcoSwitch website. While some of them are simple in their functions and exist to provide information about the website and overall system, others have more significant purposes and provide access to the main features that are described in detail below.</p>
 
 ### Pages
-<p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the App.js file location in the src folder of this directory.</p>
+<p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the App.js file located in the src folder of this directory.</p>
 
 #### Home, ComponentReplace, StudentApp, and ErrorPage
 <p align="justify"></p>
