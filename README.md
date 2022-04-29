@@ -35,6 +35,26 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
   All relevant details about the circuit diagram is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md">circuit README</a>. All the electronics specifications and circuit diagram explainations are listed in there.
 </p>
 
+#### Sensor
+<p align="justify">
+  All relevant details about the circuit diagram is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Sensor/Readme_Sensor.md">sensor README</a>. All the electronics specifications and circuit diagram explainations are listed in there.
+</p>
+
+#### Motor
+<p align="justify">
+  All relevant details about the circuit diagram is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Motor/Readme_Driver.md">motor README</a>. All the electronics specifications and circuit diagram explainations are listed in there.
+</p>
+
+#### Installation and casing
+<p align="justify">
+  All relevant details about the circuit diagram is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation">installation README</a>. All the electronics specifications and circuit diagram explainations are listed in there.
+</p>
+
+
+
+
+
+
 ### Software
 <p align="justify"></p>
 
