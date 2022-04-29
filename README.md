@@ -98,7 +98,9 @@ Next steps for the website:
 
 ## Hardware Report
 
-- [EcoSwitch Device]()
+- [Circuit](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md)
+- [Attachment](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md)
+- [Installation and casing](https://github.com/https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
