@@ -36,7 +36,11 @@
 <p align="justify"></p>
 
 #### Mobile Application
-<p align="justify"></p>
+<p align="justify">
+  To begin development, please follow the instructions outlined in the 
+  <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/README_Software_MobileApp.md#development-and-build-information">mobile application README</a>. 
+  Everything needed to initially build the project and run it is documented there. Note that some of the tools used for development were not the latest version (i.e. Expo) and updating to the latest version may cause problems with running the application.
+</p>
 
 #### Website
 <p align="justify"></p>
