@@ -13,6 +13,9 @@
       </ul>
     </li>
     <li>
+      <a href="#dependencies-between-modules">Dependencies Between Modules</a>
+    </li>
+    <li>
       <a href="#development-and-build-information">Development and Build Information</a>
     </li>
     <li>
@@ -66,6 +69,14 @@ The driving module for the mobile application. Developed using the React Native 
 <p align="justify"> A separate JavaScript file that contains all the formatting for different elements in each screen render. </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Dependencies Between Modules
+
+Below is a simple flow diagram of the different pages used in App.js, how they interact with one another, and some functions of each where applicable.
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/images/flowchart2.png"/>
+</div>
 
 ## Development and Build Information
 All installed dependencies for the project can be found within the [package.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/package.json) and [package-lock.json](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitchApp/package-lock.json) files found within this directory.
