@@ -44,7 +44,22 @@
 <p align="justify">All of these pages take the form of JS functions or components that are imported and linked together in the App.js file located in the src folder of this directory.</p>
 
 #### Home, ComponentReplace, StudentApp, and ErrorPage
-<p align="justify"></p>
+<p align="justify">The home page provides an overview of our system and gives users an easy way to access the rest of the website's components, including the device registration form and housing portal sign in page. 
+  
+ComponentReplace and StudentApp do not currently contain interactive content; however, they are placeholders that have been created to give users a more thorough understanding of the other features we have designed our product to contain. For example, we planned to allow the device's attachment to be swappable in case it somehow became damaged. This allows facility workers to simply replace the attachment rather than the entire device, making it a cost-effective solution. Additionally, while the mobile app is not currently available through any app store, it is an important part of our deliverables and should be accessible to our users with any future usage of our system. Finally, the error page provides users with a readable error message in case they try to access a page that does not exist. These last three pages will not be shown below due to their lack of content.</p>
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/sc1.png" width="400"/>
+</div>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/sc2(1).png" width="400"/>
+</div>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/sc3(1).png" width="400"/>
+</div>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/sc4.png" width="400"/>
+</div>
 
 #### Register
 <p align="justify">This page is directly accessible from the website's home page and does not require users to be logged in for usage. It is important to the system's initial installation, as it allows individuals to register new EcoSwitch devices. It consists of a simple form that requests for the user to input the device ID, installation building location, installation room number. Additionally, we have designed a QR code that links to this page and would be placed within the device's packaging so users can easily scan it to set it up.</p>
