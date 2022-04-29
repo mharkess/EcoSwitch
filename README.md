@@ -9,7 +9,6 @@
       <a href="#software-reports">Software Reports</a>
     </li>
     <li>
-    <li>
       <a href="#hardware-report">Hardware Report</a>
     </li>
     <li>
