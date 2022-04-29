@@ -73,7 +73,15 @@
 </div>
 
 #### SignUp and SignIn
-<p align="justify"></p>
+<p align="justify">These pages allow administrators to create an account and use it to sign in. They can also use Google as a provider and sign in with their Google account. This feature has been implemented with the JavaScript Firebase library and connects the application to a Firebase project that logs all user activity.</p>
+
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/login.PNG" height="400"/>
+</div>
+</br>
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/signup.PNG" width="200"/>
+</div>
 
 #### Main, DeviceAdjust, StudentAdd, and Profile
 <p align="justify"></p>
@@ -88,7 +96,7 @@
 <p align="justify">As mentioned in the "Register" section, the EcoSwitch website offers the ability for users to register new EcoSwitch devices. This effectively adds them to the database and allows them to start communicating with the rest of the system. It is meant to be accessible and easy to use so the facility workers who would be setting up the devices in the dormitories would be able to do so without any difficulties. At the moment, the submission form does not have any error checking that guarantees the location and EcoSwitch ID is valid; however, this would be necessary to establish before product deployment.</p>
 
 #### Account Creation
-<p align="justify"></p>
+<p align="justify">Users are able to create an account with their email and a chosen password or through Google sign in. Upon a successful sign in request, they will be redirected to the dashboard page and their activity will be documented in the corresponding Firebase project. Currently, any individual can achieve this, though we would like there to be greater restrictions to those who can view all the EcoSwitch data and interact with the devices. However, we are unable to use Kerberos due to the security risks that would introduce. As a result, the dashboard does not require user authenitcation and the login feature has been implemented for concept development with the integration of Firebase.</p>
 
 #### Data Querying and Posting
 <p align="justify"></p>
