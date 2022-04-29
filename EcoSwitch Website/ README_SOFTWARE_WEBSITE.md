@@ -118,7 +118,9 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Dependencies Between Modules
- 
+<p align="justify">This section provides a flowchart that illustrates all the dependencies and connections between the aforementioned software modules, as well as any relevant functions within them.</p>
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
