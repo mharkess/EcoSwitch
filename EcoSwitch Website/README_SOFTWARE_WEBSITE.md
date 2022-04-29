@@ -121,7 +121,7 @@
 <p align="justify">This section provides a flowchart that illustrates all the dependencies and connections between the aforementioned software modules, as well as any relevant functions within them.</p>
 
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/website_flowchart.png" height="400"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/website_flowchart.png" height="600"/>
 </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
