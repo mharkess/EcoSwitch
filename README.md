@@ -4,6 +4,10 @@
   <ol>
     <li>
       <a href="#engineering-addendum">Engineering Addendum</a>
+      <ul>
+        <li><a href="#hardware">Hardware</a></li>
+        <li><a href="#software">Software</a></li>
+      </ul>
     </li>
     <li>
       <a href="#software-reports">Software Reports</a>
@@ -20,6 +24,21 @@
   </ol>
 
 ## Engineering Addendum
+<p align="justify"></p>
+
+### Hardware
+<p align="justify"></p>
+
+### Software
+<p align="justify"></p>
+
+#### Backend and Databases
+<p align="justify"></p>
+
+#### Mobile Application
+<p align="justify"></p>
+
+#### Website
 <p align="justify"></p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
