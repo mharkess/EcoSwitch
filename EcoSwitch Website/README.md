@@ -76,11 +76,11 @@
 <p align="justify">These pages allow administrators to create an account and use it to sign in. They can also use Google as a provider and sign in with their Google account. This feature has been implemented with the JavaScript Firebase library and connects the application to a Firebase project that logs all user activity.</p>
 
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/login.PNG" height="400"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/login.PNG" width="400"/>
 </div>
 </br>
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/signup.PNG" width="200"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/images/signup.PNG" width="400"/>
 </div>
 
 #### Main, DeviceAdjust, StudentAdd, and Profile
