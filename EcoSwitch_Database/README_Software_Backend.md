@@ -144,14 +144,25 @@ The latest version of MySQL Workbench can be downloaded [here](https://dev.mysql
 5. Connect to the RDS instance via the Workbench and in the to menu, go to Edit -> Preferences -> Administration.
 
 6. On this page, you will want to set the myssqldump.exe location to the mysqldump.exe file included in the repo (which is in `EcoSwitch/EcoSwitch_Database/RDS`).
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/selectdumpexe.png" width="200"/>
+</div>
 
 7. Once that is done, navigate to Server -> Data Import from the top menu. Select "Import from a Self-Contained File" and select the "EcoSwitchDB.sql" file in `EcoSwitch/EcoSwitch_Database/RDS`.
-
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/ImportSqlSave.png" width="200"/>
+</div>
 
 
 8. Once the file is selected, click on the "Import Progress" tab and click the "Import" button. This should upload the schemas, test data, tables and procedures created for this project to the RDS Instance.
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/startimport.png" width="200"/>
+</div>
 
 9. You can check the Workbench on the main page (the page that shows up after connecting to a DB) in the left side bar if all of the data is imported correctly. **NOTE:** To check the data on the left sidebar, you may need to refresh the sidebar by clicking the refresh icon at the top of the bar.
+<div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/SchemaRefresh.png" width="200"/>
+</div>
 
 ### Apache Setup on Amazon EC2
 To hold the API calls that this project uses, we store it on a EC2 instance running Apache to handle requests from the client.
