@@ -43,7 +43,23 @@
 </p>
 
 #### Website
-<p align="justify"></p>
+<p align="justify">All relevant details on the website's current status can be found in its corresponding [software report](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch%20Website/README_Software_Website.md).</p>
+
+<p align="justify">Next steps for the website:
+- authentication checking to ensure the user is logged in before being able to access the dashboard and its other linked pages
+- an interactive graph that plotted the average temperatures and humidity levels for each location
+- error checking for the various inputs that are allowed
+  - location-related inputs: ensure the building is a valid BU brownstone location
+  - room number-related inputs: ensure the room exists in the specified location
+  - student email-related inputs: ensure the student email exists and is from BU
+  - device registration: ensure the device does not already exist in the database
+  - location locking: ensure the location is not already locked
+  - location unlocking: ensure the location is not already unlocked
+  - student assignment: ensure the student has not already been assigned to the specified device
+  - student removal: ensure the student has not already been removed from the specified device or has never been assigned to it
+- confirmation messages for form submissions</p>
+
+<p align="justify">It is worth keeping in mind that the React JS version the website has been built with is newer and therefore, older articles online that provide React JS tutorials may no longer be applicable. For example, the useHistory function has been replaced with useNavigate. Additionally, for forms, it is important to prevent the page from refreshing before the API call has been completed. Using the preventDefault method achieves this. Finally, to view console outputs, use the Developer Tools Console rather than the terminal that is being used to run the server.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
