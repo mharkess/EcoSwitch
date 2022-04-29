@@ -38,7 +38,7 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 
 #### Attachment
 <p align="justify">
-  All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Motor/Readme_Driver.md">motor README</a>. All the desinging concepts 3D models are listed there.
+  All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.
 </p>
 
 #### Installation and casing
