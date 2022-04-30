@@ -6,10 +6,9 @@
     </li>
     <li>
       <a href="#hardware-module-overview">Hardware Module Overview</a>
-      <ul>
-        <li><a href="#Designing casing for EcoSwitch">Designing casing for EcoSwitch</a></li>
-      </ul>
-    </li>
+          </li>
+    <li>
+      <a href="#Designing casing for EcoSwitch">Designing casing for EcoSwitch</a></li>
     <li>
       <a href="#EcoSwitch Installation Steps">EcoSwitch Installation Steps</a>
     </li>
