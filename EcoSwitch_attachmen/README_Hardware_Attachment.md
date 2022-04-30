@@ -6,3 +6,10 @@ Here is the 3D model:
 ![smaller motor hole (2)](https://user-images.githubusercontent.com/58235369/166088994-9daf2d92-0621-467c-a66b-6995fab0bcc2.svg)
 Here is the drawing:
 [current attachment dimensions.pdf](https://github.com/mharkess/EcoSwitch/files/8595591/current.attachment.dimensions.pdf)
+
+## Contact
+
+If there are any further questions about this project, please contact the lead developer via email.
+- thevenin@bu.edu 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
