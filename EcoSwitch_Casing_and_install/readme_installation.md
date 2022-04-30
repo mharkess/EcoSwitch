@@ -7,19 +7,14 @@
     <li>
       <a href="#hardware-module-overview">Hardware Module Overview</a>
       <ul>
-        <li><a href="#ecoswitch-api">EcoSwitch API</a></li>
+        <li><a href="#Designing casing for EcoSwitch">EcoSwitch API</a></li>
       </ul>
     </li>
     <li>
       <a href="#development-and-build-information">Development and Build Information</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#mariadb-setup-on-amazon-rds">MariaDB Setup on Amazon RDS</a></li>
-        <li><a href="#apache-setup-on-amazon-ec2">Apache Setup on Amazon EC2</a></li>
-        <li><a href="#amplify-hosting-setup">Amplify Hosting Setup</a></li>
-      </ul>
+      <a href="#EcoSwitch Installation Steps">Getting Started</a>
     </li>
   <li>
       <a href="#contact">Contact</a>
@@ -43,6 +38,10 @@ The actual FCU device looks like the following diagram with a red circle as the 
 The T-bar has a hole on the top which should be the same size as the pivot holes. Also, two holes beside should have the same dimensions as the side holes in the motor case. The 3D model for the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_T_bar</a>. The drawing of the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2_draw.SLDDRW"> Drawing_for_T_bar</a>. The following diagram is a perspective view for this T-bar. 
 <img width="387" alt="Screen Shot 2022-04-29 at 9 06 14 PM" src="https://user-images.githubusercontent.com/90203309/166084555-b86361d4-8dca-43de-b6a9-2daff125d67f.png">
 
+The second case is used to cover the whole circuit and driver. It connects with battery outside and motor in the motor case.
+
+The T-bar has a hole on the top which should be the same size as the pivot holes. Also, two holes beside should have the same dimensions as the side holes in the motor case. The 3D model for the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_T_bar</a>. The drawing of the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2_draw.SLDDRW"> Drawing_for_T_bar</a>. The following diagram is a perspective view for this T-bar. 
+<img width="387" alt="Screen Shot 2022-04-29 at 9 06 14 PM" src="https://user-images.githubusercontent.com/90203309/166084555-b86361d4-8dca-43de-b6a9-2daff125d67f.png">
 
 
 #### EcoSwitch Installation Steps
@@ -53,13 +52,6 @@ Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit 
 #### 4.Fix the M3 screw locks at the end to stabilize the screws.
 
 
-
-#### Potential Issues
-If you are having trouble connecting to the EC2 instance, you can follow this [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) about SSH connection to EC2.
- 
-
-#### Potential Errors
-Some most of the errors that were encountered when deploying the website appeared during the build phase of the deployment. If you do get an error, you can click on the stage that failed during deployment to view the console logs. The most common errors were missing libraries (which can be added to the script above) or common coding mistakes as undeclared variables.  
 
 ## Contact
 If there are any further questions about the application project, please contact the lead developer via email.
