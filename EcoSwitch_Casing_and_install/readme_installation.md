@@ -32,7 +32,8 @@ The EcoSwitch device installation involes assemble and mount on the Fan Control 
 ## Hardware Module Overview
 The device comes with a battery pack connected to a retangular box which is the circuit and driver for the device. Also, there should be another longer retangular box with four M4 screws and two M3 screws. The installation steps below shows how to amssemble the whole device and mount it on the top of FCU dial. 
 ### Designing casing for EcoSwitch
-The first part is the case for the stepper motor. The purpose of this case is to stabilize the stepper motor when it turns. Therefore, the inner square  dimension for the case should be really close to the overall dimention of the stepper motor with around 10% tolerencce for the error in 3D printing. The 3D model for this case is here:. The following diagram is a perpective view for this case.
+The first part is the case for the stepper motor. The purpose of this case is to stabilize the stepper motor when it turns. Therefore, the inner square  dimension for the case should be really close to the overall dimention of the stepper motor with around 10% tolerencce for the error in 3D printing. The 3D model for this case is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1.SLDPRT">casing_for_motor</a>. The following diagram is a perpective view for this case.
+<img width="668" alt="Screen Shot 2022-04-29 at 8 26 44 PM" src="https://user-images.githubusercontent.com/90203309/166083251-9bbdfed4-f2da-4a0c-9ff0-239c50839130.png">
 
 #### EcoSwitch Installation Steps
 Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit board within the rectangular outer shell, and a battery pack. The device will be mounted on the FCU dial and securely attached to the knob. Then, batteries are needed in the battery pack to power the device and assemble it as follow:
