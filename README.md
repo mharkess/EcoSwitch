@@ -37,7 +37,7 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 <p align="justify">
   
 #### Attachment
-<p align="justify">All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.</p>
+<p align="justify">All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/README_Hardware_Attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.</p>
 
 <p align="justify">It is important to note that inserting a thin rubber strip in between the dial and the attachment allows the attachment to fit tighter on the switch.</p>
 
@@ -118,7 +118,7 @@ Next steps for the website:
 ## Hardware Report
 
 - [Circuit](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md)
-- [Attachment](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md)
+- [Attachment](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/README_Hardware_Attachment.md)
 - [Installation and casing](https://github.com/https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
