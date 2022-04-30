@@ -27,19 +27,21 @@
   </ol>
 
 ## About the Project
-The EcoSwitch device installation involes assemble and mount on the Fan Control Unit(FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and temper proof. 
+The EcoSwitch device installation involves assembling and mounting on the Fan Control Unit(FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and temper proof. 
 
 ## Hardware Module Overview
-The device comes with a battery pack connected to a retangular box which is the circuit and driver for the device. Also, there should be another longer retangular box with four M4 screws and two M3 screws. The installation steps below shows how to amssemble the whole device and mount it on the top of FCU dial. Also, instrustions for designing thoses boxes are listed below.
+The device comes with a battery pack connected to a rectangular box which is the circuit and driver for the device. Also, there should be another longer rectangular box with four M4 screws and two M3 screws. The installation steps below show how to assemble the whole device and mount it on the top of the FCU dial. Also, instructions for designing those boxes are listed below.
 ### Designing casing for EcoSwitch
-All the designs are done using 3D modeling in Solidworks. The first part is the case for the stepper motor. The purpose of this case is to stabilize the stepper motor when it turns. Therefore, the inner square  dimension for the case should be really close to the overall dimention of the stepper motor with around 10% tolerencce for the error in 3D printing. Also, there should be holes besides for screws to stabililize it and spaces for the wire to come out of the case. The 3D model for this case is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1.SLDPRT"> casing_for_motor</a>. The drawing of this 3D model is here: <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1_draw.SLDDRW"> drawing_case_for_motor</a>.
+All the designs are done using 3D modeling in Solidworks. The first part is the case for the stepper motor. The purpose of this case is to stabilize the stepper motor when it turns. Therefore, the inner square dimension for the case should be close to the overall dimension of the stepper motor with around 10% tolerance for the error in 3D printing. Also, there should be holes besides for screws to stabilize it and spaces for the wire to come out of the case. The 3D model for this case is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1.SLDPRT"> casing_for_motor</a>. The drawing of this 3D model is here: <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1_draw.SLDDRW"> drawing_case_for_motor</a>.
 The following diagram is a perpective view for this case.
 <img width="668" alt="Screen Shot 2022-04-29 at 8 26 44 PM" src="https://user-images.githubusercontent.com/90203309/166083251-9bbdfed4-f2da-4a0c-9ff0-239c50839130.png">
 
-The first part is the T-bars which are used for fixing the whole device in the two pivots point near the FCU device.
-The actual FCU device looks as following diagram with red circle as the pivot points.
+The motor case is connected with two T-bars beside for stabling the whole device in the two pivots point near the FCU device.
+The actual FCU device looks like the following diagram with a red circle as the pivot point.
 
 <img width="345" alt="Screen Shot 2022-03-12 at 9 58 36 PM" src="https://user-images.githubusercontent.com/90203309/166084199-de4c2ef9-8fcf-4f0e-b598-abf65261c6b4.png">
+The T-bar has a hole on the top which should be the same size as the pivot holes. Also, two holes beside should have the same dimensions as the side holes in the motor case. The 3D model for the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_T_bar</a>. The drawing of the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2_draw.SLDDRW"> Drawing_for_T_bar</a>. The following diagram is a perspective view for this T-bar. 
+<img width="387" alt="Screen Shot 2022-04-29 at 9 06 14 PM" src="https://user-images.githubusercontent.com/90203309/166084555-b86361d4-8dca-43de-b6a9-2daff125d67f.png">
 
 
 
