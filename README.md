@@ -118,7 +118,7 @@ Next steps for the website:
 
 ## Hardware Report
 
-- [Circuit](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md)
+- [Circuit](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/circuit_README.md)
 - [Attachment](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/README_Hardware_Attachment.md)
 - [Installation and Casing](https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/README_Hardware_Installation.md)
 
