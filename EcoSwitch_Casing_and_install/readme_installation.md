@@ -8,10 +8,10 @@
       <a href="#hardware-module-overview">Hardware Module Overview</a>
     </li>
     <li>
-      <a href="#Designing casing for EcoSwitch">Designing casing for EcoSwitch</a></li>
+      <a href="#designing-casing-for-ecoswitch">Designing casing for EcoSwitch</a></li>
     </li>
     <li>
-      <a href="#EcoSwitch Installation Steps">EcoSwitch Installation Steps</a>
+      <a href="#ecoSwitch-installation-steps">EcoSwitch Installation Steps</a>
     </li>
   <li>
       <a href="#contact">Contact</a>
