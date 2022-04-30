@@ -35,7 +35,7 @@ The algorithm takes the current temperature, a past temperature, the target temp
 The algorithm makes a slope based on the past temperature, current temperature and time. It will use this slope to calculate the predicted temperature.
 Below is the formula that is used to predict the temperature:
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/EcoSwitch%20Prediction.png" width="300"/>
   </div>
 
 With that predicted temperature, the algorithm will compare it to the target temperature after it compares the target temperature to the current temperature. Depending on the comparisons, the algorithm will either: increase the temperature setting by 1, decrease the temperature setting by 1 or keep the temperature setting the same.
@@ -43,7 +43,7 @@ With that predicted temperature, the algorithm will compare it to the target tem
 ## Dependencies Between Modules
 Below is a flow chart depicting how the algorithm operates:
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/EcoSwitch%20Algorithm.png" width="650"/>
   </div>
 
 ## Development and Build Information
@@ -60,30 +60,29 @@ Once the necessary libraries are installed, you can upload the ESP32 script that
 2. Once in Arduino IDE, connect the ESP32 to your computer.
 3. After that upload the code to the ESP32 by clicking the "Upload" button.
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/UploadScript.png" width="650"/>
   </div>
 
 4. After the code has been uploaded, you can check if the code uploaded properly by opening the Serial Monitor to see if there is any output there.
-<div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
-  </div>
 
 ### Device Setup
 1. On the first boot, the device will want to know the WiFi credentials so that it can run. To do this, you must connect to the device via WiFi.
-<div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+2. <div align="center">
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/ArduinoWifiConnect.png" width="350"/>
   </div>
 
 2. Once connected, navigate to `192.168.1.1` to access the HTML form to input the WiFi credentials.
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/WifiCredPage.png" width="650"/>
   </div>
+
 
 3. Once the credentials are written, click the submit button and look at the Serial Monitor to see if the device is connected to the internet.
 4. If the device is connected to the internet, You will be able to see messages in the Serial Monitor regarding the Temperature, Humidity, and Current State of the device.
 <div align="center">
-<img src="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/images/Backend%20Flow%20Chart.png" width="800"/>
+<img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/EcoSwitchTerminal.png" width="650"/>
   </div>
+
 
 #### Potential Errors
 If the device is having trouble connecting to a WiFi network, make sure that it is 2.4 GHz. If connection issues still persist after a few tries, you may want to connect to a different network (like a hotspot or an entirely different WiFi network).
