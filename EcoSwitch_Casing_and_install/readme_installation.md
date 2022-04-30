@@ -21,8 +21,12 @@
 ## About the Project
 <p align="justify">The EcoSwitch device installation involves assembling and mounting on the Fan Control Unit(FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and temper proof.</p>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Hardware Module Overview
 <p align="justify">The device comes with a battery pack connected to a rectangular box which is the circuit and driver for the device. Also, there should be another longer rectangular box with four M4 screws and two M3 screws. The installation steps below show how to assemble the whole device and mount it on the top of the FCU dial. Also, instructions for designing those boxes are listed below.</p>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Designing casing for EcoSwitch
 <p align="justify">All the designs are done using 3D modeling in Solidworks. The first part is the case for the stepper motor. The purpose of this case is to stabilize the stepper motor when it turns. Therefore, the inner square dimension for the case should be close to the overall dimension of the stepper motor with around 10% tolerance for the error in 3D printing. Also, there should be holes besides for screws to stabilize it and spaces for the wire to come out of the case. The 3D model for this case is here: <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1.SLDPRT">casing_for_motor</a>. The drawing of this 3D model is here: <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part1_draw.SLDDRW">drawing_case_for_motor</a>.</p>
@@ -47,6 +51,8 @@
 
 <p align="justify">The second case is used to cover the whole circuit and driver. It connects with battery outside and motor in the motor case.</p>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 #### EcoSwitch Installation Steps
 Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit board within the rectangular outer shell, and a battery pack. The device will be mounted on the FCU dial and securely attached to the knob. Then, batteries are needed in the battery pack to power the device and assemble it as follow:
 #### 1. Put two T-shape bars beside the rectangle box. 
@@ -54,6 +60,10 @@ Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit 
 #### 3. Use two M3x20 mm screws to drill on the top hole of the two T-shape bars.
 #### 4. Fix the M3 screw locks at the end to stabilize the screws.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Contact
 If there are any further questions about the application project, please contact the lead developer via email.
 - liaophie@bu.edu
+
+<p align="right">(<a href="#top">back to top</a>)</p>
