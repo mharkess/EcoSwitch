@@ -36,6 +36,10 @@ All the designs are done using 3D modeling in Solidworks. The first part is the 
 The following diagram is a perpective view for this case.
 <img width="668" alt="Screen Shot 2022-04-29 at 8 26 44 PM" src="https://user-images.githubusercontent.com/90203309/166083251-9bbdfed4-f2da-4a0c-9ff0-239c50839130.png">
 
+The first part is the T-bars which are used for fixing the whole device in the two pivots point near the FCU device. The actual FCU device looks like the following diagram:
+<img width="345" alt="Screen Shot 2022-03-12 at 9 58 36 PM" src="https://user-images.githubusercontent.com/90203309/166084199-de4c2ef9-8fcf-4f0e-b598-abf65261c6b4.png">
+
+
 #### EcoSwitch Installation Steps
 Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit board within the rectangular outer shell, and a battery pack. The device will be mounted on the FCU dial and securely attached to the knob. Then, batteries are needed in the battery pack to power the device and assemble it as follow:
 #### 1.Put two T-shape bars beside the rectangle box. 
