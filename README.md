@@ -35,7 +35,13 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
   All relevant details about the connection of the circuit and its components is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md">circuit README</a>. It lists all the electronics specifications and steps to construct the circuit from scratch. Also, the reasons for selecting the electronics are listed there.
 </p>
 
+The next steps for the circuit are:
+  - Add a LCD screen to display the temperature reading of the sensor
+  - 
+If the motor is not running propeely, it could be a connection issue with the battery wires.
 
+<p align="justify">
+  
 #### Attachment
 <p align="justify">
   All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.
