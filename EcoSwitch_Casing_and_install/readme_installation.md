@@ -19,12 +19,12 @@
   </ol>
 
 ## About the Project
-<p align="justify">The EcoSwitch device installation involves assembling and mounting on the Fan Control Unit(FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and temper proof.</p>
+<p align="justify">The EcoSwitch device's installation involves assembling and mounting it on the Fan Control Unit (FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and tamperproof.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Hardware Module Overview
-<p align="justify">The device comes with a battery pack connected to a rectangular box which is the circuit and driver for the device. Also, there should be another longer rectangular box with four M4 screws and two M3 screws. The installation steps below show how to assemble the whole device and mount it on the top of the FCU dial. Also, instructions for designing those boxes are listed below.</p>
+<p align="justify">The device comes with a battery pack connected to a rectangular box which is the circuit and driver for the device. Also, there should be another longer rectangular box with four M4 screws and two M3 screws. The installation steps below show how to assemble the whole device and mount it on the top of the FCU dial. Also, instructions for designing these boxes are listed below.</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
