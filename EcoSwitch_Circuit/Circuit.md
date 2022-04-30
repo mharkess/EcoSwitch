@@ -8,3 +8,9 @@ The following is the circuit diagram:
 
 The following is the hardware pinout of the ESP32 Pins for setup:
 ![hardware pinout](https://user-images.githubusercontent.com/58235369/166088177-35ca4420-e34b-4085-a039-1ab324ebfd4f.png)
+
+Here is a sheet detailing our voltage measurements and power consumption:
+[voltage measurement Project Team 31.xlsx](https://github.com/mharkess/EcoSwitch/files/8595606/voltage.measurement.Project.Team.31.xlsx)
+
+Here is our Bill of Materials:
+[Bill of Materials- EcoSwitch - Sheet1 (2).pdf](https://github.com/mharkess/EcoSwitch/files/8595609/Bill.of.Materials-.EcoSwitch.-.Sheet1.2.pdf)
