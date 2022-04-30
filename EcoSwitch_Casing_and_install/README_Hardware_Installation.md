@@ -52,10 +52,9 @@ Device Concept:
 <img width="387" alt="Screen Shot 2022-04-29 at 9 06 14 PM" src="https://user-images.githubusercontent.com/90203309/166084555-b86361d4-8dca-43de-b6a9-2daff125d67f.png">
 </div>
 
-<p align="justify">The second case is used to cover the whole circuit and driver. It connects with battery outside and motor in the motor case. The 3D model for the base part of circuit case is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_circuit_case_base</a> and the top part is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/toppart.SLDPRT"> 3Dmodel_for_circuit_case_top</a>. The isometric view of the case is as follow: 
+<p align="justify">The second case is used to cover the whole circuit and driver. It connects with battery outside and motor in the motor case. The 3D model for the base part of circuit case is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_circuit_case_base</a> and the top part is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/toppart.SLDPRT"> 3Dmodel_for_circuit_case_top</a>. The isometric view of the case is as follow: </p>
   
   <img width="563" alt="Screen Shot 2022-04-29 at 11 06 02 PM" src="https://user-images.githubusercontent.com/90203309/166091464-fdfa3705-7940-4750-a4aa-72ba41ad48af.png">
-</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
