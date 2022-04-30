@@ -21,6 +21,8 @@
 ## About the Project
 <p align="justify">The EcoSwitch device's installation involves assembling and mounting it on the Fan Control Unit (FCU). The original problem statement required the EcoSwitch device to be safely mounted on the FCU dial and tamperproof.</p>
 
+Device Concept:![device concept](https://user-images.githubusercontent.com/58235369/166089495-faa53973-a2c4-464c-9fb6-f2aa1bf73846.jpg)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Hardware Module Overview
