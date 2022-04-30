@@ -25,39 +25,28 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
   </ol>
 
 ## Engineering Addendum
-<p align="justify"></p>
 
 ### Hardware
-<p align="justify"></p>
 
 #### Circuit
-<p align="justify">
-  All relevant details about the connection of the circuit and its components is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md">circuit README</a>. It lists all the electronics specifications and steps to construct the circuit from scratch. Also, the reasons for selecting the electronics are listed there.
-</p>
+<p align="justify">All relevant details about the connection of the circuit and its components is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Circuit/Circuit_Diagram.md">circuit README</a>. It lists all the electronics specifications and steps to construct the circuit from scratch. Also, the reasons for selecting the electronics are listed there.</p>
 
-The next steps for the circuit are:
-  - Add a LCD screen to display the temperature reading of the sensor
+<p align="justify">The next steps for the circuit are:</p>
+- Add a LCD screen to display the temperature reading of the sensor
 
 <p align="justify">
   
 #### Attachment
-<p align="justify">
-  All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.
-</p>
+<p align="justify">All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.</p>
 
-It is importgant to note that inserting a thin rubber strip in between the dial and the attachment allows the attachment to fit tighter on the switch
+<p align="justify">It is important to note that inserting a thin rubber strip in between the dial and the attachment allows the attachment to fit tighter on the switch.</p>
 
 #### Installation and casing
 <p align="justify">
   All relevant description for the device casing and installation is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/readme_installation.md">installation README</a>. It contains 3D models for the casing and instructions for installation.
 </p>
 
-
-
-
-
 ### Software
-<p align="justify"></p>
 
 #### Database and Server
 <p align="justify">
