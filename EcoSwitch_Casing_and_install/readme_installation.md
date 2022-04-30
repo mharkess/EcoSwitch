@@ -38,6 +38,7 @@ The following diagram is a perpective view for this case.
 
 The first part is the T-bars which are used for fixing the whole device in the two pivots point near the FCU device.
 The actual FCU device looks as following diagram with red circle as the pivot points.
+
 <img width="345" alt="Screen Shot 2022-03-12 at 9 58 36 PM" src="https://user-images.githubusercontent.com/90203309/166084199-de4c2ef9-8fcf-4f0e-b598-abf65261c6b4.png">
 
 
