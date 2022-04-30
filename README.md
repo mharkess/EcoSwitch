@@ -45,7 +45,7 @@ The next steps for the circuit are:
   All relevant details about the attachment is mentioned in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_attachmen/Readme_attachment.md">attachment README</a>. All the desinging concepts 3D models are listed there.
 </p>
 
-It isnimportgant to note that inserting a thin rubber strip in between the dial and the attachment allows the attachment to fit tighter on the switch
+It is importgant to note that inserting a thin rubber strip in between the dial and the attachment allows the attachment to fit tighter on the switch
 
 #### Installation and casing
 <p align="justify">
