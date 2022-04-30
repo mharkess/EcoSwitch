@@ -37,10 +37,10 @@ The first part is the case for the stepper motor. The purpose of this case is to
 
 #### EcoSwitch Installation Steps
 Each EcoSwitch device will come prebuilt with a motor, an attachment, a circuit board within the rectangular outer shell, and a battery pack. The device will be mounted on the FCU dial and securely attached to the knob. Then, batteries are needed in the battery pack to power the device and assemble it as follow:
-1.Put two T-shape bars beside the rectangle box. 
-2.Use four M4x20 mm screws and drill them inside the two holes of the T-shape bars. Also, fix the M4 screw locks at the end to stabilize the screws.
-3.Use two M3x20 mm screws to drill on the top hole of the two T-shape bars.
-4.Fix the M3 screw locks at the end to stabilize the screws.
+#####1.Put two T-shape bars beside the rectangle box. 
+######2.Use four M4x20 mm screws and drill them inside the two holes of the T-shape bars. Also, fix the M4 screw locks at the end to stabilize the screws.
+#######3.Use two M3x20 mm screws to drill on the top hole of the two T-shape bars.
+########4.Fix the M3 screw locks at the end to stabilize the screws.
 
 
 
