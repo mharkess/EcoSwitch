@@ -36,6 +36,7 @@ The actual FCU device looks like the following diagram with a red circle as the 
 
 <img width="345" alt="Screen Shot 2022-03-12 at 9 58 36 PM" src="https://user-images.githubusercontent.com/90203309/166084199-de4c2ef9-8fcf-4f0e-b598-abf65261c6b4.png">
 The T-bar has a hole on the top which should be the same size as the pivot holes. Also, two holes beside should have the same dimensions as the side holes in the motor case. The 3D model for the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2.SLDPRT"> 3Dmodel_for_T_bar</a>. The drawing of the T-bar is here:<a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Casing_and_install/Part2_draw.SLDDRW"> Drawing_for_T_bar</a>. The following diagram is a perspective view for this T-bar. 
+
 <img width="387" alt="Screen Shot 2022-04-29 at 9 06 14 PM" src="https://user-images.githubusercontent.com/90203309/166084555-b86361d4-8dca-43de-b6a9-2daff125d67f.png">
 
 The second case is used to cover the whole circuit and driver. It connects with battery outside and motor in the motor case.
