@@ -37,8 +37,6 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 
 The next steps for the circuit are:
   - Add a LCD screen to display the temperature reading of the sensor
-  - 
-If the motor is not running propeely, it could be a connection issue with the battery wires.
 
 <p align="justify">
   
