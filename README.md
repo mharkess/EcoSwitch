@@ -55,8 +55,15 @@ EcoSwitch is an automated, energy-saving system for brownstone fan coil units (F
 
 #### Database and Server
 <p align="justify">
-  All relevant details about the EC2 server and MySQL database is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/README_Software_Backend.md">backend README</a>. Everything that is needed to create instances in AWS and populate those instances with the necessary files is documented there.
+  All relevant details about the EC2 server and MySQL database is described in the <a href="https://github.com/mharkess/EcoSwitch/blob/main/EcoSwitch_Database/README_Software_Backend.md">backend README</a>. Everything that is needed to create instances in AWS and populate those instances with the necessary files is documented there. 
 </p>
+The next steps for the server and the database are:
+  - Add another column could be added to the database to keep track of previous temperatures and humidities to be displayed for administrators. 
+  - Add error checking for API requests (for wrong data types)
+  - Make SQL queries from the API to the database more secure (ex. checking the query before submitting to the database)
+ <p align="justify">
+  As a note, some of the PHP API calls have trouble working, even when they are set up correctly. This happens namely to tha API calls that take in arguments from the packet body and are adding/subracting rows in the database. The only work around that seemed to resolve it was to redirect the call through a API service (like AWS API Gateway), so that the request first goes to the API service, then the server (the response goes from the server to the API service).
+ </p>
 
 #### Mobile Application
 <p align="justify">
