@@ -7,14 +7,11 @@
     <li>
       <a href="#hardware-module-overview">Hardware Module Overview</a>
       <ul>
-        <li><a href="#Designing casing for EcoSwitch">EcoSwitch API</a></li>
+        <li><a href="#Designing casing for EcoSwitch">Designing casing for EcoSwitch</a></li>
       </ul>
     </li>
     <li>
-      <a href="#development-and-build-information">Development and Build Information</a>
-    </li>
-    <li>
-      <a href="#EcoSwitch Installation Steps">Getting Started</a>
+      <a href="#EcoSwitch Installation Steps">EcoSwitch Installation Steps</a>
     </li>
   <li>
       <a href="#contact">Contact</a>
