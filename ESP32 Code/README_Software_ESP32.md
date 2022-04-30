@@ -67,7 +67,7 @@ Once the necessary libraries are installed, you can upload the ESP32 script that
 
 ### Device Setup
 1. On the first boot, the device will want to know the WiFi credentials so that it can run. To do this, you must connect to the device via WiFi.
-2. <div align="center">
+<div align="center">
 <img src="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/images/ArduinoWifiConnect.png" width="350"/>
   </div>
 
