@@ -61,6 +61,21 @@ The next steps for the server and the database are:
  <p align="justify">
   As a note, some of the PHP API calls have trouble working, even when they are set up correctly. This happens namely to tha API calls that take in arguments from the packet body and are adding/subracting rows in the database. The only work around that seemed to resolve it was to redirect the call through a API service (like AWS API Gateway), so that the request first goes to the API service, then the server (the response goes from the server to the API service).
  </p>
+ 
+  #### EcoSwitch Device
+<p align="justify">
+  All relevant details about the EcoSwitch Device are described in the 
+  <a href="https://github.com/mharkess/EcoSwitch/blob/main/ESP32%20Code/README_Software_ESP32.md">ESP32 README</a>. 
+  Everything needed to upload the project and run it is documented in there. 
+</p>
+
+The next steps for the EcoSwitch Device are:
+  - Polish UI interface for users
+  - Add extra items to Administration page (Like locking device locally)
+
+ <p align="justify">
+  As a note, if the device is unable to connect to the network when it first boots, the device will reset itself on every attempt. If internet connection is lost during normal operation, then the device will continue operating normally with the exception of uploading sensor data to the database and retrieving the user's target temperature from the databae.
+ </p>
 
 #### Mobile Application
 <p align="justify">
